@@ -1,0 +1,45 @@
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<div id="scenelist-crystal" ng-style="vm.themeStyle" ng-class="{'no-group': vm.groups.length == 0, 'has-group': vm.groups.length != 0}" class={{vm.config.position}}>
+    <div class="group">
+        <div class="group-titles noselect"><span ng-show="!vm.showAll">{{ vm.currentGroup.title }}</span> <span ng-show="vm.showAll">All</span><span class="arrow-toggle" ng-class="{'active': vm.isOpenGroupList }"></span></div>
+        <div class="group-list" ng-class="{'active': vm.isOpenGroupList }" ng-if="!vm.isToggle">
+            <ul ng-if="vm.groups.length" scroll="no">
+                <li class="noselect" ng-show="!vm.showAll" ng-click="vm.showAll = true; vm.currentGroup = {}; vm.initScrollbar(); vm.isOpenGroupList=false">All</li>
+                <li class="noselect" ng-repeat="g in vm.groups" ng-click="vm.currentGroup = g; vm.initScrollbar(); vm.isOpenGroupList=false; vm.showAll=false" ng-class="{'active': vm.currentGroup._id == g._id}">{{ g.title }}</li>
+            </ul>
+        </div>
+    </div>
+    <div id="scenelist-crystal-scroll-wrapper">
+        <!-- No group -->
+        <ul class="tab-nav clearfix" ng-if="vm.groups.length == 0">
+            <li id="{{ s._id }}" ng-repeat="s in vm.project.scenes" class="scene" bg-src="{{ s.pano_thumb }}" ng-class="{'active': s._id == vm.currentscene._id}" ng-click="vm.changeScene(s)">
+                <span class="title noselect">{{ s.title }}</span>
+            </li>
+        </ul>
+        <!-- Have group -->
+        <ul class="tab-nav clearfix" ng-repeat="g in vm.groups" ng-if="vm.groups.length != 0 && vm.currentGroup._id == g._id && !vm.showAll">
+            <li id="{{ s._id }}" class="scene" ng-repeat="s in g.scenes" bg-src="{{ s.pano_thumb }}" ng-class="{'active': s._id == vm.currentscene._id}" ng-click="vm.changeScene(s)">
+                <span class="title noselect">{{ s.title }}</span>
+                <div class="scenelist-item-background" ng-class="{'active' : s._id == scene._id}"></div>
+            </li>
+        </ul>
+        <ul class="tab-nav clearfix" ng-if="vm.showAll">
+            <li id="{{ s._id }}" class="scene" ng-repeat="s in vm.scenes" bg-src="{{ s.pano_thumb }}" ng-class="{'active': s._id == vm.currentscene._id}" ng-click="vm.changeScene(s)">
+                <span class="title noselect">{{ s.title }}</span>
+                <div class="scenelist-item-background" ng-class="{'active' : s._id == scene._id}"></div>
+            </li>
+        </ul>
+    </div>
+    <div class="button-left-shadow"></div>
+    <div class="button-right-shadow"></div>
+    <button id="sceneArrowLeft" class="scene-Arrow scene-Arrow_Left" type="button" ng-click="vm.scrollLeft()">
+        <svg class="scene-Arrow_Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 551 1024">
+            <path d="M445.44 38.183L-2.53 512l447.97 473.817 85.857-81.173-409.6-433.23v81.172l409.6-433.23L445.44 38.18z" />
+        </svg>
+    </button>
+    <button id="sceneArrowRight" class="scene-Arrow scene-Arrow_Right" type="button" ng-click="vm.scrollRight()">
+        <svg class="scene-Arrow_Icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 551 1024">
+            <path d="M105.56 985.817L553.53 512 105.56 38.183l-85.857 81.173 409.6 433.23v-81.172l-409.6 433.23 85.856 81.174z" />
+        </svg>
+    </button>
+</div>

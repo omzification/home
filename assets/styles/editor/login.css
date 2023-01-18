@@ -1,0 +1,548 @@
+.auth-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #000;
+    background-image: url(../images/login-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.message-bag {
+    padding: 10px 54px;
+    color: white;
+    position: relative;
+    background: #EEE;
+    margin: 0 38px;
+    border-radius: 4px;
+    padding: 16px 16px;
+    margin-bottom: 12px;
+    color: #6f6f6f;
+}
+
+#SignUp .message-bag {
+    background: rgba(0,0,0,.15);
+    color: white;
+    margin-top: -24px;
+    margin-bottom: -8px;
+}
+
+.message-bag strong {
+    display: block;
+    text-transform: uppercase;
+    font-weight: 600;
+    opacity: 0.75;
+    margin-bottom: 12px;
+}
+
+.message-bag .close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
+
+.message-bag a {
+    color: #ef5041;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.message-bag.danger {color: #9c9c9c;background: #EEE;margin: -90px 38px 12px;padding: 16px;border-radius: 4px;z-index: 2;}
+
+.auth-form.register {
+    background-image: url(../images/register-bg.jpg);
+}
+
+.auth-form .welcome {
+    background: rgb(247, 176, 44);
+    margin: 0;
+    margin-bottom: 21px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 15px 10px;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.14);
+    border-radius: 30px;
+    -webkit-transition: all 2s;
+    transition: all 2s;
+    opacity: 1;
+    filter: alpha(opacity=100);
+    visibility: visible;
+    position: relative;
+}
+
+.auth-form .welcome.hideit {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.auth-form .content {
+    background-color: rgba(0, 0, 0, 0.16);
+    padding: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    color: #FFF;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.21);
+}
+
+.auth-form .content .form-control {
+    color: black;
+    background: rgb(245, 245, 245);
+    border: none;
+    padding: 12px 10px;
+}
+
+.auth-form.register .form-control {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.63);
+    background: transparent;
+    color: white;
+    padding: 0;
+    font-size: 16px;
+}
+
+.auth-form.register label {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.auth-form.register .form-control:focus {
+    border-bottom: 2px solid #F6C964;
+}
+
+.auth-form .fill {
+    background: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.auth-form .footer {
+    margin-top: 10px;
+}
+
+.auth-form .footer a {
+    margin: 0 2px;
+}
+
+.auth-form .footer {
+    color: white;
+}
+
+.auth-form .help-links {
+    margin-top: 10px;
+    float: right;
+}
+
+.auth-form .help-links a {
+    opacity: .8;
+}
+
+.auth-form .help-links a:hover {
+    opacity: 1;
+}
+
+.auth-form .btn {
+    padding: 0px 30px;
+    background: #EF5341;
+    color: #FFFFFF;
+    font-weight: 900;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    height: 40px;
+    padding-left: 27px;
+}
+
+.auth-form .btn img {
+    width: 18px;
+    margin-right: 7px;
+}
+
+.auth-form .btn:focus {
+    color: #353535;
+}
+
+.auth-form .btn:hover {
+    background-color: #353535;
+    color: white;
+}
+
+.auth-form label {
+    font-weight: 100;
+    /*font-family: panton;*/
+}
+
+.auth-form.register .form-input {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.auth-form .logo {
+    /* height: 100px; */
+    margin: 0 auto;
+    display: block;
+    padding: 20px;
+    max-width: 100%;
+    margin-top: 10%;
+}
+
+
+/* new */
+
+.auth-form .container {
+  position: relative;
+  max-width: 460px;
+  width: 100%;
+  margin: 0 auto 100px;
+}
+.auth-form .container.active .card:first-child {
+  background: #f2f2f2;
+  margin: 0 15px;
+}
+.auth-form .container.active .card:nth-child(2) {
+  background: #fafafa;
+  margin: 0 10px;
+}
+.auth-form .container.active .card.alt {
+  top: 20px;
+  right: 0;
+  width: 100%;
+  min-width: 100%;
+  height: auto;
+  border-radius: 5px;
+  padding: 60px 0 40px;
+  overflow: hidden;
+}
+.auth-form .container.active .card.alt .toggle {
+  position: absolute;
+  top: 40px;
+  right: -70px;
+  box-shadow: none;
+  -webkit-transform: scale(10);
+  transform: scale(10);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+}
+.auth-form .container.active .card.alt .toggle:before {
+  content: '';
+}
+.auth-form .container.active .card.alt .title,
+.auth-form .container.active .card.alt .input-container,
+.auth-form .container.active .card.alt .button-container {
+  left: 0;
+  opacity: 1;
+  visibility: visible;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.auth-form .container.active .card.alt .title {
+  -webkit-transition-delay: .3s;
+          transition-delay: .3s;
+}
+.auth-form .container.active .card.alt .input-container {
+  -webkit-transition-delay: .4s;
+          transition-delay: .4s;
+}
+.auth-form .container.active .card.alt .input-container:nth-child(2) {
+  -webkit-transition-delay: .5s;
+          transition-delay: .5s;
+}
+.auth-form .container.active .card.alt .input-container:nth-child(3) {
+  -webkit-transition-delay: .6s;
+          transition-delay: .6s;
+}
+.auth-form .container.active .card.alt .button-container {
+  -webkit-transition-delay: .7s;
+          transition-delay: .7s;
+}
+
+/* Card */
+.auth-form .card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 60px 0 40px 0;
+  box-sizing: border-box;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  /* Title */
+  /* Inputs */
+  /* Button */
+  /* Footer */
+  /* Alt Card */
+}
+.auth-form .card:first-child {
+  background: #fafafa;
+  height: 10px;
+  border-radius: 5px 5px 0 0;
+  margin: 0 10px;
+  padding: 0;
+}
+.auth-form .card .title {
+  position: relative;
+  z-index: 1;
+  border-left: 5px solid #ed2553;
+  margin: 0 0 35px;
+  padding: 10px 0 10px 50px;
+  color: #ed2553;
+  font-size: 32px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.auth-form .card .input-container {
+  position: relative;
+  margin: 0 60px 50px;
+}
+.auth-form .card .input-container input {
+  outline: none;
+  z-index: 1;
+  position: relative;
+  background: none;
+  width: 100%;
+  height: 60px;
+  border: 0;
+  color: #212121;
+  font-size: 24px;
+  font-weight: 400;
+}
+.auth-form .card .input-container input:focus ~ label {
+  color: #9d9d9d;
+  -webkit-transform: translate(-12%, -50%) scale(0.75);
+          transform: translate(-12%, -50%) scale(0.75);
+}
+.auth-form .card .input-container input:focus ~ .bar:before, .card .input-container input:focus ~ .bar:after {
+  width: 50%;
+}
+.auth-form .card .input-container input:valid ~ label {
+  color: #9d9d9d;
+  -webkit-transform: translate(-12%, -50%) scale(0.75);
+          transform: translate(-12%, -50%) scale(0.75);
+}
+.auth-form .card .input-container label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #757575;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 60px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+.auth-form .card .input-container .bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #757575;
+  width: 100%;
+  height: 1px;
+}
+.auth-form .card .input-container .bar:before, .card .input-container .bar:after {
+  content: '';
+  position: absolute;
+  background: #ed2553;
+  width: 0;
+  height: 2px;
+  -webkit-transition: .2s ease;
+  transition: .2s ease;
+}
+.auth-form .card .input-container .bar:before {
+  left: 50%;
+}
+.auth-form .card .input-container .bar:after {
+  right: 50%;
+}
+.auth-form .card .button-container {
+  margin: 0 60px;
+  text-align: center;
+}
+.auth-form .card .button-container button {
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  background: 0;
+  width: 240px;
+  border: 2px solid #e3e3e3;
+  padding: 20px 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase;
+  overflow: hidden;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.auth-form .card .button-container button span {
+  position: relative;
+  z-index: 1;
+  color: #ddd;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.auth-form .card .button-container button:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  background: #ed2553;
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  margin: -15px 0 0 -15px;
+  opacity: 0;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.auth-form .card .button-container button:hover, .auth-form .card .button-container button:active, .auth-form .card .button-container button:focus {
+  border-color: #ed2553;
+}
+.auth-form .card .button-container button:hover span, .auth-form .card .button-container button:active span, .auth-form .card .button-container button:focus span {
+  color: #ed2553;
+}
+.auth-form .card .button-container button:active span, .auth-form .card .button-container button:focus span {
+  color: #ffffff;
+}
+.auth-form .card .button-container button:active:before, .auth-form .card .button-container button:focus:before {
+  opacity: 1;
+  -webkit-transform: scale(10);
+  transform: scale(10);
+}
+.auth-form .card .footer {
+  margin: 40px 0 0;
+  color: #d3d3d3;
+  font-size: 24px;
+  font-weight: 300;
+  text-align: center;
+}
+.auth-form .card .footer a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.auth-form .card .footer a:hover {
+  color: #bababa;
+}
+.auth-form .card.alt {
+  position: absolute;
+  top: 40px;
+  right: -70px;
+  z-index: 10;
+  width: 140px;
+  height: 140px;
+  background: none;
+  border-radius: 100%;
+  box-shadow: none;
+  padding: 0;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  /* Toggle */
+  /* Title */
+  /* Input */
+  /* Button */
+}
+.auth-form .card.alt .toggle {
+  position: relative;
+  background: #ed2553;
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  color: #ffffff;
+  font-size: 58px;
+  line-height: 140px;
+  text-align: center;
+  cursor: pointer;
+}
+.auth-form .card.alt .toggle:before {
+  content: '\f040';
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+.auth-form .card.alt .title,
+.auth-form .card.alt .input-container,
+.auth-form .card.alt .button-container {
+  left: 100px;
+  opacity: 0;
+  visibility: hidden;
+}
+.auth-form .card.alt .title {
+  position: relative;
+  border-color: #ffffff;
+  color: #ffffff;
+}
+.auth-form .card.alt .title .close {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 60px;
+  display: inline;
+  color: #ffffff;
+  font-size: 58px;
+  font-weight: 400;
+}
+.auth-form .card.alt .title .close:before {
+  content: '\00d7';
+}
+.auth-form .card.alt .input-container input {
+  color: #ffffff;
+}
+.auth-form .card.alt .input-container input:focus ~ label {
+  color: #ffffff;
+}
+.auth-form .card.alt .input-container input:focus ~ .bar:before, .card.alt .input-container input:focus ~ .bar:after {
+  background: #ffffff;
+}
+.auth-form .card.alt .input-container input:valid ~ label {
+  color: #ffffff;
+}
+.auth-form .card.alt .input-container label {
+  color: rgba(255, 255, 255, 0.8);
+}
+.auth-form .card.alt .input-container .bar {
+  background: rgba(255, 255, 255, 0.8);
+}
+.auth-form .card.alt .button-container button {
+  width: 100%;
+  background: #ffffff;
+  border-color: #ffffff;
+}
+.auth-form .card.alt .button-container button span {
+  color: #ed2553;
+}
+.auth-form .card.alt .button-container button:hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+.auth-form .card.alt .button-container button:active:before, .card.alt .button-container button:focus:before {
+  display: none;
+}
+
+/* Keyframes */
+@-webkit-keyframes buttonFadeInUp {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+}
+@keyframes buttonFadeInUp {
+  0% {
+    bottom: 30px;
+    opacity: 0;
+  }
+}
+

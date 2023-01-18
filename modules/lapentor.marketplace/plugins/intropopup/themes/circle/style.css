@@ -1,0 +1,109 @@
+@import 'https://fonts.googleapis.com/css?family=EB+Garamond|Lobster';
+#pluginIntropopupCircle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: -1;
+    visibility: hidden;
+    background: white;
+    padding: 10px 3.5%;
+    opacity: 0;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: opacity 0.6s, visibility 0.6s;
+    transition: opacity 0.6s, visibility 0.6s;
+    /*overflow: auto;*/
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    box-shadow: 2px 5px 0px rgb(169, 169, 169);
+}
+
+#pluginIntropopupCircle.show {
+    visibility: visible;
+    z-index: 499;
+    opacity: 1;
+    filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    -webkit-transition: opacity 0.6s, visibility 0.6s;
+    transition: opacity 0.6s, visibility 0.6s;
+}
+
+#pluginIntropopupCircle .title {
+    font-family: 'Lobster', cursive;
+    font-size: 2.2em;
+    text-align: center;
+    padding-bottom: 20px;
+    margin-top: 11%;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#pluginIntropopupCircle .content {
+    font-family: 'EB Garamond', serif;
+    max-width: 85%;
+    margin: 0 auto;
+    max-height: 45vh;
+    overflow: auto;
+}
+
+#pluginIntropopupCircle .closeit {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    background-color: #a9a9a9;
+    top: 4%;
+    right: 13%;
+    cursor: pointer;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 55px;
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.31);
+}
+
+#pluginIntropopupCircle .closeit img {
+    width: 25px;
+}
+
+#pluginIntropopupCircle .closeit:hover {
+    background: #151515;
+}
+
+@media screen and (max-width: 768px) {
+    #pluginIntropopupCircle .content {
+        max-width: 80%;
+        max-height: 37vh;
+    }
+}
+
+@media screen and (max-width: 568px) {
+    #pluginIntropopupCircle .closeit {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        top: 0;
+        right: 13%;
+    }
+    #pluginIntropopupCircle .content {
+        max-height: 60%;
+        width: 79%;
+    }
+    #pluginIntropopupCircle .title {
+        font-size: 17px;
+        padding-bottom: 0px;
+        width: 57%;
+        margin: 0 auto;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    #pluginIntropopupCircle .closeit img {
+        width: 16px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    #pluginIntropopupCircle .content {
+        max-height: 171px;
+        width: 198px;
+    }
+}

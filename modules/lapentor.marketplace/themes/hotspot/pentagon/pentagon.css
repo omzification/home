@@ -1,0 +1,123 @@
+.hotspot-polygon {
+  position: relative;
+}
+
+.hotspot-polygon-icon {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hotspot-polygon-hover {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -50% 0 0 -50%;
+  width: 100%;
+  height: 100%;
+  background-image: url('/modules/lapentor.marketplace/themes/hotspot/pentagon/images/hover.svg');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: all 0.4s;
+}
+
+.hotspot-polygon:hover .hotspot-polygon-hover {
+  transform: scale(1.66);
+  opacity: 1;
+}
+
+.hotspot-modal-pentagon {
+  background-color: white;
+  min-height: 48px;
+  position: relative;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, .35);
+}
+
+.hotspot-modal-pentagon .close {
+  background-size: 14px auto;
+  background-position: center center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: -24px;
+  background: black;
+  opacity: 1;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  top: 0;
+  text-align: center;
+  padding: 0;
+}
+
+.hotspot-modal-pentagon .caption {
+  text-align: center;
+  padding: 10px;
+}
+
+.hotspot-modal-pentagon img {
+  max-width: 100%;
+}
+
+.hotspot-pentagon-article-popup {
+  padding: 24px 64px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.hotspot-pentagon-article-popup .title {
+  color: #023a77;
+  text-align: center;
+  padding-bottom: 12px;
+  font-size: 2.8em;
+  font-weight: 100;
+}
+
+.hotspot-modal-pentagon .css-icon-cross {
+  color: white;
+  border-color: white;
+}
+
+.hotspot-modal-pentagon .css-icon-cross:after,
+.hotspot-modal-pentagon .css-icon-cross:before {
+  content: '';
+  width: 0;
+  height: 1px;
+  border-left: 8px solid #a1905d;
+  border-right: 8px solid #a1905d;
+  border-left: 8px solid white;
+  border-right: 8px solid white;
+  -webkit-transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+  transform: translate3d(-50%, -50%, 0) rotate(-45deg);
+  -webkit-transition: all .2s cubic-bezier(.25, .46, .45, .94);
+  transition: all .2s cubic-bezier(.25, .46, .45, .94);
+  left: 50%;
+  position: absolute;
+  top: 50%;
+}
+
+.hotspot-modal-pentagon .css-icon-cross:after {
+  -webkit-transform: translate3d(-50%, -50%, 0) rotate(45deg);
+  transform: translate3d(-50%, -50%, 0) rotate(45deg);
+}
+
+.hotspot-modal-pentagon .css-icon-cross:hover:after,
+.hotspot-modal-pentagon .css-icon-cross:hover:before {
+  width: 12px;
+}
+
+@media screen and (max-width: 480px) {
+  .hotspot-modal-pentagon .close {
+    right: 0;
+    width: 32px;
+    height: 32px;
+  }
+
+  .hotspot-pentagon-article-popup {
+    padding: 16px 20px;
+  }
+}

@@ -1,0 +1,32 @@
+<div id="PluginList">
+    <div class="header clearfix">
+        <ul>
+            <li ng-click="vm.show('all')" class="{{ vm.currentTab == 'all' ? 'active':'' }}">All ({{ vm.plugins.length }})</li>
+            <li>|</li>
+            <li ng-click="vm.show('installed')" class="{{ vm.currentTab == 'installed' ? 'active':'' }}">
+                Installed ({{ vm.installedPlugins.length }})</li>
+        </ul>
+        <input type="text" placeholder="Search plugins..." ng-model="vm.search['name']">
+    </div>
+    <div class="divider-20"></div>
+    <div>
+        <div class="card {{ ($index + 1) %3 == 0 && $index > 0 ? 'no-margin-right':'' }}" ng-repeat="plugin in vm.plugins | filter:vm.search | filter:vm.installedFilter" bg-src="{{ plugin.screenshot }}" ng-mouseover="vm.showSettingBtn = plugin.id" ng-mouseleave="vm.showSettingBtn = ''"
+        ui-sref="project.plugins.detail({pluginId: plugin.id, plugin: plugin})">
+            <div class="btn-group" ng-click="$event.stopPropagation()">
+                <button class="btn btn-default setting-btn" ng-if="vm.showSettingBtn == plugin.id" ng-if="plugin.installed" ui-sref="project.plugins.setting({pluginId: plugin.id, plugin: plugin})" uib-tooltip="Plugin settings" tooltip-placement="left">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </button>
+                <button class="btn btn-{{ plugin.installed?'success':'default' }} install-btn" ng-click="vm.togglePlugin(plugin, plugin.installed)">
+                    <span class="glyphicon glyphicon-{{ plugin.installed?'ok':'flash' }}"></span> {{ plugin.installed?'Installed':'Install' }}
+                    <img ng-if="!plugin.installed" ng-if="vm.isSaving == plugin.id" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="20" alt="">
+                    <img ng-if="plugin.installed" ng-if="vm.isSaving == plugin.id" src="bower_components/SVG-Loaders/svg-loaders/puff.svg" width="20" alt="">
+                </button>
+            </div>
+            <div class="desc-wrap">
+                <h3 class="title">{{ plugin.name }}</h3>
+                <p class="desc">{{ plugin.desc }}</p>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-close" ng-click="vm.togglePopup()"><span class="glyphicon glyphicon-{{ vm.isHide?'chevron-right':'remove' }}"></span></button>
+</div>

@@ -1,0 +1,38 @@
+<div class="hs-section">
+	<span class="hs-section-tt">CONTENT</span>
+	<div class="form-group">
+		<div class="form full">
+			<div class="form-content">
+				<button class="btn form-control" ng-click="vm.openMediaLib()">
+					<i class="ilpt-insert-image"></i> Choose/upload image
+				</button>
+			</div>
+		</div>
+		<input type="hidden" ng-model="hotspot.src">
+		<div class="form full">
+			<div class="form-content">
+				<img ng-if="hotspot.src" loading-src="{{ hotspot.src }}" alt="{{ hotspot.caption }}">
+			</div>
+		</div>
+        <div class="form full">
+            <div class="form-content">
+                <select class="btn form-control" ng-model="vm.hotspot.theme_type">
+                    <option value="">- Select theme -</option>
+                    <option value="modal">Modal</option>
+                    <option value="fancybox">Fancybox</option>
+                </select>
+            </div>
+        </div>
+		<!-- <label for="">Caption</label> -->
+		<div class="form full">
+			<div class="form-content">
+				<input type="text" class="form-control" ng-model="hotspot.caption" placeholder="Caption">
+			</div>
+		</div>
+		<div class="form full" ng-if="vm.hotspot.theme_type != 'fancybox'">
+			<div class="form-content">
+				<input type="text" class="form-control" ng-model="hotspot.url" placeholder="Url (click on Image will open this url)">
+			</div>
+		</div>
+	</div>
+</div>

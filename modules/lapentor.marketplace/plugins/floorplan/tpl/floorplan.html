@@ -1,0 +1,19 @@
+<div id="PluginFloorplan" ng-show="listShow" ng-class="config.position" ng-style="{'background-color': config.bg_color}">
+    <span class="ilpt-close close-btn" ng-click="listShow = !listShow"></span>
+    <ul class="list">
+        <li class="thumb" ng-repeat="floorplan in floorplans" ng-class="{'active': floorplan._id == currentFloorplanId}" ng-click="showMap(floorplan._id)">{{ floorplan.name }}</li>
+    </ul>
+    <div id="map-floorplan" style="width:{{ ctnWidth }}px;height:{{ ctnHeight }}px;" ng-show="viewMap">
+        <div class="map-container">
+            <canvas id="canvas-map" width="{{ mapWidth }}" height="{{ mapHeight }}" class="map-floorplan" ng-if="map" style="background-image: url('{{ map }}');"> </canvas>
+            <div class="map-placemarker thumb" ng-repeat="placemarker in placemarkers" ng-if="placemarker.active" ng-click="initScene(placemarker.targetScene)" 
+                uib-tooltip="{{ placemarker.title }}"
+                style="background-image: url('{{ icon }}');
+                    width: {{ placemarkWidthHeight * resizeIcon }}px;
+                    height: {{ placemarkWidthHeight * resizeIcon }}px;
+                    top:{{ placemarker.inTop }}px;
+                    left: {{ placemarker.inLeft }}px;">
+            </div>
+        </div>
+    </div>
+</div>

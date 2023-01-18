@@ -1,0 +1,116 @@
+#editprofile header {
+  margin-bottom: 0;
+}
+
+.page.generic header {
+  padding-bottom: 16px;
+}
+
+.page.generic .nav.nav-tabs {
+  margin-bottom: 40px;
+  text-align: center;
+  border: none;
+  background: white;
+}
+
+.page.generic .nav.nav-tabs li {
+  display: inline-block;
+  float: none;
+}
+
+.page.generic .nav.nav-tabs li a {
+  display: block;
+  color: rgb(136, 136, 136);
+  padding: 8px 24px;
+  border-bottom: 2px solid transparent;
+  font-weight: 300;
+  margin: 0;
+}
+
+.page.generic .nav.nav-tabs li.active a {
+  color: rgb(51, 51, 51);
+  border-color: rgb(239, 80, 65);
+}
+
+.page.generic .nav.nav-tabs li a:hover {
+  color: rgb(51, 51, 51);
+  background: transparent;
+}
+
+#project .table>tbody>tr>td {
+  height: 42px;
+  line-height: 42px;
+  padding: 0;
+}
+
+#project .table>thead>tr>th {
+  padding-left: 0;
+  opacity: 0.5;
+}
+
+#project .table>tbody>tr>td .btn {
+  display: inline-block;
+  height: 32px;
+  line-height: 32px;
+  width: 120px;
+}
+
+#editprofile h3 {
+  margin-top: 0;
+}
+
+.page .page-title {
+  color: white;
+  border-radius: 36px;
+  width: 270px;
+  margin: 0 auto;
+  margin-top: -63px !important;
+  margin-bottom: 35px;
+  font-size: 1.2em;
+  font-weight: 400;
+  border: 5px solid #ededed;
+  height: 50px;
+  display: block;
+  line-height: 41px;
+}
+
+#editprofile .cover {
+  margin-bottom: 12px;
+}
+
+#editprofile .cover img {
+  margin-bottom: 12px;
+}
+
+#editprofile .cover-preview {
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block !important;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+}
+
+#editprofile .avatar {
+  margin: 0 auto 12px;
+}
+
+#editprofile .avatar:hover i {
+  opacity: 1;
+  visibility: visible;
+}
+
+#editprofile .cover span {
+  display: block;
+  position: absolute;
+  width: 100%;
+  bottom: 15px;
+  color: #CECECE;
+}
+
+#editprofile .page-title i {
+  font-size: 1.2em;
+  margin-right: 5px;
+}

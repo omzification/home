@@ -1,0 +1,17 @@
+<div class="form-group">
+	<div class="form">
+	    <label class="form-label" for="">Background color</label>
+	    <div class="form-content">
+		    <span class="demo-bg-block" style="background-color: {{ vm.config.bg_color }}"></span>
+		    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color">
+		</div>
+	</div>
+
+	<div class="form">
+	    <label class="form-label" for="">Title color</label>
+	    <div class="form-content">
+		    <span class="demo-bg-block" style="background-color: {{ vm.config.text_color }}"></span>
+		    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.text_color">
+		</div>
+	</div>
+</div>

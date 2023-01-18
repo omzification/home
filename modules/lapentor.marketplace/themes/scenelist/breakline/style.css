@@ -1,0 +1,137 @@
+#scenelist-breakline {
+    position: absolute;
+    z-index: 302;
+    bottom: 12px;
+    width: 100%;
+}
+#scenelist-breakline.left{
+    left: 42px;
+}
+#scenelist-breakline.right{
+    right: 42px;
+}
+
+#scenelist-breakline.right, #scenelist-breakline.left {
+    width: auto;
+}
+
+#scenelist-breakline .scenes {
+    width: 100%;
+    text-align: center;
+}
+
+#scenelist-breakline .scenes li {
+    margin: 0 2px;
+    position: relative;
+    padding: 10px 0px;
+    cursor: pointer;
+    display: inline-block;
+    z-index: 301;
+}
+
+#scenelist-breakline .scenes li:hover {
+    z-index: 302;
+}
+
+#scenelist-breakline .scenes li .line {
+    width: 100px;
+    height: 6px;
+    opacity: 0.75;
+    filter: alpha(opacity=75);
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+#scenelist-breakline .scenes li .line:hover {
+    opacity: 1;
+}
+
+#scenelist-breakline .scenes li:hover .line {
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+
+#scenelist-breakline .scenes li.active .line, #scenelist-breakline .scenes li.active:hover .line {
+    background: #ef5243;
+    opacity: 1;
+}
+
+#scenelist-breakline .scenes li .thumb {
+    position: absolute;
+    display: block;
+    left: 0;
+    bottom: 16px;
+    width: 100%;
+    border: 2px solid white;
+    height: 56px;
+    box-shadow: 0 -6px 18px rgba(0, 0, 0, 0.75);
+    opacity: 0;
+    filter: alpha(opacity=0);
+    visibility: hidden;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out;
+    pointer-events: none;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#scenelist-breakline .scenes li.active .thumb {
+    width: 172px;
+    height: 86px!important;
+    left: -36px;
+    bottom: 28px;
+    border: 2px solid white;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.75);
+    transform: translateY(-8px);
+    -webkit-transform: translateY(-8px);
+}
+
+#scenelist-breakline .scenes li.active .thumb {}
+
+#scenelist-breakline .scenes li.active .thumb:after {
+    top: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #FFFFFF;
+    border-width: 10px;
+    margin-left: -10px;
+}
+
+#scenelist-breakline .scenes li:hover .thumb,
+#scenelist-breakline .scenes li.active .thumb
+ {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    visibility: visible;
+}
+
+#scenelist-breakline .scenes li:hover .thumb {
+    /* height: 56px; */
+    /* transform: translateY(-4px); */
+    /* -webkit-transform: translateY(-4px); */
+}
+
+#scenelist-breakline .scenes li .thumb span {
+    display: block;
+    background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='rgba(0, 0, 0, 0)', endColorstr='#000000',GradientType=0 );
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    padding: 15px 10px 8px;
+    color: white;
+    text-shadow: 0 2px 3px #000;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

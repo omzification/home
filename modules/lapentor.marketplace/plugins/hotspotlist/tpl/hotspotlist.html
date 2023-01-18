@@ -1,0 +1,135 @@
+<style>
+    #PluginHotspotlist {
+        position: absolute;
+        background-color: white;
+        height: 350px;
+        width: 260px;
+        bottom: 10px;
+        z-index: 200;
+        left: 0;
+        padding: 15px 0;
+        -webkit-transition: all 0.4s;
+        transition: all 0.4s;
+        -webkit-transform: translateX(-100%);
+        transform: translateX(-100%);
+    }
+    
+    #PluginHotspotlist.show {
+        -webkit-transform: translateX(0);
+        transform: translateX(0);
+    }
+    
+    #PluginHotspotlist .hotspot-count {
+        position: absolute;
+        right: -8px;
+        top: -5px;
+        font-weight: bold;
+        width: 20px;
+        height: 20px;
+        background: black;
+        color: white;
+        font-size: 10px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px;
+    }
+    
+    #PluginHotspotlist.show .hotspot-count {
+        display: none;
+    }
+    
+    #PluginHotspotlist .mCSB_inside>.mCSB_container {
+        margin-right: 12px;
+    }
+    
+    #PluginHotspotlist .list {
+        list-style: disc;
+        position: absolute;
+        top: 15px;
+        bottom: 15px;
+        left: 0;
+        right: 0;
+    }
+    
+    #PluginHotspotlist .list li {
+        padding: 10px 0px;
+        font-size: 15px;
+        -webkit-transition: all 0.5s;
+        transition: all 0.5s;
+        position: relative;
+        padding-left: 20px;
+        border-bottom: 1px solid #f7f7f7;
+    }
+    
+    #PluginHotspotlist .list .count {
+        font-weight: bold;
+        font-size: 33px;
+        position: absolute;
+        left: 4px;
+        top: 50%;
+        margin-top: -10px;
+        color: #eaeaea;
+    }
+    
+    #PluginHotspotlist .list .icon {
+        height: 27px;
+        position: absolute;
+        right: 0;
+        z-index: 201;
+        opacity: .3;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";
+        bottom: 5px;
+    }
+    
+    #PluginHotspotlist .list li:before {
+        content: "";
+        height: 6px;
+        width: 6px;
+        position: absolute;
+        left: 5px;
+        display: block;
+        background: #dedede;
+        top: 18px;
+        border-radius: 50%;
+    }
+    
+    #PluginHotspotlist .list li:hover {
+        background: rgb(29, 29, 29);
+        color: white;
+        cursor: pointer;
+        padding-left: 30px;
+    }
+    
+    #PluginHotspotlist .toggle-btn {
+        display: block;
+        position: absolute;
+        right: -50px;
+        bottom: 10px;
+        background-color: white;
+        text-align: center;
+        width: 50px;
+        height: 50px;
+        box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.65);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 32px;
+        cursor: pointer;
+        -webkit-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+    
+    #PluginHotspotlist .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        background-color: #0e0e0e;
+    }
+</style>
+<div id="PluginHotspotlist" ng-class="{'show': vm.isShow}">
+    <ul class="list">
+        <li ng-click="vm.moveViewerTo(hp)" ng-repeat="hp in vm.currentScene.hotspots" ng-if="hp.type != 'sound' && hp.show">
+            <!-- <span class="count">{{ $index + 1}}</span> -->
+            {{ hp.title }}
+            <img ng-src="{{hp.icon}}" alt="" class="icon">
+        </li>
+    </ul>
+    <div class="toggle-btn" bg-src="modules/lapentor.marketplace/plugins/hotspotlist/images/icon.svg" ng-click="vm.isShow = !vm.isShow">
+        <span class="hotspot-count">{{ vm.hotspotCount }}</span>
+    </div>
+</div>

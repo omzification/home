@@ -1,0 +1,13 @@
+<section class="auth-form2 register">
+    <img src="assets/images/logo-circle.png" alt="lapentor.com" class="logo">
+    <div id="auth-wrapper" class="container">
+        <div class="card"></div>
+        <div class="card" id="login-steps">
+            <h4>Hi, thank you for joining us.</h4>
+            <p ng-if="!vm.activated">
+                {{ vm.message }} <img ng-if="vm.isLoading" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="20" alt=""></p>
+            <p ng-if="vm.activated">
+                All set. Now you could <a ui-sref="login"><u>sign in</u></a>. Or the page will be auto redirected to sign in page in <a ui-sref="login">{{ vm.countdown }}s</a></p>
+        </div>
+    </div>
+</section>

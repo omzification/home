@@ -1,0 +1,24 @@
+#Notfound{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #081621;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#Notfound .logo {position: absolute;top: 10%;left: 50%;margin-left: -50px;width: 100px;}
+
+#Notfound .text {
+    color: white;
+    font-weight: 100;
+    text-align: center;
+}
+
+#Notfound .text a {
+    font-weight: bold;
+    text-decoration: underline;
+}

@@ -1,0 +1,31 @@
+<style>
+.hotspot-grady-article {
+    padding: 0;
+    overflow: hidden;
+}
+
+.hotspot-grady-article .title {
+    color: white;
+    background: #85b163;
+    font-weight: 700;
+    padding: 24px 42px 22px;
+    position: relative;
+    font-size: 20px;
+    margin: 0;
+    z-index: 1;
+}
+
+.hotspot-grady-article .hs-content {
+    padding: 24px 42px;
+}
+
+.hotspot-grady-article .title:before {
+    content: "";
+}
+</style>
+
+<div id="" class="hotspot-modal hotspot-modal-grady hotspot-grady-article" ng-style="{'background-color': config.popup_bg_color }">
+	<div class="close" ng-click="cancel()"><i class="ilpt-close" ng-style="{'background-color': config.popup_bg_color }"></i></div>
+    <h2 class="title">{{ hotspot.title }}</h2>
+    <div class="hs-content" ng-bind-html="hotspot.content"></div>
+</div>

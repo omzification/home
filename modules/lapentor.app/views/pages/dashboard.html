@@ -1,0 +1,90 @@
+<fluid-loading type="opaque" ng-if="vm.showFluidLoading"></fluid-loading>
+
+<section id="dashboard" class="page">
+
+    <ng-include src="'modules/lapentor.app/views/partials/header.html'"></ng-include>
+
+    <div class="main">
+        <!-- Price version 1: -->
+        <!-- <section ng-if="!vm.user.price_model_ver">
+        <div class="alert-upgrade" ng-if="vm.user.trial_remain < 0 && !vm.user.subscribed">
+            <span class="text-center">Your trial is ended. Do you want to <strong class="theme-color" ng-controller="UpgradeCtrl as uVm" ng-click="uVm.openUpgradeForm(vm.user)">Upgrade?</strong></span>
+        </div>
+        </section> -->
+
+        <div class="container">
+            <a href="#" class="btn bg-grad btn-addNew" title="Create new project" ng-if="vm.projects.length != 0" ng-click="vm.createProject()"><i class="ilpt-plus"></i></a>
+            <h4 class="dashboard-title text-center" ng-if="vm.projects.length != 0">{{ vm.projects.length }} Project{{ vm.projects.length > 1 ? 's' : ''  }} <br /><a href="/profile?tab=project-analytics">(See Analytics)</a></h4>
+            <div class="search" ng-if="vm.projects.length !== 0">
+                <i class="ilpt-search"></i>
+                <input type="text" class="form-control form-transparent" placeholder="Search project" ng-model="vm.searchText">
+                <img ng-if="vm.titleIsLoading" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" class="title-loading" width="30" style="">
+            </div>
+            <div class="empty-state" ng-if="vm.projects.length == 0 && !vm.notFound">
+                <div class="empty-circle">
+                    <span class="text-top">CREATE YOUR FIRST PROJECT</span>
+                    <a href="#" class="btn bg-grad btn-addNew" title="Create new project" ng-click="vm.createProject()"><i class="ilpt-plus"></i></a>
+                    <div class="circle-ripple"></div>
+                </div>
+            </div>
+            <div class="empty-state" ng-if="vm.notFound">Project not found</div>
+            <div class="empty-state have-lock-project-msg" ng-if="!vm.user.subscribed && vm.projects.length > 3">You have more than 3 free projects. Please <strong ng-controller="UpgradeCtrl as uVm" ng-click="uVm.openUpgradeForm(vm.user)">Subscribe</strong> to our monthly plan to unlock all your projects or download them (see more details at our <a target="_blank" href="https://lapentor.com/pricing">pricing page</a>)</div>
+            <div class="projects-wrap" ng-if="vm.projects.length > 0 && !vm.isSearch" infinite-scroll='vm.loadMore()'>
+                
+                <div class="card-project" ng-repeat="project in vm.projects" ng-class="{'locked': project.is_locked}">
+                    <div class="cover" bg-src="{{ project.thumb }}" ng-if="!project.is_locked" ui-sref="project.editor({id: project._id})"></div>
+                    <div class="cover" bg-src="{{ project.thumb }}" ng-if="project.is_locked"></div>
+                    <div class="description">
+                        <span ng-if="!project.is_locked" ui-sref="project.editor({id: project._id})"><strong>{{ project.title }}</strong></span>
+                        <span ng-if="project.is_locked"><strong>{{ project.title }}</strong></span>
+
+                        <section ng-if="!vm.user.price_model_ver">
+                            <div ng-if="project.public" class="state active" uib-tooltip="Public"></div>
+                            <div ng-if="!project.public" class="state inactive" uib-tooltip="Private"></div>
+                        </section>
+                        
+                        <div class="action-group" ng-if="!project.is_locked">
+                            <a uib-tooltip="Edit" ui-sref="project.editor({id: project._id})" class="action-btn"><i class="ilpt-feather-pen"></i></a>
+                            <a uib-tooltip="Live view" class="action-btn" href="{{ project.slug | shareUrl }}" target="_blank"><i class="ilpt-play"></i></a>
+                            <a uib-tooltip="Duplicate" ng-click="vm.duplicateProject(project._id)" class="action-btn" href="#"><i class="ilpt-files"></i></a>
+                            <a uib-tooltip="Export" ng-click="vm.downloadProject(project)" class="action-btn" href="#"><i class="ilpt-archive"></i></a>
+                            <a href="#" class="action-btn" uib-tooltip="Delete" ng-click="vm.deleteProject(project._id, $index)"><i class="ilpt-trashcan"></i></a>
+                        </div>
+                        <div class="action-group" ng-if="project.is_locked">
+                            <a uib-tooltip="Subscribe to unlock" ng-controller="UpgradeCtrl as uVm" ng-click="uVm.openUpgradeForm(vm.user)" class="action-btn" href="#"><i class="ilpt-military-badge"></i></a>
+                            <a uib-tooltip="Export" ng-click="vm.downloadProject(project)" class="action-btn" href="#"><i class="ilpt-archive"></i></a>
+                            <a href="#" class="action-btn" uib-tooltip="Delete" ng-click="vm.deleteProject(project._id, $index)"><i class="ilpt-trashcan"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Loading while get more project -->
+            <div class="loadmore" ng-show="vm.isLoadMore">
+                <img src="bower_components/SVG-Loaders/svg-loaders/oval.svg" height="30">
+                <h4>Load more project...</h4>
+            </div>
+        </div>
+    </div>
+    
+    <div ng-include src="'modules/lapentor.app/views/partials/footer.html'"></div>
+</section>
+
+<!-- Export loading -->
+<div id="export-loading" ng-class="{'show': vm.showExportLoading}">
+    <div class="inner">
+        <div class="close" ng-click="vm.showExportLoading = false"><i class="ilpt-close"></i></div>
+        <img class="icon" ng-src="modules/lapentor.app/images/{{vm.export.completed ? 'checked.svg':'magic-wand.svg'}}" alt="">
+        <h2 ng-bind-html="vm.export.completed ? 'Completed' : ('Preparing your export of <strong>' + vm.export.project.title + '</strong> project…')">{{  }}</h2>
+        <small>(This is a lifetime purchase. You can always re-download your purchased project without paying again. If the download progress stuck for a while then please try to refresh the browser and download again or check the generated download link under the Export in Project Settings .)</small>
+        <h3 ng-if="vm.export.completed" class="size">{{ vm.export.size }}</h3>
+        <img class="loading" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" ng-if="!vm.export.completed">
+        <div class="download" ng-class="{'disable': !vm.export.completed}">
+            <a class="btn bg-grad" ng-href="{{ vm.export.download_link || '#' }}">DOWNLOAD <i class="ilpt-cloud-download"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- Modals -->
+<project-setting-modal></project-setting-modal>
+<project-share-modal></project-share-modal>

@@ -1,0 +1,116 @@
+<style>
+    .item-sound {
+    margin: 0 0 12px 0;
+    border: 1px solid rgba(255,255,255,0.25);
+    position: relative;
+    padding: 6px;
+    }
+
+	.item-sound > span {
+		display: block;
+		width: 100%;
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		margin-bottom: 8px;
+	}
+
+    .item-sound.active {
+        border-color: #F6C964;
+        box-shadow: 0 0 12px rgba(246, 201, 100, 0.25);
+    }
+
+    .item-sound .close {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        line-height: 20px;
+        background-color: white;
+        color: #262626;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.75);
+        text-align: center;
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 11;
+        transition: all 0.25s cubic-bezier(0.05, 0.88, 0.63, 0.96);
+        -webkit-transition: all 0.25s cubic-bezier(0.05, 0.88, 0.63, 0.96);
+        opacity: 0;
+        transform: scale(1.5,1.5);
+        -webkit-transform: scale(1.5,1.5);
+    }
+
+    .item-sound:hover .close {
+        transform: scale(1.0,1.0);
+        -webkit-transform: scale(1.0,1.0);
+        opacity: 1;
+    }
+	
+	.list-sound {
+		padding-top: 10px;
+	}
+	.err-msg {
+		color: #f6c964;
+		text-align: center;
+		padding: 10px;
+		padding-top: 0;
+	}
+</style>
+
+<div class="row">
+	<div ng-if="vm.errorMsg" class="err-msg">{{ vm.errorMsg }}</div>
+	<div class="form-group">
+		<div class="col-md-4">
+			<div class="form">
+				<label class="form-label">Choose Sound</label>
+				<div class="form-content">
+					<ul class="list-sound">
+                        <li class="item-sound" ng-repeat="audio in vm.config.audios" ng-click="vm.showOptionAudio(audio._id)" ng-class="{'active': vm.targetAudio == audio._id}">
+                        	<span>{{audio.name}}</span>
+                        	<lpt-audio style="width: 100%" src="audio.path" volume="audio.volume"></lpt-audio>
+                            <i class="close ilpt-close" ng-click="vm.deleteAudio(audio._id)"></i>
+                        </li>
+                    </ul>
+					<button class="btn form-control" ng-click="vm.openMediaLib()"><i class="ilpt-plus"></i> <i class="ilpt-audio"></i></button>
+					<input type="hidden" ng-model="vm.config.src">
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8 row" ng-if="vm.targetAudio">
+			<div class="col-md-6" >
+				<div class="form">
+					<label class="form-label" for="">Volume</label>
+					<div class="form-content">
+						<rzslider rz-slider-model="vm.config.audios[vm.targetAudio].volume" rz-slider-options="{floor: 10, ceil: 100, showSelectionBar: true, step: 10}"></rzslider>
+					</div>
+				</div>
+				<div class="form">
+					<label class="form-label" for="">Loop</label>
+					<div class="form-content">
+						<select ng-model="vm.config.audios[vm.targetAudio].is_loop" class="btn form-control">
+						    <option value="1">Yes</option>
+						    <option value="0">Nope</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<label for="" class="form-label">Choose Scene to play</label>
+	            <div class="form">
+	                <div class="form-content">
+	                    <div class="form-checkbox">
+	                        <input type="checkbox" id="select-all" ng-change="vm.toggleAll()" ng-model="vm.select_all">
+	                        <label for="select-all"><span></span><strong>{{ !vm.select_all?'Select all scenes':'Deselect all' }}</strong></label>
+	                    </div>
+	                    <div ng-repeat="scene in vm.project.scenes" class="form-checkbox">
+	                        <input type="checkbox" id="{{ vm.plugin.id }}{{ scene._id }}" ng-click="vm.selectScene()" ng-model="vm.config.audios[vm.targetAudio].scenes[scene._id]">
+	                        <label for="{{ vm.plugin.id }}{{ scene._id }}"><span></span> {{ scene.title }}</label>
+	                    </div>
+	                </div>
+	            </div>
+			</div>	
+		</div>
+	</div>
+</div>

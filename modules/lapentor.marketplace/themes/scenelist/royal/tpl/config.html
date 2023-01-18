@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Feature color</label>
+                <div class="form-content">
+                    <span class="demo-bg-block" style="background-color: {{ vm.config.color }}"></span>
+                    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.color">
+                </div>
+            </div>
+            <div class="form">
+                <label for="" class="form-label">Set Logo</label>
+                <div class="form-content">
+                    <button class="btn form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-insert-image"></i> Choose/Upload image
+                    </button>
+                    <img id="logo" class="img-wrapper" style="max-height: 150px; margin: 20px auto; display: block;" ng-if="vm.config.logo" loading-src="{{ vm.config.logo }}" alt="">
+                    <input type="hidden" ng-model="vm.config.logo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Minimize group on start</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.is_minimize_group" class="form-control">
+                        <option ng-selected="vm.config.is_minimize_group == 0" value="0">No</option>
+                        <option ng-selected="vm.config.is_minimize_group == 1" value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

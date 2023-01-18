@@ -1,0 +1,100 @@
+<krpano>
+  <garrows_settings ver="0.4" show_floatingarrow="true" show_chevrons="true" show_navpoints="false"
+    floatingarrow_autohide="false" floatingarrow_sens="20" navpoints_putonground="true" navpoints_atv="25"
+    loadscene_blend="BLEND(0.5)" show_contextmenu="true" keyboard_control="true" />
+
+  <events name="garrowsevents" keep="true" onxmlcomplete=" if(garrows_settings.show_chevrons, addchevrons();); if(garrows_settings.show_floatingarrow, mousemove();); if(garrows_settings.show_contextmenu, showcontextmenu(););" />
+  <events name="garrowsevents" keep="true" devices="desktop" onkeyup="if(garrows_settings.keyboard_control AND keycode == 38 AND hsnear, garrowclick(););" />
+  <action name="garrowclick"> if(hsnear.linkedscene, garrowloadscene(get(hsnear.linkedscene)));</action>
+  <action name="arrowclick"> if(%1 != null, garrowloadscene(%1););</action>
+  <action name="garrowloadscene"> loadscene(%1,null,KEEPVIEW,get(garrows_settings.loadscene_blend));</action>
+  <hotspot name="floatingarrow" url="/vrcore/garrows/chevron0.png" width="150" height="150" distorted="true" ath="0"
+    atv="45" keep="true" alpha="0.5" enabled="false" visible="false" />
+  <style name="skin_hotspotstyle_navigate" url="/vrcore/garrows/hotspot.png" edge="top" oy="0" alpha="0"
+    distorted="true" onloaded=" set(visible,get(garrows_settings.show_navpoints)); if(garrows_settings.navpoints_putonground, putonground();); div(s, get(atv), 30); mul(scale, s, 1.3); mul(s, s, 0.8); mul(height, height, s); delayedcall(0.5, tween(alpha,0.2,0.5););"
+    onhover=" hidefloatingarrow(); tween(alpha,0.6,0.5);" onout=" if(garrows_settings.show_floatingarrow, mousemove();); tween(alpha,0.2,0.5);"
+    onclick=" tween(scale,0,0.2); tween(oy,20,0.2); delayedcall(0.2, garrowloadscene(get(linkedscene)));"></style>
+  <style name="skin_hotspotstyle_navigate_vertical" url="/vrcore/garrows/hotspot.png" edge="top" oy="0" alpha="0"
+    distorted="true" onloaded=" set(visible,get(garrows_settings.show_navpoints)); if(garrows_settings.navpoints_putonground, putonground();); div(s, get(atv), 30); mul(scale, s, 1.3); mul(s, s, 0.8); mul(height, height, s); delayedcall(0.5, tween(alpha,0.2,0.5););"
+    onhover=" hidefloatingarrow(); tween(alpha,0.6,0.5);" onout=" if(garrows_settings.show_floatingarrow, mousemove();); tween(alpha,0.2,0.5);"
+    onclick=" tween(scale,0,0.2); tween(oy,20,0.2); delayedcall(0.2, garrowloadscene(get(linkedscene)));"></style>
+  <textstyle name="chevron_style" font="Arial" fontsize="13" bold="true" roundedge="4" background="false" border="false" textcolor="0xFFFFFF" textalign="center" vcenter="true" edge="bottom" xoffset="0" yoffset="0" padding="10" textshadow="1.0" textshadowrange="10.0" textshadowangle="0" textshadowcolor="0x000000" textshadowalpha="1.0"></textstyle>
+  <action name="showcontextmenu">set("contextmenu.item[shfa].caption", "Show/Hide floating
+    arrow");set("contextmenu.item[shfa].onclick",
+    "switch(garrows_settings.show_floatingarrow);if(garrows_settings.show_floatingarrow, mousemove(),
+    hidefloatingarrow(); );");set("contextmenu.item[shfa].separator", "true");set("contextmenu.item[shca].caption",
+    "Show/Hide chevrons arrows");set("contextmenu.item[shca].onclick",
+    "switch(garrows_settings.show_chevrons);if(garrows_settings.show_chevrons, addchevrons(), removechevrons();
+    );");set("contextmenu.item[shnh].caption", "Show/Hide navigation hotspots");set("contextmenu.item[shnh].onclick", "
+    switch(garrows_settings.show_navpoints); for(set(i,0), i LT hotspot.count, inc(i), copy(hs,hotspot[get(i)]); if
+    (hs.style == 'skin_hotspotstyle_navigate' OR hs.style == 'skin_hotspotstyle_navigate_vertical',
+    switch(hotspot[get(i)].visible); ); );"); set("contextmenu.item[ahfa].caption", "Auto hide floating arrow");
+    set("contextmenu.item[ahfa].onclick", "switch(garrows_settings.floatingarrow_autohide);");</action>
+  <action name="putonground"> for(set(i,0), i LT hotspot.count, inc(i), copy(hs,hotspot[get(i)]); if (hs.style ==
+    'skin_hotspotstyle_navigate' OR hs.style == 'skin_hotspotstyle_navigate_vertical', set(hotspot[get(i)].atv,
+    get(garrows_settings.navpoints_atv)); ); );</action>
+  <action name="addchevrons"> 
+		set(j,0); 
+		addlayer(connections); 
+		for(set(i,0), i LT hotspot.count, inc(i),
+      copy(hs,hotspot[get(i)]); 
+      if (hs.hptype == 'portal', set(layer[connections].connection[get(j)].name, get(hs.name));
+      txtadd(layer[connections].connection[get(j)].name, '-chevron');set(layer[connections].connection[get(j)].hdir,
+      get(hs.ath));
+
+    <!-- this will copy any attributes from original hotspots to chevrons -->
+    set(layer[connections].connection[get(j)].tooltip, get(hs.tooltip));
+    set(layer[connections].connection[get(j)].onover, get(hs.onover));
+    set(layer[connections].connection[get(j)].ondown, get(hs.ondown));
+    set(layer[connections].connection[get(j)].onup, get(hs.onup));
+    set(layer[connections].connection[get(j)].onhover, get(hs.onhover));
+    <!-- set(layer[connections].connection[get(j)].onhover, showtext( test, chevron_style) ); -->
+
+    if(hs.hptype == 'portal', set(layer[connections].connection[get(j)].vdir, get(hs.atv)););
+    set(layer[connections].connection[get(j)].shape, 'chevronshape');
+    set(layer[connections].connection[get(j)].arrowstyle, 'chevron');
+    txtadd(layer[connections].connection[get(j)].onclick, get(hs.linkedscene));
+    txtadd(layer[connections].connection[get(j)].onclick, ');'); inc(j); ); ); set(allowarrows, 1);
+
+    updateConnections();
+  </action>
+  <action name="removechevrons"> for(set(i,0), i LT hotspot.count, inc(i), copy(hs,hotspot[get(i)]); if (hs.style ==
+    'skin_hotspotstyle_navigate' OR hs.style == 'skin_hotspotstyle_navigate_vertical', set(chvname, get(hs.name));
+    txtadd(chvname, '-chevron'); set(chvshdname, get(hs.name)); txtadd(chvshdname, '-chevronshadow');
+    removehotspot(get(chvname)); removehotspot(get(chvshdname)););); removelayer(connections, true); set(allowarrows,
+    0); updateConnections();</action>
+  <action name="mousemove"> set(events[skin_events].onclick, 'garrowclick();'); screentosphere(mouse.x, mouse.y, mth,
+    mtv); set(hotspot[floatingarrow].ath, get(mth)); set(hotspot[floatingarrow].atv, get(mtv)); sub(a, -90,
+    mtv);set(hotspot[floatingarrow].rx, get(a)); if(mtv LE 0, set(hotspot[floatingarrow].visible, false); ,
+    set(hotspot[floatingarrow].visible, true); ); mul(hotspot[floatingarrow].scale, mtv, 0.03); delete(hsnear);
+    for(set(i,0), i LT hotspot.count, inc(i), copy(hs,hotspot[get(i)]); if (hs.style == 'skin_hotspotstyle_navigate' OR
+    hs.style == 'skin_hotspotstyle_navigate_vertical', hs.getcenter(hs_h, hs_v); getlooktodistance(dist, hs_h, hs_v,
+    hotspot[floatingarrow].ath, hotspot[floatingarrow].atv); if((dist LE garrows_settings.floatingarrow_sens) AND
+    (hsnear === null), copy(hsnear, hs); ); ); ); if(hsnear, set(hotspot[floatingarrow].url,
+    /vrcore/garrows/chevron.png); set(hotspot[floatingarrow].visible, true); ,
+    set(hotspot[floatingarrow].url, /vrcore/garrows/chevron0.png); if(garrows_settings.floatingarrow_autohide,
+    set(hotspot[floatingarrow].visible, false);); ); delayedcall(mousemove, 0, mousemove());</action>
+  <action name="hidefloatingarrow"> set(hotspot[floatingarrow].visible, false); stopdelayedcall(mousemove);</action>
+  <include url="/vrcore/garrows/arrows.xml" />
+  
+  <layer name="chevronshape" keep="true">
+    <arrow>
+      <point name="p0" x="0" y="60" />
+      <point name="p1" x="-15" y="47" />
+      <point name="p2" x="-15" y="37" />
+      <point name="p3" x="0" y="50" />
+      <point name="p4" x="15" y="37" />
+      <point name="p5" x="15" y="47" />
+      <center dist="180" shadowdrop="0.75">
+        <functionv>
+          <point name="p0" vlookat="-90" posv="90" />
+          <point name="p1" vlookat="0" posv="25" />
+          <point name="p2" vlookat="90" posv="90" />
+        </functionv>
+      </center>
+    </arrow>
+  </layer>
+  <style name="chevron" fillcolor="0xef5041" fillalpha="1.0" bordercolor="0xef5041" borderalpha="1.0" borderwidth="1.0"
+    onover="hidefloatingarrow(); set(fillcolor,0xffffff); set(bordercolor,0xef5041); set(borderwidth,1.0);" onout="if(garrows_settings.show_floatingarrow, mousemove();); set(fillcolor,0xef5041); set(bordercolor,0xef5041); set(borderwidth,1.0);"
+    zorder="3001" keep="false"></style>
+</krpano>

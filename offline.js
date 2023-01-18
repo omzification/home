@@ -1,0 +1,2 @@
+var LPT_OFFLINE_MODE = true;
+var LPT_GOOGLE_KEY_API = 'AIzaSyDWQkrUKlSJ1Swx3CXpwaGVrFNxIN-7-a4';

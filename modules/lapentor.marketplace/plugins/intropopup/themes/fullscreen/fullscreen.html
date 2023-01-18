@@ -1,0 +1,104 @@
+<style>
+    @import 'https://fonts.googleapis.com/css?family=EB+Garamond|Lobster';
+    #pluginIntropopupFullscreen {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        visibility: hidden;
+        background: white;
+        padding: 10px 3.5%;
+        opacity: 0;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        -webkit-transition: opacity 0.6s, visibility 0.6s;
+        transition: opacity 0.6s, visibility 0.6s;
+        overflow: auto;
+    }
+    
+    #pluginIntropopupFullscreen.show {
+        visibility: visible;
+        z-index: 499;
+        opacity: 1;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+        -webkit-transition: opacity 0.6s, visibility 0.6s;
+        transition: opacity 0.6s, visibility 0.6s;
+    }
+    
+    #pluginIntropopupFullscreen .title {
+        font-family: 'Lobster', cursive;
+        font-size: 3.2em;
+        text-align: center;
+        padding-bottom: 20px;
+    }
+    
+    #pluginIntropopupFullscreen .content {
+        font-family: 'EB Garamond', serif;
+        max-width: 768px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    #pluginIntropopupFullscreen .closeit {
+        width: 150px;
+        height: 150px;
+        position: absolute;
+        background-color: #262626;
+        top: -35px;
+        right: -99px;
+        cursor: pointer;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    
+    #pluginIntropopupFullscreen .closeit img {
+        width: 30px;
+        height: 30px;
+        margin-left: -15px;
+        margin-top: -15px;
+        position: absolute;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+        left: 41px;
+        top: 112px;
+    }
+    
+    #pluginIntropopupFullscreen .closeit:hover {
+        background: #151515;
+    }
+    
+    @media screen and (max-width: 768px) {
+        #pluginIntropopupFullscreen .content {}
+        #pluginIntropopupFullscreen .title {
+            font-size: 2.8em;
+        }
+    }
+    
+    @media screen and (max-width: 568px) {
+        #pluginIntropopupFullscreen .closeit {
+            width: 100px;
+            height: 100px;
+            right: -64px;
+        }
+        #pluginIntropopupFullscreen .content {}
+        #pluginIntropopupFullscreen .title {
+            font-size: 2.2em;
+            margin-bottom: 0;
+        }
+        #pluginIntropopupFullscreen .closeit img {
+            left: 30px;
+            top: 80px;
+            width: 20px;
+        }
+    }
+    
+    @media screen and (max-width: 375px) {
+        #pluginIntropopupFullscreen .content {}
+    }
+</style>
+<div id="pluginIntropopupFullscreen" ng-class="{'show':vm.showModal}">
+    <div class="closeit" ng-click="vm.showModal = false"><img src="modules/lapentor.marketplace/plugins/intropopup/themes/fullscreen/cancel.svg" alt=""></div>
+    <h2 class="title" style="font-family: {{ vm.config.fontfamily }}">{{ vm.config.title }}</h2>
+    <div class="content" ng-bind-html="vm.config.content"></div>
+</div>

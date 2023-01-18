@@ -1,0 +1,52 @@
+<style>
+#controlbar-slash-config h3 {
+    margin-top: 0;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+#controlbar-slash-config .item {
+    margin-bottom: 20px;
+    border-bottom: 1px dotted #aaa;
+}
+
+#controlbar-slash-config .icon {
+    height: 30px;
+    margin: 0 auto;
+    margin-bottom: 7px;
+    display: block;
+}
+</style>
+<div id="controlbar-slash-config">
+    <div class="form-group row">
+        <div class="form col-md-6">
+            <div class="form-content">
+                <div class="form-checkbox">
+                    <input type="checkbox" id="cbslash-minimize" ng-model="vm.config.minimize">
+                    <label for="cbslash-minimize"><span></span> Minimize on start</label>
+                </div>
+            </div>
+        </div>
+        <div class="form col-md-6">
+            <label class="form-label" for="">Icon size (px)</label>
+            <div class="form-content">
+                <input type="number" placeholder="e.g: 30" class="form-control" ng-model="vm.config.icon_size">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <h3 class="text-center">Button background color</h3>
+            <div class="col-md-3 item form" ng-repeat="btn in vm.availableButtons">
+                <img class="icon" ng-src="{{ btn.icon_url_custom?btn.icon_url_custom:btn.icon_url }}" alt="{{btn.name}}">
+                <div class="form-group">
+                    <span class="demo-bg-block" ng-style="{'background-color': vm.config.bg_color[btn.id]}"></span>
+                    <input type="text" placeholder="choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color[btn.id]">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="form-group">
+    
+</div>

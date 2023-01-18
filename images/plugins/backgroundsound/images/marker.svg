@@ -1,0 +1,15 @@
+
+<svg width="32px" height="61px" viewBox="630 186 32 61" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 3.7.2 (28276) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="2.31046924e-05 60.9106414 31.9774729 60.9106414 31.9774729 4.629981e-05 2.31046924e-05 4.629981e-05 2.31046924e-05 60.9106414"></polygon>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(630.000000, 186.000000)">
+        <mask id="mask-2" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+        <g id="Clip-2"></g>
+        <path d="M31.977496,15.9856345 C31.977496,17.8460767 31.6336982,19.706403 31.0834599,21.3601165 C28.8828534,27.5613973 16.0231278,60.9106877 16.0231278,60.9106877 C16.0231278,60.9106877 3.16340217,27.5613973 0.893943682,21.3601165 C0.275084477,19.706403 2.31046924e-05,17.8460767 2.31046924e-05,15.9856345 C2.31046924e-05,7.16598368 7.15196534,4.629981e-05 16.0231278,4.629981e-05 C24.8942903,4.629981e-05 31.977496,7.16598368 31.977496,15.9856345" id="Fill-1" fill="#000000" mask="url(#mask-2)"></path>
+    </g>
+</svg>

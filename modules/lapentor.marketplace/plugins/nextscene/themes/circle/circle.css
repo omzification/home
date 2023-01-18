@@ -1,0 +1,93 @@
+plugin-nextscene-circle nav a {
+    position: absolute;
+    top: 50%;
+    display: block;
+    outline: none;
+    text-align: left;
+    z-index: 1000;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+}
+
+plugin-nextscene-circle nav a.prev {
+    left: -20px;
+}
+
+plugin-nextscene-circle nav a.next {
+    right: -20px;
+}
+
+plugin-nextscene-circle nav a svg {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+}
+
+plugin-nextscene-circle .nav-circleslide a {
+  margin: 0 20px;
+}
+
+plugin-nextscene-circle .nav-circleslide .icon-wrap {
+  position: relative;
+  z-index: 100;
+  display: block;
+  padding: 34px;
+}
+
+plugin-nextscene-circle .nav-circleslide svg.icon {
+  fill: #fff;
+  -webkit-transition: fill 0.3s;
+  transition: fill 0.3s;
+}
+
+plugin-nextscene-circle .nav-circleslide div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: #566473;
+  border-radius: 50%;
+  -webkit-transform: scale(0.7);
+  transform: scale(0.7);
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.1s 0s;
+  transition: transform 0.3s, opacity 0.3s, background-color 0.1s 0s;
+}
+
+plugin-nextscene-circle .nav-circleslide .img {
+  display: block;
+  border-radius: 50%;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+}
+
+plugin-nextscene-circle .nav-circleslide a.prev .img {
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+plugin-nextscene-circle .nav-circleslide a.next .img {
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+plugin-nextscene-circle .nav-circleslide a:hover div {
+  opacity: 1;
+  background-color: transparent;
+  /* Trick to hide the visible border of image */
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.1s 0.2s;
+  transition: transform 0.3s, opacity 0.3s, background-color 0.1s 0.2s;
+}
+
+plugin-nextscene-circle .nav-circleslide a:hover .img {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}

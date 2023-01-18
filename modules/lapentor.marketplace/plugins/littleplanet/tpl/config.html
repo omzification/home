@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <p class="note">Select scene that have little planet effect on start</p>
+                <div class="form full">
+                    <div class="form-content">
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="select-all" ng-change="vm.toggleAll()" ng-model="vm.select_all">
+                            <label for="select-all"><span></span><strong>{{ !vm.select_all?'Select all scenes':'Deselect all' }}</strong></label>
+                        </div>
+                        <div ng-repeat="scene in vm.project.scenes" class="form-checkbox">
+                            <input type="checkbox" id="{{ vm.plugin.id }}{{ scene._id }}" ng-click="vm.selectScene()" ng-model="vm.config.scenes[scene._id]">
+                            <label for="{{ vm.plugin.id }}{{ scene._id }}"><span></span> {{ scene.title }}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Timeout <i class="ilpt-info" uib-tooltip="Number of seconds until scene reset to default view" tooltip-placement="bottom"></i></label></label>
+                <div class="form-content">
+                    <input class="form-control" type="number" ng-model="vm.config.timeout" placeholder="Default is 2 seconds">
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>

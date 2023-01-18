@@ -1,0 +1,8 @@
+<style>
+
+</style>
+<div ng-if="vm.hotspot.content" class="hotspot-royal-textf-wrap" ng-class="{'active': vm.isActive}" ng-style="{'width': hotspot.popup_width }">
+    <div class="content hotspot-textf-content" ng-nicescroll>
+        <div class="content-wrapper" ng-bind-html="vm.hotspot.content"></div>
+    </div>
+</div>

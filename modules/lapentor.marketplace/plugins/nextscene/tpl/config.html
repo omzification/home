@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label">Select style</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.theme" class="btn form-control">
+                        <option value="royal">Royal</option>
+                        <option value="ontheline">On the line</option>
+                        <option value="circle">Circle</option>
+                        <option value="doubleflip">Double flip</option>
+                        <option value="fillpath">Fill path</option>
+                        <option value="roundslide">Round slide</option>
+                        <option value="slide">Slide</option>
+                        <option value="split">Split</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form full">
+                <img loading-src="{{ vm.themePreviews[vm.config.theme] }}" alt="">
+            </div>
+        </div>
+        
+    </div>
+</div>

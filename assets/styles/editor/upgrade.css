@@ -1,0 +1,250 @@
+#upgradeModal {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+  position: fixed;
+  z-index: 99;
+  background: #596476;
+  background: -moz-linear-gradient(-45deg, #596476 0%, #212937 100%);
+  background: -webkit-linear-gradient(-45deg, #596476 0%, #212937 100%);
+  background: linear-gradient(135deg, rgba(34, 37, 43, 0.75) 0%, rgba(22, 23, 25, 0.9) 100%);
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#596476', endColorstr='#212937', GradientType=1);
+}
+
+#upgradeModal .title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+#upgradeModal #congrat {
+  text-align: center;
+  padding: 0 10px;
+  margin-top: 70px;
+}
+
+#upgradeModal #congrat strong {
+  font-size: 20px;
+}
+
+#upgradeModal .price {
+  text-align: center;
+  font-size: 42px;
+  font-weight: 300;
+  position: relative;
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 4px;
+}
+
+#upgradeModal .price span {
+  font-size: 11px;
+}
+
+#upgradeModal .save {
+  font-size: 12px;
+  margin: 0;
+  font-weight: 300;
+  text-align: center;
+  opacity: .5;
+}
+
+#upgradeModal form {
+  position: relative;
+  z-index: 22;
+  padding: 24px 24px 0;
+}
+
+#upgradeModal .credit-stripe {
+  display: block;
+  text-align: center;
+  margin: 16px 0 0;
+  color: #999;
+}
+
+#upgradeModal .form-group,
+#upgradeModal .form {
+  position: relative;
+}
+
+#upgradeModal .form input {
+  padding-left: 42px;
+}
+
+#upgradeModal .form i {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  font-size: 16px;
+  color: #999;
+}
+
+#upgradeModal .exp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+#upgradeModal .exp .form {
+  width: 49%;
+}
+
+#upgradeModal .exp .form input,
+#upgradeModal .cvc input {
+  width: 100%;
+}
+
+#upgradeModal .exp input {
+  width: 104px;
+}
+
+#upgradeModal .exp input[data-stripe="exp_year"] {
+  padding-left: 16px;
+}
+
+#upgradeModal form input {
+  border-radius: 4px;
+  outline: none;
+  height: 42px;
+  line-height: 42px;
+  width: 100%;
+  border: 1px solid #DDD;
+  transition: all .15s ease-out;
+  -webkit-transition: all .15s ease-out;
+}
+
+#upgradeModal form input:focus {
+  border: 1px solid #F5373A;
+}
+
+#upgradeModal .btn {
+  width: calc(100% - 48px);
+  border-radius: 4px;
+  height: 42px;
+  line-height: 42px;
+  text-transform: uppercase;
+  margin: 0 auto;
+  display: block;
+}
+
+#upgradeModal .price:after {
+  content: "$";
+  font-size: 25px;
+  position: absolute;
+  left: -15px;
+  top: 7px;
+}
+
+#upgradeModal .card {
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+#upgradeModal .inner,
+#upgradeModal .outer {
+  display: inline-block;
+  vertical-align: top;
+}
+
+#upgradeModal .outer {
+  margin-top: 64px;
+  position: absolute;
+  z-index: 1;
+  right: -170px;
+  top: 0;
+}
+
+#upgradeModal .features li {
+  margin: 12px 0;
+  display: block;
+}
+
+#upgradeModal .inner {
+  width: 360px;
+  height: auto;
+  position: relative;
+  margin-right: 24px;
+  background: white;
+  background: url(../../images/login-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: initial;
+  border-radius: 8px;
+  padding: 24px 0 24px 0;
+}
+
+#upgradeModal .close {
+  font-size: 30px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+#upgradeModal .features h5 {
+  opacity: .5;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 24px 0;
+}
+
+#upgradeModal .plans {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+  padding: 0 24px;
+}
+
+#upgradeModal .plans li {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, .25);
+  height: 36px;
+  line-height: 36px;
+  border-radius: 25px;
+  -webkit-transition: all .15s ease-out;
+  transition: all .15s ease-out;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#upgradeModal .plans li:hover {
+  border-color: rgba(0, 0, 0, .5);
+}
+
+#upgradeModal .plans li.active {
+  background: #28324E;
+}
+
+#upgradeModal .plans li.active span {
+  color: #F5373A;
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #F6C964), color-stop(100%, #F5373A));
+  background: -webkit-linear-gradient(left, #F6C964 0%, #F5373A 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#upgradeModal .price-tag {
+  background: url(../../images/icon-rocket.png);
+  background-size: cover;
+  background-position: center;
+  width: 200px;
+  height: 200px;
+  margin: -130px auto 24px;
+  color: white;
+  padding-top: 100px;
+}

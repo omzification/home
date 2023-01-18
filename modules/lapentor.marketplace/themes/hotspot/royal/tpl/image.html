@@ -1,0 +1,6 @@
+<div id="" class="hotspot-modal-royal hotspot-royal-image">
+    <div class="close css-icon-cross" ng-click="vm.cancel()" ng-style="config.main_color"></div>
+    <a ng-if="hotspot.url" target="_blank" ng-href="{{ hotspot.url || '#' }}"><img loading-src="{{ hotspot.src }}" alt="hotspot.title" class="image"></a>
+    <img ng-if="!hotspot.url" loading-src="{{ hotspot.src }}" alt="hotspot.title" class="image">
+    <p ng-if="hotspot.caption" class="caption">{{ hotspot.caption }}</p>
+</div>

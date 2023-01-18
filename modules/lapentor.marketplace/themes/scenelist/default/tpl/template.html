@@ -1,0 +1,464 @@
+<style>
+    
+#scenelist-ghost {
+    position: absolute;
+    z-index: 300;
+    right: 25px;
+    top: 25px;
+    box-shadow: 0 12px 27px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    color: #3E3E3E;
+    overflow: hidden;
+    transition: all .15s ease-out;
+    -webkit-transition: all .15s ease-out;
+    background-color: white;
+}
+#scenelist-ghost.dark {
+    background: #3E3E3E;
+    color: white;
+}
+
+#scenelist-ghost.top-left {
+    left: 25px;
+    right: auto;
+}
+
+#scenelist-ghost.toggle {
+    width: 48px;
+    height: 48px;
+    overflow: hidden;
+}
+
+#scenelist-ghost.toggle:hover {
+    width: 220px;
+}
+
+#scenelist-ghost.toggle:hover h2 {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+#scenelist-ghost.toggle .toggle-icon {
+    top: 8px;
+    right: 8px;
+}
+
+#scenelist-ghost .toggle-icon {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    background: transparent;
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 1;
+    font-size: 16px;
+    border-radius: 4px;
+    z-index: 5;
+    transition: all .4s;
+}
+
+#scenelist-ghost .toggle-icon:hover {
+    transform: scale(1.1);
+}
+
+#scenelist-ghost .toggle-icon .ilpt-close {
+    display: inline-block;
+}
+
+#scenelist-ghost .toggle-icon .ilpt-hamburger {
+    display: none;
+}
+
+#scenelist-ghost.toggle .toggle-icon .ilpt-close {
+    display: none;
+}
+
+#scenelist-ghost.toggle .toggle-icon .ilpt-hamburger {
+    display: inline-block;
+}
+
+#scenelist-ghost>h2, #scenelist-ghost.toggle:hover>h2 {
+    cursor: pointer;
+    padding: 16px 42px 14px 16px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 140%;
+    width: 220px;
+    margin: 0;
+    position: relative;
+    z-index: 3;
+    border-bottom: 1px solid #d8d8d8;
+    color: #ef5041;
+    border: none;
+    opacity: 1;
+    transform: translateX(0);
+}
+
+#scenelist-ghost.toggle >h2 {
+    transition: all .15s ease-out;
+    opacity: 0;
+    transform: translateX(-15px);
+}
+#scenelist-ghost .group-list {
+    width: 100%;
+    max-height: 80vh;
+    padding: 12px 0;
+}
+
+#scenelist-ghost.toggle .group-list {
+    display: none;
+}
+
+#scenelist-ghost .group{
+    padding: 8px 0;
+    border-bottom: 1px solid #E2E2E2;
+    border-radius: 0;
+}
+
+#scenelist-ghost .group:last-child {
+    border-bottom: none;
+}
+
+#scenelist-ghost .group:first-child {
+    padding-top: 0;
+}
+#scenelist-ghost .scene {
+    display: block;
+    padding: 8px 8px;
+    white-space: nowrap;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    color: inherit;
+    -webkit-transition: all 0.15s ease-out;
+    transition: all 0.15s ease-out;
+    cursor: pointer;
+}
+#scenelist-ghost .group-title{
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 8px;
+    margin-top: 8px;
+    margin-left: 8px;
+    font-size: 10px;
+    opacity: .5;
+    color: #3E3E3E;
+    padding: 0 8px;
+    display: block;
+}
+
+#scenelist-ghost .scene.active, #scenelist-ghost .scene.active:hover {
+    background: {{ vm.featuredColor || 'rgb(239, 80, 65)' }};
+    color: white;
+}
+
+#scenelist-ghost .scene.active {
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+
+#scenelist-ghost .scene:nth-last-child(1) {
+    border: none;
+}
+
+#scenelist-ghost .scenes {padding: 0 8px;}
+
+
+#scenelist-ghost .scene:hover {
+    background: rgba(0,0,0,.15);
+}
+
+#scenelist-ghost .scene span {
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+}
+
+/* ruby theme*/
+
+#scenelist-ghost.ruby {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5515f+0,9f041b+100 */
+    background: rgb(245,81,95); /* Old browsers */
+    background: -moz-linear-gradient(top, rgba(245,81,95,1) 0%, rgba(159,4,27,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(245,81,95,1) 0%,rgba(159,4,27,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(245,81,95,1) 0%,rgba(159,4,27,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5515f', endColorstr='#9f041b',GradientType=0 ); /* IE6-9 */
+    color: white;
+}
+#scenelist-ghost.ruby>h2, #scenelist-ghost.ruby.toggle:hover>h2 {
+    color: white;
+}
+
+#scenelist-ghost.ruby .scenes {
+    padding: 0;
+}
+
+#scenelist-ghost.ruby .scene {
+    padding: 8px 16px;
+    border-radius: 0;
+    position: relative;
+    color:rgba(255,255,255,.5);
+}
+
+#scenelist-ghost.ruby .scene:hover {
+    background: rgba(0,0,0,.15);
+    color:rgba(255,255,255,.75);
+}
+
+#scenelist-ghost.ruby .scene.active, #scenelist-ghost.ruby .scene.active:hover {
+    background: transparent;
+    padding-left: 36px;
+    color:{{ vm.featuredColor || 'white'}};
+}
+
+#scenelist-ghost.ruby .scene.active:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: transparent;
+    border: 2px solid white;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    left: 16px;
+    top: 17px;
+}
+#scenelist-ghost.ruby .scene:hover, #scenelist-ghost.ruby .scene.active {
+    padding-top:12px;
+    padding-bottom: 12px;
+}
+
+/* saphire */
+
+#scenelist-ghost.saphire {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3023ae+0,c86dd7+100 */
+background: rgb(48,35,174); /* Old browsers */
+background: -moz-linear-gradient(-45deg, rgba(48,35,174,1) 0%, rgba(200,109,215,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg, rgba(48,35,174,1) 0%,rgba(200,109,215,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg, rgba(48,35,174,1) 0%,rgba(200,109,215,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3023ae', endColorstr='#c86dd7',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+color:white;
+}
+#scenelist-ghost.saphire>h2, #scenelist-ghost.saphire.toggle:hover>h2 {
+    color: white;
+}
+
+#scenelist-ghost.saphire .scenes {
+    padding: 0;
+}
+
+#scenelist-ghost.saphire .scene {
+    padding: 10px 16px;
+    border-radius: 0;
+    position: relative;
+    opacity:.4;
+    overflow: visible;
+}
+
+#scenelist-ghost.saphire .scene span {
+    display: inline-block;
+    line-height: initial;
+    width: auto;
+    max-width: 100%;
+    position: relative;
+    overflow: visible;
+}
+
+#scenelist-ghost.saphire .scene span:after {content: '';width: 100%;height: 12px;background: rgb(146, 83, 201);display: block;position: absolute;bottom: -4px;left: -4px;z-index: -1;opacity: 0.3;transform: scale3d(0,1,1);transform-origin: 0% 50%;transition: transform 0.5s;transition-timing-function: cubic-bezier(0.2,1,0.3,1);}
+
+#scenelist-ghost.saphire .scene:hover span:after {
+    transform: scale3d(1,1,1);
+    opacity: 1;
+}
+
+#scenelist-ghost.saphire .scene:hover {
+    background: transparent;
+    padding: 10px 16px 10px 22px;
+    opacity:.75;
+}
+
+#scenelist-ghost.saphire .scene.active, #scenelist-ghost.saphire .scene.active:hover {
+    background: transparent;
+    padding: 12px 16px 10px 36px;
+    opacity: 1;
+    color: {{ vm.featuredColor || 'white' }};
+}
+
+#scenelist-ghost.saphire .scene.active:after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    display: block;
+    background: transparent;
+    border: 2px solid white;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    position: absolute;
+    left: 16px;
+    top: 17px;
+    border-radius: 50%;
+}
+
+/* theme dots */
+
+#scenelist-ghost.theme-dots {
+    background: white;
+}
+
+#scenelist-ghost.theme-dots>h2, #scenelist-ghost.theme-dots.toggle:hover>h2 {
+    background: transparent;
+    padding-bottom: 16px;
+    padding-left: 30px;
+}
+
+#scenelist-ghost.theme-dots>h2:after {
+    content: '';
+    width: 48px;
+    height: 2px;
+    background: {{ vm.featuredColor || '#ef5041' }};
+    display: block;
+    position: absolute;
+    bottom: 0;
+}
+
+#scenelist-ghost.theme-dots .scene {
+    padding: 10px 16px 10px 30px;
+    border-radius: 0;
+    position: relative;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 0px;
+}
+
+#scenelist-ghost.theme-dots .scenes {
+    padding: 0;
+}
+
+#scenelist-ghost.theme-dots .scene:after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: block;
+    background: white;
+    border: 1px solid #DDD;
+    top: 16px;
+    left: 16px;
+    position: absolute;
+    transition: all .15s ease-out;
+}
+
+#scenelist-ghost.theme-dots .scene:hover:after {
+    transform: scale(1.2,1.2);
+    -webkit-transform: scale(1.2,1.2);
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+}
+
+#scenelist-ghost.theme-dots .scene:hover {
+    padding: 10px 16px 10px 30px;
+    background: transparent;
+}
+
+#scenelist-ghost.theme-dots .scene.active {
+    background: transparent!important;
+    color: {{ vm.featuredColor || '#ef5041' }}!important;
+}
+
+#scenelist-ghost.theme-dots .scene.active, #scenelist-ghost.theme-dots .scene.active:hover {
+    padding: 10px 16px 10px 42px;
+}
+
+#scenelist-ghost.theme-dots .scene.active:after {
+    border-color: {{ vm.featuredColor || '#ef5041' }};
+}
+
+#scenelist-ghost.theme-dots .scene:before {
+    content: '';
+    width: 1px;
+    height: 48px;
+    display: block;
+    position: absolute;
+    background: #DDD;
+    left: 19.5px;
+    top: 16px;
+}
+
+#scenelist-ghost.theme-dots .scene:last-child:before {
+    display: none;
+}
+#scenelist-ghost .logo{
+    max-height: 150px;
+    width: auto;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 20px;
+}
+</style>
+
+<style ng-if="vm.config.sticky_bottom">
+    @media screen and (max-width: 600px) {
+        #scenelist-ghost{
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: auto;
+            border-radius: 0;
+        }
+        #scenelist-ghost .toggle-icon,
+        #scenelist-ghost>h2{
+            display: none;
+        }
+        #scenelist-ghost .scenes{
+            display: flex;
+            padding: 0;
+        }
+        #scenelist-ghost .group-list{
+            padding: 0;
+        }
+        #scenelist-ghost .scene{
+            border-radius: 0;
+            border: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+        }
+        #scenelist-ghost .mCSB_horizontal.mCSB_inside > .mCSB_container{
+            margin-bottom: 0;
+        }
+        #scenelist-ghost .mCSB_scrollTools.mCSB_scrollTools_horizontal{
+            height: 9px;
+        }
+    }
+</style>
+
+<ul id="scenelist-ghost" ng-class="{'toggle':vm.isToggle}" type="{{vm.config.position_type}}" class="{{ vm.config.position }} {{ vm.config.theme }}" ng-style="vm.themeStyle" click-outside="vm.minimizeWhenClickOutside()">
+    <h2 ng-click="vm.toggleMenu()" ng-style="{'color': vm.featuredColor}">{{ vm.project.title }}</h2> 
+    <span class="toggle-icon" ng-click="vm.isToggle = !vm.isToggle">
+        <i class="ilpt-hamburger"></i>
+        <i class="ilpt-close"></i>
+    </span>
+    <div class="group-list" ng-if="!vm.isToggle">
+        <!-- Logo -->
+        <img ng-if="vm.config.logo" src="{{ vm.config.logo }}" class="logo" alt="">
+        <!-- Layout 1: scene have group -->
+        <li class="have-group group" ng-if="vm.groups.length" ng-repeat="group in vm.groups" ng-if="group.scenes.length > 0" ng-class="vm.groupHoverClass">
+            <span class="group-title">{{ group.title }}</span>
+            <ul class="scenes" ng-if="group.scenes.length > 0" ng-style="vm.themeStyle">
+                <li class="scene" ng-repeat="scene in group.scenes" ng-class="{'active' : vm.currentscene._id == scene._id}" ng-click="vm.changeScene(scene)"><span>{{ scene.title }}</span></li>
+            </ul>
+        </li>
+        <!-- Layout 1: scene have no group -->
+        <ul class="scenes" ng-if="!vm.groups.length">
+            <li class="scene" ng-repeat="scene in vm.scenes" ng-class="{'active' : vm.currentscene._id == scene._id}" ng-click="vm.changeScene(scene)" ng-style="vm.sceneStyle[$index]">
+                <span>{{ scene.title }}</span>
+            </li>
+        </ul>
+    </div>
+</ul>
+    

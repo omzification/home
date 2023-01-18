@@ -1,0 +1,46 @@
+<krpano onstart="set(polyhotspotcount, 0);">
+	<action name="startdraw">
+		trace(%0);
+		
+		inc(polyhotspotcount);
+		set(drawingpoly, true);
+		
+		txtadd(fyrpolyhotspot, 'polyhotspotcount', get(polyhotspotcount));
+		trace(drawingpoly);
+		
+		addhotspot(get(fyrpolyhotspot));
+		set(hotspot[get(fyrpolyhotspot)].enabled, false);
+		set(hotspot[get(fyrpolyhotspot)].borderwidth, 1.0);
+		set(hotspot[get(fyrpolyhotspot)].fillalpha, 0.2);
+		
+		set(polyid, 0);
+	</action>
+	
+	<action name="stopdraw">
+		trace(%0);
+		
+		set(drawingpoly, false);
+	</action>
+	
+	<action name="addpoint">
+		trace(%0);
+		screentosphere(mouse.x, mouse.y, toh, tov);
+		
+		set(hotspot[get(fyrpolyhotspot)].point[get(polyid)].ath, get(toh));
+		set(hotspot[get(fyrpolyhotspot)].point[get(polyid)].atv, get(tov));
+		trace('point ', get(polyid), ' ', get(toh), ' ', get(tov));
+		updatescreen();
+		polymousemove();
+		inc(polyid);
+	</action>
+	
+	<action name="polymousemove">
+		screentosphere(mouse.x, mouse.y, toh, tov);
+		
+		set(hotspot[get(fyrpolyhotspot)].point[get(polyid)].ath, get(toh));
+		set(hotspot[get(fyrpolyhotspot)].point[get(polyid)].atv, get(tov));
+		updatescreen();
+		if(drawingpoly == true, delayedcall(0.0, polymousemove()));
+	</action>
+	
+</krpano>

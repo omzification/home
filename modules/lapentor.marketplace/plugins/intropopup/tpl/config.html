@@ -1,0 +1,42 @@
+<div class="clearfix" id="IntroPopupPluginConfig">
+    <div class="form-group">
+        <div class="form">
+            <label class="form-label">Choose layout</label>
+            <div class="form-content">
+                <select ng-model="vm.config.theme_type" class="btn form-control">
+                    <option ng-repeat="(value,title) in vm.introTheme" value="{{ value }}">{{ title }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form">
+            <label for="" class="form-label"></label>
+            <div class="form-content">
+                <div class="form-checkbox">
+                    <input type="checkbox" id="start-on" ng-model="vm.config.start">
+                    <label for="start-on"><span></span> Start on init</label>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label">Title</label>
+            <div class="form-content">
+                <input style="font-family: {{ vm.config.fontfamily }}" class="form-control" type="text" ng-model="vm.config.title" placeholder="Title">
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label">Title font <small>(Choose a <a target="_blank" href="https://fonts.google.com">Google font</a> font)</small></label>
+            <div class="form-content">
+                <select ng-model="vm.config.fontfamily" class="form-control" ng-change="vm.fontFamilyChange()">
+                    <option ng-repeat="font in vm.googlefonts" value="{{ font.family }}">{{ font.family }}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label">Content</label>
+            <div class="form-content">
+                <summernote class="form-control" focus dialogsInBody config="vm.summernoteOptions" ng-model="vm.config.content"></summernote>
+            </div>
+        </div>
+    </div>
+</div>
+<plugin-intropopup-bootstrap-config ng-if="vm.config.theme_type=='bootstrap'" config="vm.config"></plugin-intropopup-bootstrap-config>

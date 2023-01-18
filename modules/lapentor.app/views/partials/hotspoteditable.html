@@ -1,0 +1,56 @@
+<div class="hotspot-form-wrapper" id="{{ vm.hotspot.name }}" ng-show="vm.currentOpenForm == vm.hotspot.name || vm.hotspot.type == 'point'">
+    <div class="hotspot-form" x="{{ vm.hotspot.position.x }}" y="{{ vm.hotspot.position.y }}" type="{{ vm.hotspot.type }}">
+        <div class="hs-header">
+            <h2>Hotspot <strong>{{ vm.hotspot.title }}</strong></h2>            
+            <span class="close" ng-click="vm.closeForm()"><i class="ilpt-close"></i></span>
+        </div>
+        <div class="hs-body">
+            <ng-form name="vm.hotspotForm">
+                <ng-include src="vm.getTemplateUrl()"></ng-include>
+                <div class="hs-section">
+                    <span class="hs-section-tt">HOTSPOT</span>
+                    <div class="form-group">
+                        <div class="form">
+                            <label for="" class="form-label">Label</label>
+                            <div class="form-content">
+                                <input type="text" class="form-control" placeholder="Hotspot title" ng-model="vm.hotspot.title" required>
+                            </div>
+                        </div>
+                        <div class="form">
+                            <label class="form-label" for="">Icon</label>
+                            <div class="form-content">
+                                <img class="custom-icon-img img-center" ng-if="vm.hpIcon" ng-src="{{ vm.hpIcon }}" alt="{{ vm.hpIcon }}">
+                                <span ng-if="vm.hpIcon" class="ilpt-close custom-icon-reset" ng-click="vm.hpIcon = null; vm.hotspot.icon_custom = null"></span>
+                                <button class="btn btn-default form-control" ng-click="vm.openCustomIconMediaLib()">
+                                    <i class="ilpt-insert-image"></i> Choose/upload icon
+                                </button>
+                            </div>
+                        </div>
+                        <div class="form">
+                            <label class="form-label" for="">Size (px)</label>
+                            <div class="form-content">
+                                <rzslider rz-slider-model="vm.hotspot.width" rz-slider-options="vm.hotspotCustomSize"></rzslider>
+                            </div>
+                        </div>
+                        <div class="form">
+                            <label for="" class="form-label">Password</label>
+                            <div class="form-content">
+                                <input type="password" class="form-control" placeholder="Hotspot's Password" ng-model="vm.hotspot.password">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-form>
+        </div>
+        <div class="hs-footer">
+            <button class="btn btn-save bg-grad" ng-click="vm.saveForm(true)" ng-class="{'invalid': vm.hotspotForm.$invalid}">
+                Save
+                <img ng-if="vm.formSaving" src="bower_components/SVG-Loaders/svg-loaders/puff.svg" width="20" alt="">
+            </button>
+            <button ng-click="vm.deleteHotspot(vm.hotspot._id)" class="btn btn-hs-delete pull-right">
+                <i class="ilpt-trashcan"></i>
+                <img ng-if="vm.isDeleting" src="bower_components/SVG-Loaders/svg-loaders/puff.svg" width="30" alt="">
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+<ul id="PluginSocialsharewidget" ng-class="vm.config.position">
+    <!-- Default style -->
+    <li ng-if="!vm.config.custom_facebook_icon" style="background: #04538b;" socialshare="" socialshare-provider="facebook" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" class="menu-item-button"><i class="menu-item-icon fa fa-facebook"></i>
+    </li>
+    <li ng-if="vm.config.custom_facebook_icon" style="box-shadow: none;background-image: url('{{ vm.config.custom_facebook_icon }}');" socialshare="" socialshare-provider="facebook" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" class="menu-item-button">
+    </li>
+
+    <!-- Twitter -->
+    <li ng-if="!vm.config.custom_twitter_icon" style="background: #06aedb;" socialshare="" socialshare-provider="twitter" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" socialshare-text="" socialshare-hashtags="lapentor, sphere360, vr" class="menu-item-button">
+        <i class="menu-item-icon fa fa-twitter"></i>
+    </li>
+    <!-- Custom icon -->
+    <li ng-if="vm.config.custom_twitter_icon" style="box-shadow: none;background-image: url('{{ vm.config.custom_twitter_icon }}');" socialshare="" socialshare-provider="twitter" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" socialshare-text=""
+        socialshare-hashtags="lapentor, sphere360, vr" class="menu-item-button">
+    </li>
+
+    <!-- Custom icon -->
+    <li ng-if="vm.config.custom_google_icon" style="box-shadow: none;background-image: url('{{ vm.config.custom_google_icon }}');" class="menu-item-button" socialshare="" socialshare-provider="google+" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}">
+    </li>
+
+    <!-- Linkedin -->
+    <li ng-if="!vm.config.custom_linkedin_icon" style="background: #0077b5;" class="menu-item-button" socialshare="" socialshare-provider="linkedin" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}">
+        <i class="menu-item-icon fa fa-linkedin"></i>
+    </li>
+    <!-- Custom icon -->
+    <li ng-if="vm.config.custom_linkedin_icon" style="box-shadow: none;background-image: url('{{ vm.config.custom_linkedin_icon }}');" class="menu-item-button" socialshare="" socialshare-provider="linkedin" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}">
+    </li>
+</ul>

@@ -1,0 +1,12 @@
+<style>
+#pluginIntropopupCircle {
+    width: {{ vm.popupWidth + 'px' || '90vh'}};
+    height: {{ vm.popupWidth + 'px' || '90vh'}};
+}
+
+</style>
+<div id="pluginIntropopupCircle" ng-class="{'show':vm.showModal}">
+    <div class="closeit" ng-click="vm.showModal = false"><img src="modules/lapentor.marketplace/plugins/intropopup/themes/fullscreen/cancel.svg" alt=""></div>
+    <h2 class="title" style="font-family: {{ vm.config.fontfamily }}">{{ vm.config.title }}</h2>
+    <div class="content" ng-bind-html="vm.config.content"></div>
+</div>

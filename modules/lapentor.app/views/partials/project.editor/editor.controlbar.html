@@ -1,0 +1,20 @@
+<div id="scene-editor-controlbar">
+    <span class="tt">Control Bar</span>
+    <div class="tools" ui-sortable="ebVm.btnSortableOptions" ng-model="ebVm.availableButtons">
+        <span class="empty-msg" ng-show="!ebVm.availableButtons.length">Plugin's control buttons will appear here</span>
+        <div class="btn-wrap" ng-repeat="btn in ebVm.availableButtons | orderBy:'index':false">
+            <ul class="actions">
+                <li title="Change icon"  ng-if="!btn.icon_url_custom" ng-click="ebVm.openMediaLib(btn)"><i class="ilpt-insert-image"></i></li>
+                <li title="Reset icon"  ng-if="btn.icon_url_custom" ng-click="ebVm.resetDefaultIcon(btn)"><i class="ilpt-refresh"></i></li>
+                <li title="Show / hide button"  ng-click="ebVm.toggleButtonVisibility(btn.id)"><i class="ilpt-{{ btn.hide?'check-2':'close'}}"></i></li>
+            </ul>
+            <div id="{{ btn.id }}" ng-class="{'hideit': btn.hide}" alt="{{ btn.name }}" title="{{ btn.name }}" class="btn">
+                <img ng-src="{{ btn.icon_url_custom?btn.icon_url_custom:btn.icon_url }}" />
+            </div>
+        </div>
+    </div>
+    <span ng-click="ebVm.openMarketplace()" uib-tooltip="Change theme" tooltip-placement="top" class="btn-switch-theme"><i class="ilpt-design"></i></span>
+    <span ng-if="ebVm.isChangingOrder" ng-click="ebVm.saveOrder()" class="btn bg-grad btn-save">Save order</span>
+</div>
+
+<fluid-loading ng-show="ebVm.isUpdating" type="opaque"></fluid-loading>

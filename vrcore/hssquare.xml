@@ -1,0 +1,65 @@
+<krpano>
+	<action name="startdrawsquare">
+		trace(%0);
+    set(squarehotspotcount, 0);
+		
+		inc(squarehotspotcount);
+		set(drawingsquare, true);
+		
+		txtadd(fyrsquarehotspot, 'squarehotspotcount', get(squarehotspotcount));
+		trace(get(fyrsquarehotspot));
+		
+		addhotspot(get(fyrsquarehotspot));
+		set(hotspot[get(fyrsquarehotspot)].enabled, false);
+		set(hotspot[get(fyrsquarehotspot)].borderwidth, 2.0);
+		set(hotspot[get(fyrsquarehotspot)].fillalpha, 1);
+		
+		set(squareid, 0);
+	</action>
+	
+	<action name="stopdrawsquare">
+		trace(%0);
+		
+		set(drawingsquare, false);
+	</action>
+	
+	<action name="addpointsquare">
+		trace(%0);
+				
+		screentosphere(mouse.x, mouse.y, toh, tov);
+		
+		set(hotspot[get(fyrsquarehotspot)].point[get(squareid)].ath, get(toh));
+		set(hotspot[get(fyrsquarehotspot)].point[get(squareid)].atv, get(tov));
+		updatescreen();
+		squaremousemove();
+		inc(squareid);
+
+    if(squareid == 2, addpointsquareremain(); stopdrawsquare());
+	</action>
+
+  <action name="addpointsquareremain">
+		trace(%0);
+		set(point1atv, get(hotspot[get(fyrsquarehotspot)].point[1].atv));
+
+		trace(point1atv);
+		set(hotspot[get(fyrsquarehotspot)].point[1].atv, get(hotspot[get(fyrsquarehotspot)].point[0].atv));
+		set(hotspot[get(fyrsquarehotspot)].point[2].ath, get(hotspot[get(fyrsquarehotspot)].point[1].ath));
+		set(hotspot[get(fyrsquarehotspot)].point[2].atv, get(point1atv));
+
+		set(hotspot[get(fyrsquarehotspot)].point[3].ath, get(hotspot[get(fyrsquarehotspot)].point[0].ath));
+		set(hotspot[get(fyrsquarehotspot)].point[3].atv, get(point1atv));
+    
+		updatescreen();
+		squaremousemove();
+  </action>
+
+  <action name="squaremousemove">
+		screentosphere(mouse.x, mouse.y, toh, tov);
+		
+		set(hotspot[get(fyrsquarehotspot)].point[get(squareid)].ath, get(toh));
+		set(hotspot[get(fyrsquarehotspot)].point[get(squareid)].atv, get(tov));
+		updatescreen();
+		if(drawingsquare == true, delayedcall(0.0, squaremousemove()));
+	</action>
+	
+</krpano>

@@ -1,0 +1,333 @@
+#Showcase {
+  background: white;
+}
+
+.showcase-footer .container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+#Showcase .container {
+  width: 700px;
+  margin: 0 auto;
+}
+
+#Showcase .container .left,
+#Showcase .container .right {
+  float: left;
+  position: relative;
+  min-height: 1px;
+}
+
+#Showcase .container .left {
+  width: 28.5%;
+}
+
+#Showcase .container .right {
+  width: 71.5%;
+}
+
+#Showcase header {
+  color: white;
+  height: 480px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-bottom: 20px;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  top: 0;
+}
+
+#Showcase .body {
+  background: white;
+  position: relative;
+  z-index: 1;
+  margin-top: 480px;
+}
+
+#Showcase header .container {
+  top: 72%;
+  transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  z-index: 2;
+}
+
+#Showcase header:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.45;
+}
+
+#Showcase .bio {
+  padding: 65px 0 65px;
+}
+
+#Showcase .bio .counter {
+  display: inline-block;
+  margin-right: 32px;
+  text-align: left;
+}
+
+#Showcase .bio .article {
+  text-align: justify;
+  font-size: 1.1em;
+  line-height: 150%;
+}
+
+#Showcase .bio .achievement {
+  padding: 25px 0;
+}
+
+#Showcase .bio .achievement h4 {
+  font-size: 1.2em;
+  color: #999;
+  margin-bottom: -5px;
+}
+
+#Showcase .bio .title {
+  font-weight: 100;
+  font-size: 2em;
+  text-align: right;
+  color: #515E66;
+  margin-top: 0;
+  padding-right: 30px;
+  width: 320px;
+  position: absolute;
+  right: 0;
+  margin-top: 2px;
+}
+
+#Showcase .bio .title:after {
+  content: '';
+  width: 64px;
+  height: 2px;
+  background: #EEE;
+  display: block;
+  position: absolute;
+  bottom: -20px;
+  right: 32px;
+}
+
+#Showcase .bio .title strong {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+#Showcase .bio .counter h2 {
+  font-size: 5.6em;
+  font-weight: 300;
+  margin-bottom: -10px;
+}
+
+#Showcase .bio .counter span {
+  padding-left: 5px;
+  font-weight: 500;
+}
+
+#Showcase .user-info .des h3 {
+  margin-bottom: 5px;
+  font-size: 1.8em;
+  margin-top: 35px;
+}
+
+#Showcase .user-info .des a {
+  opacity: 0.75;
+}
+
+#Showcase .user-info .des a:hover {
+  opacity: 1;
+}
+
+#Showcase .user-info .des .socials {
+  margin-top: 25px;
+}
+
+#Showcase .avatar {
+  width: 160px;
+  height: 160px;
+  border: 8px solid white;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: rgba(239, 90, 76, 0.5);
+}
+
+#Showcase .socials li a {
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.41);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 35px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+#Showcase .socials li {
+  float: left;
+  margin-right: 8px;
+}
+
+#Showcase .socials li a:hover {
+  color: black;
+  background: white;
+}
+
+#Showcase .projects .left {
+  padding-top: 10px;
+  height: 240px;
+}
+
+#Showcase .projects li {
+  margin-bottom: 125px;
+}
+
+#Showcase .projects .title {
+  padding-right: 30px;
+  padding-left: 15px;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  margin: 0;
+  color: #515E67;
+  position: relative;
+}
+
+#Showcase .projects .title:before {
+  width: 2px;
+  height: 42px;
+  content: '';
+  display: block;
+  position: absolute;
+  top: 110%;
+  background: #EEE;
+  right: 35px;
+}
+
+#Showcase .projects .date {
+  color: #515E66;
+  font-size: 0.9em;
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 25px;
+  writing-mode: tb-rl;
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+#Showcase .projects .counter i {
+  font-size: 10px;
+  margin-top: -2px;
+  color: rgba(239, 80, 65, 0.43);
+}
+
+#Showcase .projects .counter {
+  color: #A6A4A2;
+  margin-bottom: 10px;
+  display: block;
+  text-align: right;
+  position: absolute;
+  top: -30px;
+  right: 0;
+}
+
+#Showcase .projects .thumb {
+  height: 240px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* border-radius: 40px 0; */
+  background-position: center;
+  background-image: url(../images/default_pano.png);
+  background-color: whitesmoke;
+  position: relative;
+}
+
+#Showcase .projects .thumb:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #000000;
+  opacity: 0;
+  transition: all 0.65s ease-out;
+}
+
+#Showcase .projects .thumb:hover:after {
+  opacity: 0.25;
+}
+
+#Showcase .projects .sphereicon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -20px;
+  margin-top: -20px;
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  visibility: hidden;
+  -webkit-transition: all 0.45s;
+  transition: all 0.45s;
+  transform: scale(1.4, 1.4);
+  -webkit-transform: scale(1.4, 1.4);
+  z-index: 2;
+}
+
+#Showcase .projects .desc {
+  margin-top: -32px;
+  text-align: right;
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.15s;
+  transition: all 0.15s;
+  margin-left: 45px;
+  padding-left: 25px;
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding-top: 25px;
+  padding-bottom: 15px;
+}
+
+#Showcase .projects li {
+  cursor: pointer;
+  position: relative;
+  min-height: auto;
+}
+
+#Showcase .projects li:before {
+  content: '';
+  width: 246px;
+  height: 246px;
+  display: block;
+  background: transparent;
+  border: 8px solid #EEE;
+  position: absolute;
+  left: 0;
+  top: -25px;
+}
+
+#Showcase .projects li:hover .desc {
+  color: #353535;
+}
+
+#Showcase .projects .thumb:hover .sphereicon {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1, 1);
+  -webkit-transform: scale(1, 1);
+}

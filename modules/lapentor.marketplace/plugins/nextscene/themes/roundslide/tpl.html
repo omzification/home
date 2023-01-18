@@ -1,0 +1,34 @@
+<style>
+.svg-wrap {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  overflow: hidden;
+}
+
+svg:not(:root) {
+  overflow: hidden;
+}
+</style>
+<style>
+@import url('modules/lapentor.marketplace/plugins/nextscene/themes/roundslide/component.css');
+
+</style>
+<nav class="nav-roundslide">
+    <a class="prev" href="#" ng-click="vm.goToPrevScene()">
+        <span class="icon-wrap"><svg class="icon" width="32" height="32" viewBox="0 0 64 64"><use xlink:href="#arrow-left-4"></use></svg></span>
+        <h3>{{ vm.prevScene.title }}</h3>
+    </a>
+    <a class="next" href="#" ng-click="vm.goToNextScene()">
+        <span class="icon-wrap"><svg class="icon" width="32" height="32" viewBox="0 0 64 64"><use xlink:href="#arrow-right-4"></use></svg></span>
+        <h3>{{ vm.nextScene.title }}</h3>
+    </a>
+</nav>
+<div class="svg-wrap">
+    <svg width="64" height="64" viewBox="0 0 64 64">
+        <path id="arrow-left-4" d="M15.946 48l0.003-10.33 47.411 0.003v-11.37h-47.414l0.003-10.304-15.309 16z"></path>
+    </svg>
+    <svg width="64" height="64" viewBox="0 0 64 64">
+        <path id="arrow-right-4" d="M48.058 48l-0.003-10.33-47.414 0.003v-11.37h47.418l-0.003-10.304 15.306 16z"></path>
+    </svg>
+</div>

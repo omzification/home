@@ -1,0 +1,48 @@
+<div id="PluginSocialsharewidget" class="{{ vm.config.theme_id }}" ng-class="vm.config.position">
+    <ul class="menu-items">
+        <li class="menu-item">
+            <button ng-if="!vm.config.custom_facebook_icon" style="background: #04538b;" socialshare="" socialshare-provider="facebook" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" class="menu-item-button"><i class="menu-item-icon fa fa-facebook"></i>
+            </button>
+
+            <button ng-if="vm.config.custom_facebook_icon" socialshare="" socialshare-provider="facebook" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" class="menu-item-button">
+                <img class="menu-item-icon menu-item-custom-icon" ng-src="{{ vm.config.custom_facebook_icon }}">
+            </button>
+
+            <div class="menu-item-bounce" ng-style="{'background': vm.config.toggle_icon_bg_color}"></div>
+        </li>
+        <li class="menu-item">
+            <button ng-if="!vm.config.custom_twitter_icon" style="background: #06aedb;" socialshare="" socialshare-provider="twitter" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" socialshare-text="" socialshare-hashtags="lapentor, sphere360, vr" class="menu-item-button">
+                <i class="menu-item-icon fa fa-twitter"></i>
+            </button>
+
+            <button ng-if="vm.config.custom_twitter_icon" style="background: #06aedb;" socialshare="" socialshare-provider="twitter" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}" socialshare-text="" socialshare-hashtags="lapentor, sphere360, vr" class="menu-item-button">
+                <img class="menu-item-icon menu-item-custom-icon" ng-src="{{ vm.config.custom_twitter_icon }}">
+            </button>
+
+            <div class="menu-item-bounce" ng-style="{'background': vm.config.toggle_icon_bg_color}"></div>
+        </li>
+        <li class="menu-item">
+            <button ng-if="!vm.config.custom_linkedin_icon" style="background: #0077b5;" class="menu-item-button" socialshare="" socialshare-provider="linkedin" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}">
+                <i class="menu-item-icon fa fa-linkedin"></i>
+            </button>
+
+            <button ng-if="vm.config.custom_linkedin_icon" style="background: #0077b5;" class="menu-item-button" socialshare="" socialshare-provider="linkedin" socialshare-url="{{ vm.config.share_url || vm.shareUrl }}">
+                <img class="menu-item-icon menu-item-custom-icon" ng-src="{{ vm.config.custom_linkedin_icon }}">
+            </button>
+
+            <div class="menu-item-bounce" ng-style="{'background': vm.config.toggle_icon_bg_color}"></div>
+        </li>
+    </ul>
+    <button class="menu-toggle-button" ng-style="{'background': vm.config.toggle_icon_bg_color}">
+        <i ng-style="{color: vm.config.toggle_icon_color}" class="ilpt-share menu-toggle-icon"></i>
+    </button>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+</div>

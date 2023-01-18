@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="33" height="33" viewBox="0 0 33 33">
+    <defs>
+        <rect id="a" width="33" height="33" rx="4"/>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <use fill="#FFF" fill-opacity="0" xlink:href="#a"/>
+            <rect width="32.99" height="32.99" x=".005" y=".005" stroke="#8B8B8B" stroke-width=".01" rx="4"/>
+        </g>
+        <path fill="#28324E" fill-rule="nonzero" stroke="#28324E" stroke-width=".25" d="M17 28c-6.065 0-11-4.935-11-11S10.935 6 17 6s11 4.935 11 11-4.935 11-11 11zm0-21.026C11.472 6.974 6.974 11.472 6.974 17S11.472 27.026 17 27.026 27.026 22.528 27.026 17 22.528 6.974 17 6.974z"/>
+        <path fill="#28324E" fill-rule="nonzero" stroke="#28324E" stroke-width=".25" d="M16.104 24H15v-8h3v5.994C18 23.1 17.15 24 16.104 24zm-.138-1.022h.137c.513 0 .93-.441.93-.984v-4.972h-1.067v5.956zM16.5 14c-.827 0-1.5-.673-1.5-1.5s.673-1.5 1.5-1.5 1.5.673 1.5 1.5-.673 1.5-1.5 1.5zm0-2.04a.54.54 0 1 0 .001 1.08.54.54 0 0 0-.001-1.08z"/>
+    </g>
+</svg>

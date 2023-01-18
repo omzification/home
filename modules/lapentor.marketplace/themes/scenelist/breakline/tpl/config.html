@@ -1,0 +1,43 @@
+<style>
+    .scenelist-global-config {
+        display: none;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Position</label>
+                <div class="form-content">
+                    <select class="btn form-control" ng-model="vm.config.position">
+                        <option value="center">Center</option>
+                        <option value="left">Left</option>
+                        <option value="right">Right</option>
+                    </select>
+                </div>
+            </div>
+            <!-- <div class="form">
+                <label for="" class="form-label">Set Logo</label>
+                <div class="form-content">
+                    <button class="btn form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-insert-image"></i> Choose/Upload image
+                    </button>
+                    <img id="logo" class="img-wrapper" style="max-height: 150px; margin: 20px auto; display: block;" ng-if="vm.config.logo" loading-src="{{ vm.config.logo }}" alt="">
+                    <input type="hidden" ng-model="vm.config.logo">
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Featured color</label>
+                <div class="form-content">
+                    <span class="demo-bg-block" style="background-color: {{ vm.config.bg_color }}"></span>
+                    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

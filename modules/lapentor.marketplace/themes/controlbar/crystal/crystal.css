@@ -1,0 +1,270 @@
+#controlbar-crystal {
+    border-radius: 100px;
+    position: absolute;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0);
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    padding: 7px 20px;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+}
+
+#controlbar-crystal ul {
+    width: auto;
+    max-width: 90vw;
+    display: block;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#controlbar-crystal.bottom li.hover {
+    transform: scale(1.5);
+    background: rgba(221, 221, 221, 0.9);
+    margin: 0 1.1em;
+}
+
+#controlbar-crystal.top li.hover {
+    transform: scale(1.5);
+    background: rgba(221, 221, 221, 0.9);
+    margin: 0 1.1em;
+}
+
+#controlbar-crystal.left li.hover {
+    transform: scale(1.5);
+    background: rgba(221, 221, 221, 0.9);
+    margin: 1.5em 0;
+}
+
+#controlbar-crystal.right li.hover {
+    transform: scale(1.5);
+    background: rgba(221, 221, 221, 0.9);
+    margin: 1.5em 0;
+}
+
+#controlbar-crystal.bottom li.nearby {
+    transform: scale(1.25);
+    margin: 0 1.0em;
+}
+
+#controlbar-crystal.top li.nearby {
+    transform: scale(1.25);
+    margin: 0 1.0em;
+}
+
+#controlbar-crystal.left li.nearby {
+    transform: scale(1.25);
+    margin: 1.0em 0;
+}
+
+#controlbar-crystal.right li.nearby {
+    transform: scale(1.25);
+    margin: 1.0em 0;
+}
+
+#controlbar-crystal li.bottom.hover {
+    -webkit-transform-origin-y: bottom;
+}
+
+#controlbar-crystal li.bottom.nearby {
+    -webkit-transform-origin-y: bottom;
+}
+
+#controlbar-crystal li.top.hover {
+    -webkit-transform-origin-y: top;
+}
+
+#controlbar-crystal li.top.nearby {
+    -webkit-transform-origin-y: top;
+}
+
+#controlbar-crystal li.right.hover {
+    -webkit-transform-origin-x: right;
+}
+
+#controlbar-crystal li.right.nearby {
+    -webkit-transform-origin-x: right;
+}
+
+#controlbar-crystal li.left.hover {
+    -webkit-transform-origin-x: left;
+}
+
+#controlbar-crystal li.left.nearby {
+    -webkit-transform-origin-x: left;
+}
+
+#controlbar-crystal.left,
+#controlbar-crystal.right {
+    left: 10px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    bottom: auto;
+    -webkit-box-pack: initial;
+    -webkit-justify-content: initial;
+    -ms-flex-pack: initial;
+    justify-content: initial;
+    display: block;
+    padding: 8px 5px;
+}
+
+#controlbar-crystal.right {
+    left: auto;
+    right: 10px;
+}
+
+#controlbar-crystal.left .divider,
+#controlbar-crystal.right .divider {
+    background-image: url('')!important;
+    background-color: #EF5041;
+    height: 2px;
+}
+
+#controlbar-crystal.left .item,
+#controlbar-crystal.right .item {
+    display: block;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+#controlbar-crystal.left ul,
+#controlbar-crystal.right ul {
+    display: block;
+}
+
+#controlbar-crystal.top {
+    top: 0;
+    bottom: auto;
+}
+
+#controlbar-crystal .item {
+    position: relative;
+    display: inline-block;
+    margin: 0 6px;
+    border-radius: 4px;
+    transition: all .15s ease-out;
+    cursor: pointer;
+}
+
+#controlbar-crystal .item img {
+    width: 20px;
+    height: 20px;
+    background: white;
+    border-radius: 4px;
+    padding: 1px;
+    box-shadow: 0 0 10px black;
+}
+
+#controlbar-crystal .item:last-child {
+    margin-right: 0;
+}
+
+#controlbar-crystal .tip p {
+    line-height: 18px;
+    color: #3e3e3e;
+    padding: 0 7px;
+    font-size: 8px;
+    font-weight: 100;
+}
+
+#controlbar-crystal .tip {
+    background-color: white;
+    height: 18px;
+    border-radius: 6px;
+    width: auto;
+    white-space: nowrap;
+    position: absolute;
+    display: none;
+    left: 50%;
+}
+
+#controlbar-crystal.top .tip {
+    margin-top: 8px;
+    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+}
+
+#controlbar-crystal.bottom .tip {
+    margin-top: -55px;
+    transform: translate(-50%, 0%);
+    -webkit-transform: translate(-50%, 0%);
+    -moz-transform: translate(-50%, 0%);
+    -ms-transform: translate(-50%, 0%);
+}
+
+#controlbar-crystal li .tip {
+    display: none;
+}
+
+#controlbar-crystal.left li .tip {
+    transform: translate(0%, 50%);
+    -webkit-transform: translate(0%, 50%);
+    -moz-transform: translate(0%, 50%);
+    -ms-transform: translate(0%, 50%);
+    left: 39px;
+    top: 2px;
+}
+
+#controlbar-crystal.right li .tip {
+    -webkit-transform: none;
+    transform: none;
+    right: 39px;
+    top: 2px;
+    left: auto;
+}
+
+#controlbar-crystal li.hover .tip {
+    display: block;
+}
+
+#controlbar-crystal.top.off {
+    top: -50px;
+}
+
+#controlbar-crystal.bottom.off {
+    bottom: -50px;
+}
+
+#controlbar-crystal.left.off {
+    left: -50px;
+}
+
+#controlbar-crystal.right.off {
+    right: -50px;
+}
+
+#controlbar-crystal .mCSB_horizontal.mCSB_inside>.mCSB_container {
+    margin-bottom: 15px;
+}
+
+
+/*Responsive*/
+
+@media screen and (max-width: 480px) {
+    #controlbar-crystal {
+        padding: 0 5px;
+        height: auto;
+        line-height: 35px;
+        border-radius: 0;
+        padding: 3px 5px;
+    }
+    #controlbar-crystal .item {
+        margin-right: 2px;
+    }
+}

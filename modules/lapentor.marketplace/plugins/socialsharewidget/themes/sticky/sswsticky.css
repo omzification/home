@@ -1,0 +1,61 @@
+plugin-socialsharewidget-sticky #PluginSocialsharewidget {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 200;
+}
+
+plugin-socialsharewidget-sticky #PluginSocialsharewidget.left {
+    left: 5px;
+    right: auto;
+}
+
+plugin-socialsharewidget-sticky #PluginSocialsharewidget li {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 3px;
+    line-height: 40px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.36);
+}
+
+plugin-socialsharewidget-sticky #PluginSocialsharewidget {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 200;
+}
+
+plugin-socialsharewidget-sticky #PluginSocialsharewidget.left {
+    left: 5px;
+    right: auto;
+}
+
+plugin-socialsharewidget-sticky #PluginSocialsharewidget li {
+    background-size: contain;
+    background-position: center;
+    color: white;
+    font-size: 18px;
+    margin-bottom: 3px;
+    line-height: 40px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.36);
+    cursor: pointer;
+    opacity: .85;
+}
+
+plugin-socialsharewidget-sticky #PluginSocialsharewidget li:hover {
+    opacity: 1;
+}

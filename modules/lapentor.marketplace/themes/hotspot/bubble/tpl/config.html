@@ -1,0 +1,27 @@
+<div class="form-group">
+    <div class="form">
+        <label class="form-label" for="">(Hotspot) Background color</label>
+        <div class="form-content">
+            <span class="demo-bg-block" style="background-color: {{ vm.config.bg_color }}"></span>
+            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color">
+        </div>
+    </div>
+
+    <div class="form">
+        <label class="form-label" for="">(Hotspot) Text color</label>
+        <div class="form-content">
+            <span class="demo-bg-block" style="background-color: {{ vm.config.text_color }}"></span>
+            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.text_color">
+        </div>
+    </div>
+
+    <div class="form">
+        <label class="form-label" for="">Show hotspot title by default <i class="ilpt-info" uib-tooltip="Otherwise hotspot's title will show when hover on each hotspot" tooltip-placement="top"></i></label>
+        <div class="form-content">
+            <select ng-model="vm.config.show_title" class="form-control">
+                <option value="no">No</option>
+                <option value="yes">Yes</option>
+            </select>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="form-group">
+    <div class="form">
+        <label class="form-label">Choose Effect</label>
+        <div class="form-content">
+            <select ng-model="vm.config.effect_type" class="btn form-control" >
+                <option value="">None</option>
+                <option ng-repeat="(key,value) in vm.blend " value="{{ value }}">{{ key }}</option>
+            </select>
+        </div>
+    </div>
+    <div class="form">
+        <label class="form-label">Transition speed (seconds)</label>
+        <div class="form-content">
+            <input class="form-control" type="number" ng-model="vm.config.time" placeholder="Enter time">
+        </div>
+    </div>
+</div>

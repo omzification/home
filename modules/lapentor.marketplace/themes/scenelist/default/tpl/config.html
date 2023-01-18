@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <!-- <div class="form">
+                <label for="" class="form-label">Sticky at bottom <small>(on mobile, small screen)</small></label>
+                <div class="form-content">
+                    <select ng-model="vm.config.sticky_bottom" class="form-control">
+                        <option value="true">Enable</option>
+                        <option value="false">Disable</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="form">
+                <label class="form-label">Position</label>
+                <div class="form-content">
+                    <div class="form-checkbox" ng-click="vm.choosePositionType('fixed')">
+                        <input type="radio" name="position" id="positionType" ng-model="vm.config.position_type" value="fixed">
+                        <label for="positionType"><span></span><strong>Fixed</strong></label>
+                    </div>
+                    <div class="sub-form" ng-if="vm.config.position_type=='fixed'">
+                        <label class="form-label" for="">Choose position</label>
+                        <div class="form-content">
+                            <select ng-model="vm.config.position" class="form-control">
+                                <option value="top-left">Top left</option>
+                                <option value="top-right">Top right</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-checkbox" ng-click="vm.choosePositionType('custom')">
+                        <input type="radio" name="position" id="customPos" ng-model="vm.config.position_type" value="custom">
+                        <label for="customPos"><span></span><strong>Custom (px)</strong></label>
+                    </div>
+                    <div class="sub-form" ng-if="vm.config.position_type == 'custom'">
+                        <label class="form-label" for="">Enter position offset (px)</label>
+                        <div class="form-content">
+                            <div class="row">
+                                <div class="form col-md-6">
+                                    <input type="number" ng-model="vm.config.offset_top" placeholder="Offset top" class="form-control">
+                                </div>
+                                <div class="form col-md-6">
+                                    <input type="number" ng-model="vm.config.offset_left" placeholder="Offset left" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form">
+                <label for="" class="form-label">Set Logo</label>
+                <div class="form-content">
+                    <button class="btn form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-insert-image"></i> Choose/Upload image
+                    </button>
+                    <img id="logo" class="img-wrapper" style="max-height: 150px; width: auto; margin: 20px auto; display: block;" ng-if="vm.config.logo" loading-src="{{ vm.config.logo }}" alt="">
+                    <input type="hidden" ng-model="vm.config.logo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Featured color</label>
+                <div class="form-content">
+                    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.active_scene_bg_color">
+                    <span class="demo-bg-block" style="background-color:{{ vm.config.active_scene_bg_color }}"></span>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label">Choose Theme</label>
+                <div class="form-content">
+                    <div class="form-checkbox">
+                        <input type="radio" name="theme_type" id="themeTypeFixed" ng-model="vm.config.theme_type" value="fixed">
+                        <label for="themeTypeFixed"><span></span><strong>Template</strong></label>
+                    </div>
+                    <div class="sub-form" ng-if="vm.config.theme_type == 'fixed'">
+                        <label class="form-label" for="">Choose a Theme</label>
+                        <div class="form-content">
+                            <select ng-model="vm.config.theme" class="btn form-control">
+                                <option value="light" ng-selected="vm.config.theme == 'light'">Light</option>
+                                <option value="dark" ng-selected="vm.config.theme == 'dark'">Dark</option>
+                                <option value="saphire" ng-selected="vm.config.theme == 'saphire'">Sapphire</option>
+                                <option value="ruby" ng-selected="vm.config.theme == 'ruby'">Ruby</option>
+                                <option value="theme-dots" ng-selected="vm.config.theme == 'theme-dots'">Dots</option>
+                            </select>
+                        </div>
+                        <img loading-src="{{ vm.screenshotS3Path + vm.config.theme }}.png" style="padding: 20px;max-width: 300px;margin: 0 auto;display: block;margin-top: 20px;" alt="">
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="radio" name="theme_type" id="themeTypeCustom" ng-model="vm.config.theme_type" value="custom">
+                        <label for="themeTypeCustom"><span></span><strong>Custom</strong></label>
+                    </div>
+                    <div class="sub-form" ng-if="vm.config.theme_type == 'custom'">
+                        <label class="form-label" for="">Background color</label>
+                        <div class="form-content">
+                            <span class="demo-bg-block" style="background-color: {{ vm.config.bg_color }}"></span>
+                            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color">
+                        </div>
+                        <label class="form-label">Text color</label>
+                        <div class="form-content">
+                            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.text_color">
+                            <span class="demo-bg-block" style="background-color: {{ vm.config.text_color }}"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

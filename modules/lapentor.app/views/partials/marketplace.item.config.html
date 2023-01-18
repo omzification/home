@@ -1,0 +1,24 @@
+<!-- header -->
+<div class="market-item bg-dark">
+  <div class="modal-header">
+    <h3 class="title">
+      {{ item.name }}
+      <!-- [ <i class="{{ item.type == 'theme' ? 'ilpticon-design':'ilpticon-d-cube' }}"></i>  -->
+      <!-- <span class="type">{{ item.theme_type?(item.theme_type.replace('_',' ')):item.type }} ]</span>  -->
+    </h3>
+    <div class="close close-black" ng-click="dismissConfigModal()"><i class="ilpt-close" ></i></div>
+  </div>
+  <!-- content -->
+  <div class="modal-body" >
+    <div class="marketplace-item_conf">
+      <ng-include src="templateUrl"></ng-include>
+    </div>
+  </div>
+  <!-- footer -->
+  <div class="modal-footer">
+    <button class="btn btn-save bg-grad" ng-click="vm.updateConfig()">
+      Save <img ng-show="vm.isUpdating" src="bower_components/SVG-Loaders/svg-loaders/puff.svg" height="20"> 
+    </button>
+    <a ng-if="vm.project.scenes.length" target="lptLiveView" href="{{ vm.project.slug | shareUrl }}" class="pull-right live-view btn btn-line btn-yellow"><span class="m-hidden">Preview</span></a>
+  </div>
+</div>

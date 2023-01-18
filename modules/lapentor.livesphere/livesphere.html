@@ -1,0 +1,39 @@
+<div id="LiveSphereViewer" ng-show="!vm.project.password.enable || (vm.project.password.enable && vm.activePass)">
+    <scene-list ng-if="!vm.project.password.enable || (vm.project.password.enable && vm.activePass)" project="vm.project" lptsphereinstance="vm.lptSphereInstance" scene="vm.scene"></scene-list>
+    <controlbar ng-if="!vm.project.password.enable || (vm.project.password.enable && vm.activePass)" project="vm.project" lptsphereinstance="vm.lptSphereInstance" scene="vm.scene"></controlbar>
+    <hotspot style="display: none" ng-if="!vm.project.password.enable || (vm.project.password.enable && vm.activePass)" ng-repeat="hotspot in vm.hotspots" hotspot="hotspot" scene="vm.scene" project="vm.project" lptsphereinstance="vm.lptSphereInstance"></hotspot>
+    <plugin ng-if="!vm.project.password.enable || (vm.project.password.enable && vm.activePass)" ng-if="vm.project.plugins" ng-repeat="plugin in vm.project.plugins" plugin="plugin" project="vm.project" lptsphereinstance="vm.lptSphereInstance" scene="vm.scene"></plugin>
+</div>
+<div ng-if="vm.project.password.enable && !vm.activePass" id="LiveSpherePasswordWrap">
+    <div class="inner">
+        <input type="password" class="form-control" ng-model="vm.live_pass" placeholder="Enter password here" ng-keyup="$event.keyCode == 13 && vm.checkPass()">
+        <button class="btn btn-line" ng-click="vm.checkPass()">View project</button>
+    </div>
+    <fluid-loading ng-if="vm.checkPassIsLoading" type="opaque"></fluid-loading>
+</div>
+<div class="LiveSphereAudioAllow" ng-if="vm.hasPermissionPlugins && vm.shouldShowConfirmPermission">
+    <p>{{ 'ACTIVE_GYRO' | translate:{permissionTitle: vm.permissionTitle} }}</p>
+    <div class="btn-group">
+        <div class="btn" ng-click="vm.shouldShowConfirmPermission = false">{{ 'CANCEL' | translate }}</div>
+        <div class="btn" ng-click="vm.allowPermissions()">{{ 'ALLOW' | translate }}</div>
+    </div>
+</div>
+
+<div class="LiveSphereAudioAllow LiveSphereAudioAllow--pc" ng-if="vm.shouldAutoplayAudio">
+    <p>This tour contain autoplay audio, do you want to play it?</p>
+    <div class="btn-group">
+        <div class="btn" ng-click="vm.shouldAutoplayAudio = false">Cancel</div>
+        <div class="btn" ng-click="vm.allowAutoplayAudio()">Allow</div>
+    </div>
+</div>
+
+<div id="LptPrompt" ng-if="vm.lptPrompt.show">
+    <div class="close" ng-click="vm.lptPrompt.show = false">
+        <i class="ilpt-close"></i>
+    </div>
+    <h4 ng-if="vm.lptPrompt.title">{{ vm.lptPrompt.title }}</h4>
+    <p ng-if="vm.lptPrompt.msg" class="msg">{{ vm.lptPrompt.msg }}</p>
+    <input type="password" placeholder="{{ vm.lptPrompt.placeholder }}" ng-model="vm.lptPrompt.input" ng-keyup="$event.keyCode == 13 && vm.submitPrompt()">
+</div>
+
+<div ng-if="vm.isLocked" id="LptProjectLocked">Your project is locked. Please subscribe to unlock it.</div>

@@ -1,0 +1,49 @@
+<ng-include src="'modules/lapentor.app/views/partials/project.editor/limit_view.html'"></ng-include>
+<div id="scene-toolbar" ng-if="!vm.showLimitViewButtons">
+    <div id="hotspot-list" ng-class="{'active': vm.isOpenHotspotList}" class="panel mini arrow right" click-outside="vm.toggleHotspotList('close')" outside-if-not="tool-hotspot_list">
+        <div class="panel-header">
+            <h4 class="title">Hotspot list</h4>
+        </div>
+        <div class="panel-body">
+            <!-- List hospot -->
+            <ul>
+                <li class="clearfix theme-bg-hover" ng-repeat="hotspot in vm.hotspots" ng-click="vm.sceneEditSphere.moveViewerTo(hotspot.position.x, hotspot.position.y)" ng-class="{'last': $index == (vm.hotspots.length - 1)}">
+                    <img ng-src="{{ hotspot.icon }}" class="hotspot-icon">
+                    <span>{{ hotspot.title }}</span>
+                    <div class="btn-icon" ng-click="vm.deleteHotspot(hotspot._id, $event);"><i class="ilpt-trashcan"></i></div>
+                </li>
+                <div ng-show="!vm.hotspots.length" class="empty-msg">
+                    It's lonely here.</br>Drag some hotspot
+                </div>
+            </ul>
+            <!-- / List hotspot -->
+        </div>
+    </div>
+    <div id="tool-hotspot_list" class="tool-bubble" ng-click="vm.toggleHotspotList('open')">
+        <span class="hotspot-counter">{{ vm.hotspots.length | formatNumber }}</span> Hotspots
+    </div>
+    <div id="tool-hotspot" class="tool-bubble">
+        <ul>
+            <li ng-repeat="hotspotType in vm.hotspotTypes" uib-tooltip="{{ hotspotType.tooltip }}" tooltip-placement="left">
+                <img class="hotspot-icon" data-drag="true" jqyoui-draggable="{onStop: 'vm.saveNewHotspot(hotspotType)'}" data-jqyoui-options="{helper: 'clone', containment: '#editor', appendTo: '#editor'}" ng-src="{{ hotspotType.icon }}">
+            </li>
+        </ul>
+    </div>
+    <div id="tool-view" class="tool-bubble">
+        <ul>
+            <li uib-tooltip="View Setting" tooltip-placement="left"><i class="ilpt-crop"></i></li>
+            <li class="other" uib-tooltip="Set default view" tooltip-placement="left" ng-click="vm.saveDefaultView()"><img src="assets/images/icons/tool-defaultview.svg" alt=""></li>
+            <li class="other" uib-tooltip="Set Limit view" tooltip-placement="left" ng-click="vm.showLimitViewButtons = !vm.showLimitViewButtons"><img src="assets/images/icons/tool-limitview.svg" alt=""></li>
+            <li class="other" uib-tooltip="Set max zoom" tooltip-placement="left" ng-click="vm.confirmMaxMinZoom('min')"><img src="assets/images/icons/tool-minzoom.svg" alt=""></li>
+            <li class="other" uib-tooltip="Set min zoom" tooltip-placement="left" ng-click="vm.confirmMaxMinZoom('max')"><img src="assets/images/icons/tool-maxzoom.svg" alt=""></li>
+            <li class="other" uib-tooltip="Reset zoom" tooltip-placement="left" ng-click="vm.confirmMaxMinZoom('resetZoom')"><img src="assets/images/icons/tool-resetzoom.svg" alt=""></li>
+            <li class="other" uib-tooltip="Toggle little planet effect" tooltip-placement="left" ng-click="vm.littleplanet()"><img src="assets/images/icons/tool-littleplanet.svg" alt=""></li>
+        </ul>
+    </div>
+    <div id="tool-powerup" class="tool-bubble bg-grad" uib-tooltip="Power Up" tooltip-placement="left" ng-click="vm.toggleMarketplace()">
+        <i class="ilpt-rocket"></i>
+        <span class="count" title="Installed items">{{ vm.installedItemsCount }}</span>
+    </div>
+    <!-- <ul class="tool-list" ng-nicescroll>
+    </ul> -->
+</div>

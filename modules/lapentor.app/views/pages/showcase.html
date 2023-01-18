@@ -1,0 +1,68 @@
+<section id="Showcase">
+    <header class="cover theme-bg" bg-src="{{ vm.user.cover }}">
+        <div class="container">
+            <div class="user-info">
+                <div class="left">
+                    <div class="avatar thumb" bg-src="{{ vm.user.avatar }}"></div>
+                </div>
+                <div class="right">
+                    <div class="des">
+                        <h3 ng-if="vm.user.first_name || vm.user.last_name">{{ vm.user.first_name }} {{ vm.user.last_name }}</h3>
+                        <h3 ng-if="!vm.user.first_name && !vm.user.last_name && vm.user.username">{{ vm.user.username }}</h3>
+                        <a target="_blank" href="{{ vm.user.website }}" class="website">{{ vm.user.website }}</a>
+                        <ul class="socials">
+                            <li ng-if="vm.user.facebook"><a target="_blank" href="{{ vm.user.facebook }}"><i class="fa fa-facebook"></i></a></li>
+                            <li ng-if="vm.user.twitter"><a target="_blank" href="{{ vm.user.twitter }}"><i class="fa fa-twitter"></i></a></li>
+                            <li ng-if="vm.user.googleplus"><a target="_blank" href="{{ vm.user.googleplus }}"><i class="fa fa-google-plus"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="body">
+        <div class="container">
+            <div class="bio clearfix">
+                <div class="left" ng-if="vm.user.bio">
+                    <h3 class="title">About <br><strong>{{ vm.user.first_name }} {{ vm.user.last_name }}</strong></h3>
+                </div>
+                <div class="right">
+                    <div class="article" ng-if="vm.user.bio">
+                        {{ vm.user.bio }}
+                    </div>
+                    <div class="achievement">
+                        <h4>ACHIEVEMENT</h4>
+                        <div class="counter">
+                            <h2 class="theme-color">{{ vm.user.projects.length | formatNumber }}</h2>
+                            <span>Project{{ vm.user.projects.length > 1?'s':'' }}</span>
+                        </div>
+                        <div class="counter">
+                            <h2 class="theme-color">{{ vm.user.sceneCount | formatNumber }}</h2>
+                            <span>Photo{{ vm.user.sceneCount > 1?'s':'' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="projects">
+                <li class="clearfix" ng-repeat="project in vm.user.projects">
+                    <div class="left">
+                        <h3 class="title"><a href="{{ project.slug | shareUrl }}">{{ project.title }}</a></h3>
+                        <span class="date">{{ project.created_at | date:'shortDate' }}</span>
+                    </div>
+                    <div class="right">
+                        <span class="counter">{{ project.scenes.length }} scene{{ project.scenes.length>1?'s':'' }}</span>
+                        <div class="thumb" bg-src="{{ project.thumb }}" ng-click="vm.openProject(project.slug)">
+                            <span class="sphereicon"></span>
+                        </div>
+                        <div ng-if="project.meta.description" class="desc">{{ project.meta.description }}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- <div class="showcase-footer">
+    <div class="container">
+        <ng-include src="'modules/lapentor.app/views/partials/footer.html'"></ng-include>
+    </div>
+</div> -->

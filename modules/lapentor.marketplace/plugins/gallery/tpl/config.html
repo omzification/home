@@ -1,0 +1,124 @@
+<style type="text/css">
+#gallery .photo {
+    cursor: pointer;
+    position: relative;
+    height: 160px;
+    margin: 0 0 16px 0;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.25);
+    overflow: hidden;
+}
+
+.dropdown-menu {
+    max-width: 200px;
+}
+
+.photo-close {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    background-color: white;
+    color: #262626;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.75);
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 11;
+    transition: all 0.25s cubic-bezier(0.05, 0.88, 0.63, 0.96);
+    -webkit-transition: all 0.25s cubic-bezier(0.05, 0.88, 0.63, 0.96);
+    opacity: 0;
+    transform: scale(1.5,1.5);
+    -webkit-transform: scale(1.5,1.5);
+}
+.photo:hover .photo-close {
+    opacity: 1;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    visibility: visible;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+}
+</style>
+<div class="clearfix" id="GalleryPluginConfig">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="form">
+                    <label class="form-label">Choose theme gallery</label>
+                    <div class="form-content">
+                        <select ng-model="vm.config.theme_type" class="btn form-control">
+                            <option ng-repeat="(value,title) in vm.galleryType" ng-selected="{{ value == 'clipped' }}" value="{{ value }}">{{ title }}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form">
+                    <label class="form-label">Show on start <i class="ilpt-info" uib-tooltip="Gallery images will display on start"></i></label>
+                    <div class="form-content">
+                        <select ng-model="vm.config.show_on_start" class="btn form-control" ng-init="vm.config.show_on_start = 'no'">
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="form">
+                    <label class="form-label">Display on <span class="ilpt-info" uib-tooltip="Gallery images will display on every scene or just some specific scenes"></span></label>
+                    <div class="form-content">
+                        <select ng-model="vm.config.type" class="btn form-control" ng-init="vm.config.type = 'project'">
+                            <option value="project">All scene</option>
+                            <option value="scene">Selected Scene</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="form-group">
+            <div class="form full">
+                <div class="form-content">
+                    <button class="btn form-control" ng-if="vm.config.type == 'project'" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-plus"></i> <i class="ilpt-insert-image"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form-group" ng-if="vm.config.type == 'scene'">
+            <div class="form full">
+                <label class="form-label">Choose Scene</label>
+                <div class="form-content">
+                    <select ng-model="vm.targetScene" class="btn form-control">
+                        <option ng-repeat="scene in vm.project.scenes" value="{{ scene._id }}">{{ scene.title }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form full">
+                <button class="btn" ng-if="vm.targetScene" ng-click="vm.openMediaLib()">
+                    <span class="fa fa-plus"></span> Add images
+                </button>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="form full">
+                <div class="clearfix" id="gallery" ui-sortable="vm.sortableOptions">
+                    <div class="col-md-3 photo" context-menu="vm.menuOptionsPhoto" ng-repeat="image in vm.arrayTargetSceneGallery() | orderBy:'sort':false " photo-id="{{ image._id }}">
+                        <i class="photo-close ilpt-close" ng-click="vm.deletePhoto(image._id)"></i>
+                        <div class="thumbnail" bg-src="{{ image.thumb }}">
+                            <!-- <i ng-if="pano.scene > 0" class="ilpt-insert-image"></i> -->
+                            <!-- ngIf: pano.scene > 0 -->
+                            <div class="check-sphere ng-scope" ng-if="pano.scene > 0"></div>
+                            <!-- end ngIf: pano.scene > 0 -->
+                        </div>
+                        <span class="name ng-binding"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

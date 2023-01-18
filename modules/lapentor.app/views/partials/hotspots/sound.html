@@ -1,0 +1,56 @@
+<div class="hs-section">
+	<span class="hs-section-tt">CONTENT</span>
+	<div class="form-group">
+		<div class="form full">
+			<div class="form-content">
+				<button class="btn form-control" ng-click="vm.openMediaLib()"><i class="ilpt-audio"></i> Choose Audio</button>
+				<input type="hidden" ng-model="hotspot.src">
+			</div>
+		</div>
+		<div class="form">
+			<label class="form-label">Preview</label>
+			<div class="form-content">
+				<lpt-audio hotspotid="hotspot._id" src="hotspot.src" volume="hotspot.volume"></lpt-audio>
+			</div>
+		</div>
+		<div class="form">
+			<label class="form-label">Reach <span class="ilpt-info" tooltip-placement="top"></span></label>
+			<div class="form-content">
+				<rzslider rz-slider-model="hotspot.reach" rz-slider-options="vm.reachRangeSliderOptions"></rzslider>
+			</div>
+		</div>
+		<div class="form">
+			<label class="form-label">Volume</label>
+			<div class="form-content">
+				<rzslider rz-slider-model="hotspot.volume" rz-slider-options="{floor: 10, ceil: 100, showSelectionBar: true, step: 10}"></rzslider>
+			</div>
+		</div>
+		<div class="form">
+			<label class="form-label">Autoplay</label>
+			<div class="form-content">
+				<select ng-model="hotspot.autoplay" ng-init="hotspot.autoplay = 'on'" class="form-control">
+				  <option value="on">On</option>
+				  <option value="off">Off</option>
+				</select>
+			</div>
+		</div>
+		<div class="form">
+			<label class="form-label">Loop</label>
+			<div class="form-content">
+				<select ng-model="hotspot.is_loop" ng-default="" class="form-control">
+				  <option value="1">Yes</option>
+				  <option value="0">Nope</option>
+				</select>
+			</div>
+		</div>
+		<div class="form">
+			<label class="form-label">Click action <span class="ilpt-info" tooltip-placement="right" uib-tooltip="Choose which action you want to perform when click on the hotspot"></span></label>
+			<div class="form-content">
+				<select ng-model="hotspot.click_action" ng-init="hotspot.click_action = 'pause'" class="form-control">
+				  <option value="pause">Pause</option>
+				  <option value="restart">Restart the audio</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

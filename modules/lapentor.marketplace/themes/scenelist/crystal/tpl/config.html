@@ -1,0 +1,34 @@
+<style>
+	.scenelist-global-config{
+		display: none;
+	}
+</style>
+<div class="row">
+	<div class="col-md-6">
+		<div class="form-group">
+			<div class="form">
+				<label class="form-label" for="">Position</label>
+				<div class="form-content">
+				    <select class="btn form-control" ng-model="vm.config.position">
+				    	<option value="top">Top</option>
+				    	<option value="bottom">Bottom</option>
+				    </select>
+				</div>
+			</div>
+			<!-- <div class="form">
+				<label for="" class="form-label">Set Logo</label>
+					<div class="form-content">
+							<button class="btn form-control" ng-click="vm.openMediaLib()">
+									<i class="ilpt-insert-image"></i> Choose/Upload image
+							</button>
+							<img id="logo" class="img-wrapper" style="max-height: 150px; margin: 20px auto; display: block;" ng-if="vm.config.logo" loading-src="{{ vm.config.logo }}" alt="">
+							<input type="hidden" ng-model="vm.config.logo">
+					</div>
+			</div> -->
+		</div>
+	</div>
+	<div class="col-md-6">
+		
+	</div>
+	
+</div>

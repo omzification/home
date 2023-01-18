@@ -1,0 +1,106 @@
+.alertify{
+    border: none;
+    border-radius: 0;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.25);
+}
+
+.alertify-dialog {
+    padding: 24px 42px;
+    padding: 0;
+}
+
+.alertify {
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    border: 1px solid #DDD;
+}
+
+.alertify-button {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.alertify-button {border: none;}
+
+.alertify-button.alertify-button-cancel {
+    background: white;
+    color: initial;
+}
+
+.alertify-button-cancel:focus {
+    border: none;
+    box-shadow: none;
+}
+
+.alertify-button.alertify-button-ok {
+    background: #0060AF;
+}
+
+.alertify-button.alertify-button-ok:focus,.alertify-button.alertify-button-cancel:focus {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* alertify */
+
+.alertify {
+    border: none;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.alertify-message {
+    text-transform: uppercase;
+    margin: 0;
+    color: #000;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 24px 0;
+}
+
+.alertify-text-wrapper {
+    padding: 0px 42px 24px;
+}
+
+.alertify-buttons {
+    padding: 16px 0;
+    background: #EEE;
+}
+
+.alertify-button {
+    border-radius: 25px;
+    width: 120px;
+    height: 28px;
+    line-height: 28px;
+    padding: 0;
+    position: relative;
+    border: none;
+}
+
+.alertify-button.alertify-button-ok {
+    color: white;
+    background: #f6c964;
+    background-image: -webkit-linear-gradient(315deg, #f6c964, #f5373a);
+    background-image: linear-gradient(135deg, #f6c964, #f5373a);
+    box-shadow: 0 5px 20px rgba(251, 152, 11, .5);
+}
+
+.alertify-button:hover {
+    opacity: 0.8;
+    border: none;
+    line-height: 28px;
+}
+
+.alertify-text {
+    border: 1px solid #EEE;
+    height: 42px;
+    line-height: 42px;
+    background: #EEE;
+    margin: 0;
+}
+
+.alertify-text:focus {
+    border-color: #DDD;
+    background: white;
+}

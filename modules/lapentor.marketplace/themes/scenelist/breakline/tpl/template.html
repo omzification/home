@@ -1,0 +1,10 @@
+<ul id="scenelist-breakline" ng-class="vm.position">
+	<ul class="scenes">
+		<li ng-repeat="scene in vm.scenes" class="{{ scene._id == vm.currentscene._id ? 'active' : '' }}" ng-click="vm.changeScene(scene)">
+			<div class="line" ng-style="vm.themeStyle"></div>
+			<div class="thumb" bg-src="{{scene.pano_thumb}}">
+				<span>{{ scene.title }}</span>
+			</div>
+		</li>
+	</ul>
+</ul>

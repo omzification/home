@@ -1,0 +1,11 @@
+ <style>
+.hotspot-grady-textf:before {
+    border-right: 14px solid {{ config.popup_bg_color || '#fff' }};
+}
+</style>
+<div ng-if="vm.hotspot.content" class="hotspot-grady-textf" id="textf{{ vm.hotspot.name }}" ng-style="{'background-color': config.popup_bg_color, 'width': hotspot.popup_width }">
+	<div class="close" ng-click="vm.togglePopover()"><i class="ilpt-close"></i></div>
+    <div class="hotspot-content hotspot-textf-content" ng-style="{color: config.popup_text_color}">
+    	<div class="content-wrapper" ng-bind-html="hotspot.content"></div>
+    </div>
+</div>

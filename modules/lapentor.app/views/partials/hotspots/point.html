@@ -1,0 +1,30 @@
+<div class="hs-section">
+	<span class="hs-section-tt">CONTENT</span>
+	<div class="form-group">
+		<div class="form full">
+			<div class="form-content">
+				<select class="btn form-control" ng-model="vm.hotspot.target_scene_id" ng-change="vm.loadPointHotspotScene(vm.hotspot.target_scene_id)">
+				    <option value="">- Select scene -</option>
+				    <option ng-repeat="scene in vm.scenes" value="{{ scene._id }}" ng-if="vm.currentscene._id != scene._id">{{ scene.group_title }} {{ scene.group_title?'/':'' }} {{ scene.title }}</option>
+				</select>
+			</div>
+		</div>
+		<div class="form full">
+			<div class="form-content">
+				<div class="hs-point-preview" ng-if="vm.scenes.length > 0">
+				    <div class="viewer" id="PointHotspot{{ vm.hotspot._id }}"></div>
+				    <span class="tip">Please select next scene initial view</span>
+				    <button ng-if="vm.hotspot.target_scene_id" class="" id="setTargetViewBtn" ui-sref="project.editor({id: vm.project._id, scene_id: vm.hotspot.target_scene_id})">
+				        Go to this scene
+				    </button>
+				</div>
+			</div>
+		</div>
+		<div class="form" ng-if="vm.isSpherePreviewInited">
+			<label class="form-label" for="">FoV</label>
+            <div class="form-content">
+                <rzslider rz-slider-model="vm.hotspot_fov" rz-slider-options="vm.optionFov"></rzslider>
+            </div>
+        </div>
+	</div>
+</div>

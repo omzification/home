@@ -1,0 +1,38 @@
+<div id="MediaLibrary" class="on-creating_scene" role="dialog">
+    <!--<div class="close close-black" ng-click="vm.cancel()"><i class="ilpt-close"></i></div>-->
+    <div class="drop-overlay">
+        <span class="dropbox">Drop files here</span>
+    </div>
+    <div class="modal-header">
+        <div class="clearfix">
+            <h4 class="title">Dropbox rendering</h4>
+            <!--<input class="search" type="text" placeholder="Search" ng-model="vm.search['name']">-->
+        </div>
+        <uib-progressbar value="vm.makePanoProgress" title="{{ vm.makePanoProgress }}%" class="progress-striped active"></uib-progressbar>
+        <!--  -->
+    </div>
+    <div class="modal-body">
+
+        <div class="rendering-progress">
+            <h5>Rendering {{ vm.rendering }} / {{ vm.renderingTotal }} Sphere...</h5>
+            <ul class="scene-list">
+
+                <li ng-repeat="file in vm.filesCreateScene" class="item {{ file.class }}">
+                    <span class="name">{{ file.name }}</span>
+                    <div id="{{ file.id }}" class="status"></div>
+                </li>
+
+            </ul>
+        </div>
+        <!--<span class="note">You will be redirect to Editor after Rendering finish…<a href="" class="btn bg-grad">Start Editing now</a></span>-->
+    </div>
+
+</div>
+<style>
+    .picker-dialog-bg{
+        z-index: 2000;
+    }
+    .picker-dialog{
+        z-index: 2001;
+    }
+</style>

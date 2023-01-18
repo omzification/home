@@ -1,0 +1,41 @@
+<div class="row" id="GooglemapPluginConfigTpl">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Show on start</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.show_on_start" class="form-control">
+                        <option value="true" ng-selected="vm.config.show_on_start == true">Yes</option>
+                        <option value="false" ng-selected="vm.config.show_on_start == false">No</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <h3>Choose hotspot to show on the list</h3>
+            <div class="form">
+                <label class="form-label">Choose a Scene</label>
+                <div class="form-content">
+                    <select ng-model="vm.targetScene" class="form-control" ng-change="vm.changeScene()">
+                        <option ng-repeat="scene in vm.project.scenes" value="{{ scene._id }}">{{ scene.title }}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group" ng-if="vm.targetScene">
+            <div class="form full">
+                <div class="form-content">
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="select-all" ng-change="vm.toggleAll()" ng-model="vm.select_all">
+                        <label for="select-all"><span></span><strong>{{ !vm.select_all?'Select all hotspots':'Deselect all' }}</strong></label>
+                    </div>
+                    <div ng-repeat="hotspot in vm.hotspots" class="form-checkbox" ng-if="hotspot.type != 'sound'">
+                        <input type="checkbox" id="{{ vm.plugin.id }}{{ hotspot._id }}" ng-click="vm.selectHotspot()" ng-model="vm.config.scenes[vm.targetScene][hotspot._id]">
+                        <label for="{{ vm.plugin.id }}{{ hotspot._id }}"><span></span> {{ hotspot.title }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

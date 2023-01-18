@@ -1,0 +1,14 @@
+<style>
+    #controlbar-default .item img {
+        height: {{ vm.config.icon_size ? vm.config.icon_size + 'px':'30px'; }};
+        width: {{ vm.config.icon_size ? vm.config.icon_size + 'px':'30px'; }};
+    }
+</style>
+
+<div ng-style="vm.themeStyle" id="controlbar-default" ng-class="vm.config.position" ng-if="vm.availableButtons.length">
+    <ul>
+        <li class="item" id="{{ btn.id }}" title="{{ btn.name }}" ng-repeat="btn in vm.availableButtons | orderBy:'index':false" uib-tooltip="{{ btn.name }}" ng-class="{'divider': btn.isdivider}" ng-click="onbtnclick(btn)">
+            <img src="{{ btn.icon_url_custom?btn.icon_url_custom:btn.icon_url }}" alt="">
+        </li>
+    </ul>
+</div>

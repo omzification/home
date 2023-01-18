@@ -1,0 +1,26 @@
+<style>
+    #sprite-lptHotspot{{vm.hotspot._id}}{
+        z-index: 2!important;
+	}
+</style>
+<!-- Default icon -->
+<div class="hotspot-bubble hotspot-bubble-{{hotspot.type}} hotspot" ng-class="{'hide-title': config.show_title != 'yes'}" ng-if="hotspot.type != 'sound' && !hotspot.icon_custom && !config[hotspot.type + '_icon_custom']" id="hotspot_{{hotspot._id}}" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px; background-color: {{config.bg_color}};margin-top: {{hotspot.margin_top}}px; margin-left: {{hotspot.margin_left}}px">
+	<span class="arrow" ng-style="config.arrow_color"></span>
+	<span class="icon" ng-if="!hotspot.icon_custom && hotspot.type == 'point'" bg-src="{{targetScene.pano_thumb}}"></span>
+	<span class="icon" ng-if="!hotspot.icon_custom && hotspot.type != 'point'" style="width: {{ hotspot.width * 0.6 }}px; height: {{ hotspot.width * 0.6 }}px"></span>
+	<span class="icon" ng-if="hotspot.icon_custom" bg-src="{{ hotspot.icon_custom }}"></span>
+	<span class="title" style="color: {{config.text_color}}; line-height: {{ hotspot.width }}px; min-width: {{ hotspot.width }}px; margin-left: {{ hotspot.width/2 }}px; padding-left: {{ hotspot.width/2 + (hotspot.type == 'point'?10:0) }}px">
+		<span class="txt">{{ hotspot.title }}</span>
+		<span class="bg" style="background-color: {{config.bg_color}}"></span>
+	</span>
+</div>
+
+<!-- Has global custom icon -->
+<div class="hotspot-bubble hotspot-bubble-{{hotspot.type}} hotspot hotspot-custom" ng-if="hotspot.type != 'sound' && !hotspot.icon_custom && config[hotspot.type + '_icon_custom']" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px; background-image:url('{{ config[hotspot.type + '_icon_custom'] }}');">
+    <div class="custom_hs-name"><span>{{ hotspot.title }}</span></div>
+</div>
+
+<!-- Has specific / single custom icon -->
+<div class="hotspot-bubble hotspot-bubble-{{hotspot.type}} hotspot hotspot-custom" ng-if="hotspot.type != 'sound' && hotspot.icon_custom" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px; background-image:url({{ hotspot.icon_custom }});">
+    <div class="custom_hs-name"><span>{{ hotspot.title }}</span></div>
+</div>

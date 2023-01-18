@@ -1,0 +1,5 @@
+
+#PluginHotspotlist.show .toggle-btn {
+    background-image: url(images/close.svg)!important;
+    background-size: 26px;
+}

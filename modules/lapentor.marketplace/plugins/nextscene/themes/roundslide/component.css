@@ -1,0 +1,97 @@
+plugin-nextscene-roundslide nav a {
+  position: absolute;
+  top: 50%;
+  display: block;
+  outline: none;
+  text-align: left;
+  z-index: 1000;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+plugin-nextscene-roundslide nav a.prev {
+  left: 0;
+}
+
+plugin-nextscene-roundslide nav a.next {
+  right: 0;
+  padding-left: 10px;
+}
+
+plugin-nextscene-roundslide nav a svg {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+plugin-nextscene-roundslide .nav-roundslide a {
+  margin: 0 12px;
+  padding: 15px;
+  width: 62px;
+  height: 62px;
+  border-radius: 40px;
+  background: #ffffff;
+  -webkit-transition: width 0.3s, background-color 0.3s;
+  transition: width 0.3s, background-color 0.3s;
+}
+
+plugin-nextscene-roundslide .nav-roundslide .icon-wrap {
+  position: absolute;
+  width: 32px;
+}
+
+plugin-nextscene-roundslide .nav-roundslide a.prev .icon-wrap {
+  left: 15px;
+}
+
+plugin-nextscene-roundslide .nav-roundslide a.next .icon-wrap {
+  right: 15px;
+}
+
+plugin-nextscene-roundslide .nav-roundslide svg.icon {
+  fill: #7ba0c7;
+}
+
+plugin-nextscene-roundslide .nav-roundslide h3 {
+  position: absolute;
+  top: 0;
+  margin: 0;
+  color: #566473;
+  text-transform: uppercase;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  font-weight: 400;
+  font-size: 0.85em;
+  line-height: 64px;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  max-width: 147px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+plugin-nextscene-roundslide .nav-roundslide a.prev h3 {
+  right: 9px;
+  -webkit-transform: translateX(100%);
+  transform: translateX(100%);
+}
+
+plugin-nextscene-roundslide .nav-roundslide a.next h3 {
+  left: 20px;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+}
+
+plugin-nextscene-roundslide .nav-roundslide a:hover {
+  width: 215px;
+  background: #fff;
+}
+
+plugin-nextscene-roundslide .nav-roundslide a:hover h3 {
+  opacity: 1;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}

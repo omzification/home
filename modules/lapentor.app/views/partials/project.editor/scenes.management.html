@@ -1,0 +1,77 @@
+
+<div id="scene-management" class="panel">
+    <fluid-loading ng-if="vm.sceneManagementLoading" type="opaque"></fluid-loading>
+    <div class="panel-header no-border">
+        <div class="search full m-hidden">
+            <input ng-focus="vm.sceneListOpen = true" type="text" class="form-control form-transparent" placeholder="Search scene..." ng-model="vm.searchScene['title']">
+        </div>
+        <div class="cta-button">
+            <ul class="clearfix">
+                <li class="btn-reveal">
+                    <span class="toggler">+ <i class="ilpt-insert-image"></i></span>
+                    <div class="reveal down">
+                        <ul class="">
+                            <li ng-click="vm.openMediaLib()">From Media Library</li>
+                            <li id="loadSphereFromDropbox" class="btn-reveal">
+                                <div class="header">From Dropbox</div>
+                                <div class="choices reveal">
+                                    <ul>
+                                        <li><span ng-click="vm.makePanoDropBox()">Standard</span></li>
+                                        <li><span ng-click="vm.makePanoDropBox('multires')">Multi-resolution</span></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li ng-click="vm.newGroup()">
+                    + <i class="ilpt-open-folder"></i>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="panel-body" ui-sortable="vm.groupSortableOptions" ng-model="vm.groups">
+        <div class="scene-group" ng-repeat="group in vm.groups" ng-class="{'not-sortable': group._id == 'uncategorized'}">
+            <!-- group loading -->
+            <fluid-loading ng-if="vm.groupLoading == group._id" type="opaque"></fluid-loading>
+            <!-- Group header -->
+            <div class="scene-group-title">
+                <div class="box">
+                    <div class="drag group-drag-trigger">
+                        <div class="dots"><span></span><span></span><span></span></div>
+                    </div>
+                    <span>
+                        <input type="text" ng-model="group.title" ng-change="vm.updateGroup(group)" ng-if="group._id != 'uncategorized'">
+                        <input type="text" ng-model="group.title" ng-if="group._id == 'uncategorized'" readonly>
+                    </span>
+                </div>
+                <!-- Delete group btn -->
+                <i class="btn-icon delete-button ilpt-trashcan" ng-click="vm.deleteGroup(group)"></i>
+                <!-- Collapse group btn -->
+                <i ng-show="vm.collapsedGroup.indexOf(group._id) == -1" ng-click="vm.collapsedGroup.push(group._id)" class="btn-icon collapse-button ilpt-minus"></i>
+                <i ng-show="vm.collapsedGroup.indexOf(group._id) != -1" ng-click="vm.collapsedGroup.splice(vm.collapsedGroup.indexOf(group._id),1)" class="btn-icon collapse-button ilpt-plus"></i>
+            </div>
+            <!-- List scene in group -->
+            <ul class="scenes" ui-sortable="vm.sceneSortableOptions" ng-model="group.scenes" ng-show="vm.collapsedGroup.indexOf(group._id) == -1">
+                <div class="card-scene" ng-repeat="scene in group.scenes | filter:vm.searchScene" ng-class="{'active': scene._id == vm.scene._id}">
+                    <div class="img" ui-sref="project.editor({id: scene.project_id, scene_id: scene._id})" alt="{{ scene.title }}" style="background-image:url({{ scene.pano_thumb }}?{{ vm.thumbCacheVersion }});"></div>
+                    <div class="drag scene-drag-trigger">
+                        <div class="dots">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="description">
+                        <input type="text" ng-model="scene.title" ng-change="vm.updateSceneInGroup(scene)"></input>
+                        <!-- <input ng-if="scene._id == vm.scene._id" type="text" ng-model="vm.scene.title"></input> -->
+                    </div>
+                    <ul class="action">
+                        <li ng-click="vm.openReplacePanoMediaLib(scene._id)" uib-tooltip="Replace"><i class="ilpt-refresh"></i></li>
+                        <li ng-click="vm.deleteScene(scene._id)" uib-tooltip="Delete"><i data-toggle="modal" data-target="" class="ilpt-trashcan"></i></li>
+                    </ul>
+                </div>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Font Size</label>
+                <div class="form-content">
+                    <rzslider rz-slider-model="vm.config.fontsize" rz-slider-options="{floor: 8, ceil: 80, showSelectionBar: true, step: 1}"></rzslider>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Choose a font</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.fontfamily" class="form-control" ng-change="vm.fontFamilyChange()">
+                        <option value="">---</option>
+                        <option ng-repeat="font in vm.googlefonts" value="{{ font.family }}">{{ font.family }}</option>
+                    </select>
+                    <div id="font-preview" style="">
+                        <div class="form-control">
+                            <div style="font-size: {{vm.config.fontsize}}px; color: {{vm.config.color}}; font-family: '{{vm.config.fontfamily}}'; ">West quickly gave Bert handsome prizes for six juicy plum</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Text color</label>
+                <div class="form-content">
+                    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.color">
+                    <span class="demo-bg-block" style="background-color:{{ vm.config.color }}"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Choose text position:</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.position" class="form-control">
+                        <option ng-repeat="opt in vm.positionOptions" ng-selected="{{ vm.config.position == opt.value }}" value="{{ opt.value }}">{{ opt.title }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form" ng-if="vm.config.position.indexOf('top') != -1">
+                <label class="form-label" for="">Top</label>
+                <div class="form-content">
+                    <rzslider rz-slider-model="vm.config.offset_top" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+                </div>
+            </div>
+            <div class="form" ng-if="vm.config.position.indexOf('bottom') != -1">
+                <label class="form-label" for="">Bottom</label>
+                <div class="form-content">
+                    <rzslider rz-slider-model="vm.config.offset_bottom" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+                </div>
+            </div>
+            <div class="form" ng-if="vm.config.position.indexOf('left') != -1">
+                <label class="form-label" for="">Left</label>
+                <div class="form-content">
+                    <rzslider rz-slider-model="vm.config.offset_left" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+                </div>
+            </div>
+            <div class="form" ng-if="vm.config.position.indexOf('right') != -1">
+                <label class="form-label" for="">Right</label>
+                <div class="form-content">
+                    <rzslider rz-slider-model="vm.config.offset_right" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

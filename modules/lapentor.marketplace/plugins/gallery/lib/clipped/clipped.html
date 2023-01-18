@@ -1,0 +1,42 @@
+<div oc-lazy-load="['bower_components/angular-svg-base/src/svgDirs.js']">
+    <div id="PluginGalleryClippedSvg">
+        <div class="gallery-clipped" ng-show="vm.ShowGallery">
+            <span class="gallery-close" ng-click="vm.ShowGallery = !vm.ShowGallery"></span>
+            <div class="cd-svg-clipped-slider" data-selected="M780,0H20C8.954,0,0,8.954,0,20v760c0,11.046,8.954,20,20,20h760c11.046,0,20-8.954,20-20V20
+    C800,8.954,791.046,0,780,0z" data-lateral="M795.796,389.851L410.149,4.204c-5.605-5.605-14.692-5.605-20.297,0L4.204,389.851
+    c-5.605,5.605-5.605,14.692,0,20.297l385.648,385.648c5.605,5.605,14.692,5.605,20.297,0l385.648-385.648
+    C801.401,404.544,801.401,395.456,795.796,389.851z">
+                <div class="gallery-wrapper">
+                    <ul class="gallery">
+                        <li class="{{ ((key+1) == 1)?'left':'' }}{{ ((key+1) == 2)?'selected':'' }}{{ ((key+1) == 3)?'right':'' }}" ng-repeat="(key,image) in vm.gallery | orderBy:'sort':false">
+                            <div class="svg-wrapper">
+                                <svg viewBox="0 0 800 800">
+                                    <title>Animated SVG</title>
+                                    <defs>
+                                        <clipPath id="cd-image-{{ (key+1) }}">
+                                            <path ng-if="(key+1) != 2" id="cd-morphing-path-{{ (key+1) }}" d="M795.796,389.851L410.149,4.204c-5.605-5.605-14.692-5.605-20.297,0L4.204,389.851 c-5.605,5.605-5.605,14.692,0,20.297l385.648,385.648c5.605,5.605,14.692,5.605,20.297,0l385.648-385.648 C801.401,404.544,801.401,395.456,795.796,389.851z" />
+                                            <path ng-if="(key+1) == 2" id="cd-morphing-path-{{ (key+1) }}" d="M780,0H20C8.954,0,0,8.954,0,20v760c0,11.046,8.954,20,20,20h760c11.046,0,20-8.954,20-20V20 C800,8.954,791.046,0,780,0z" />
+                                        </clipPath>
+                                    </defs>
+                                    <image height='800px' width="800px" clip-path="url(#cd-image-{{ (key+1) }})" xlink:href="" ng-href="{{ image.path }}"></image>
+                                    <use xlink:href="{{ '#cd-morphing-path-'+(key+1) }}" class="cover-layer" />
+                                </svg>
+                            </div>
+                            <!-- .svg-wrapper -->
+                        </li>
+                    </ul>
+                    <nav>
+                        <ul class="navigation">
+                            <li><a href="#0" class="prev">Prev</a></li>
+                            <li><a href="#0" class="next">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- .gallery-wrapper -->
+                <ul class="caption">
+                    <li class="{{ ((key+1) == 0)?'left':'' }}{{ ((key+1) == 1)?'selected':'' }}{{ ((key+1) == 2)?'right':'' }}" ng-repeat="(key,image) in vm.gallery | orderBy:'sort'"></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

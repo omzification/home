@@ -1,0 +1,455 @@
+#setTargetViewBtn {bottom: 0;position: absolute;width: 100%;background: rgba(0, 0, 0, 0.5);border: none;outline: none;padding: 12px 0;}
+
+#setTargetViewBtn:hover {
+    background: rgba(0, 0, 0, 0.75);
+}
+
+.hotspot-form-wrapper {
+    position: fixed;
+    top: 46px;
+    left: 0;
+    bottom: 0;
+    z-index: 100;
+}
+
+.hotspot-form-wrapper .form-content .custom-icon-reset {
+    position: absolute;
+    z-index: 1;
+    right: 12px;
+    top: 12px;
+    background: rgba(0,0,0,.0);
+    border-radius: 50%;
+    padding: 3px;
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+    line-height: 20px;
+    text-align: center;
+    opacity: .5;
+    font-size: 18px;
+}
+
+.hotspot-form-wrapper .form-content .custom-icon-reset:hover {
+    opacity: 1;
+}
+
+hotspot-editable-point .hotspot-form-wrapper {
+    display: none;
+}
+
+.hotspot-form {
+    background: #3e3e3e;
+    width: 310px;
+    color: white;
+    border-right: 1px solid rgba(255,255,255,.2);
+}
+
+.hs-header {
+    height: 32px;
+    line-height: 32px;
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    border: none;
+}
+
+.hs-header h2 {
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-align: left;
+    position: relative;
+    margin: 0;
+    padding: 10px 36px 10px 12px;
+    font-weight: 100;
+    color: rgba(255,255,255,.25);
+}
+
+.hs-header h2 strong {
+    font-weight: 600;
+    color: white;
+    margin-left: 4px;
+}
+
+.hs-body {
+    height: calc(100vh - 131px);
+    padding: 0;
+    overflow-y: auto;
+}
+
+.hs-body .hs-section {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 6px 0;
+}
+
+.hs-body>ng-form>.hs-section:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.hs-body .hs-section-tt {
+    padding: 6px 12px;
+    display: block;
+}
+
+.form.full>*, .form.full label.form-label {
+    width: 100%;
+    text-align: left;
+}
+
+.hs-body .form {
+    padding: 0 12px;
+}
+
+.hs-body .hs-section .form-label {
+    margin-top: 0;
+    padding-top: 0;
+}
+
+.hs-body .hs-section .form.full .form-label {
+    width: 100%;
+}
+
+.form .form-content {
+    width: calc(100% - 70px);
+    display: inline-block;
+    padding-left: 12px;
+    vertical-align: top;
+    position: relative;
+}
+
+.form .form-content .sub-form label.form-label {
+    display: block;
+    width: 100%;
+    padding: 0;
+}
+
+.form .form-content .sub-form .form-content {
+    display: block;
+    width: 100%;
+    padding: 0;
+    margin-bottom: 12px;
+}
+
+#font-preview {
+    margin: 6px 0;
+}
+
+#font-preview .form-control {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    min-height: auto;
+}
+
+
+.custom-icon-img {
+    border: 1px solid rgba(255,255,255,.25);
+    width: calc(100% - 48px)!important;
+    height: auto;
+    margin-left: 0;
+}
+
+.form.auto .form-content {
+    width: auto;
+    padding-left: 0;
+}
+
+.form .form-content>.btn {
+    width: 100%;
+    min-height: 42px;
+    background: rgba(0,0,0,0.5);
+    border: 1px solid rgba(2555,255,255,0.25);
+}
+
+.form.full .form-content {
+    width: 100%;
+    padding: 0;
+}
+
+.form .form-content>* {
+    width: 100%;
+}
+
+#font-preview {
+    margin: 6px 0;
+}
+
+#font-preview .form-control {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    min-height: auto;
+}
+
+.form .form-content .toggle-switch {border: 1px solid rgba(255,255,255,0.25);}
+
+#lensTour {
+    border: 1px solid rgba(255,255,255,0.25);
+    margin-bottom: 12px;
+}
+
+.form .form-content .form-checkbox {
+    margin-bottom: 0;
+}
+
+.hs-body a {
+    color: #ef5041;
+}
+
+.hs-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.25);
+    padding: 12px;
+    background: #494949;
+    border: none;
+}
+
+.hs-footer .btn {
+    height: 28px;
+    line-height: 28px;
+    margin-right: 4px;
+}
+
+.hs-footer .btn-hs-delete {
+    padding: 0 24px;
+    background: rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    height: 30px;
+    color: white;
+}
+
+.hs-footer .btn-hs-delete:hover {
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.hotspot-form .btn-danger {
+    color: white;
+}
+
+.hotspot-form .btn-save.invalid {
+    opacity: .4;
+    filter: alpha(opacity=40);
+}
+
+.hotspot-form[type=article], .hotspot-form[type=textf] {width: 420px;}
+
+.hs-footer img {
+    max-width: 100%;
+    margin-top: -14px;
+    position: relative;
+    top: 6px;
+    display: inline-block;
+}
+
+hotspot-editable-image .hs-body .form.full img {
+    border-radius: 0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.hs-header .close {
+    font-size: 12px;
+    position: absolute;
+    right: 0;
+    top: 2px;
+    opacity: 1;
+    width: 32px;
+    height: 29px;
+    line-height: 29px;
+    background-color: #3e3e3e;
+    border-radius: 0;
+    text-align: center;
+    color: white;
+    text-shadow: none;
+}
+
+.hotspot-form audio {
+    max-width: 100%;
+    margin-top: 10px;
+}
+
+.hotspot-form .error {
+    color: #EF5041;
+    font-size: 12px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+.hotspot-form .tip {
+    margin: 4px;
+    opacity: 0.5;
+}
+
+.form .form-content .form-control, .form-group .form .form-content .form-control {
+    min-height: 42px;
+    background: #201F1F;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    width: 100%;
+    vertical-align: initial;
+}
+
+.form .form-content .btn.form-control {
+    box-shadow: 0 2px 6px 1px rgba(0,0,0,.25);
+    border-radius: 3px;
+    background: #d6d6d6;
+    color: initial;
+    border: none;
+}
+
+.form .form-content .btn.form-control:hover {
+    transform: translateY(-1px);
+    -webkit-transform: translateY(-1px);
+    box-shadow: 0 6px 12px 1px rgba(0,0,0,0.4);
+    background: white;
+}
+
+.form .form-content .form-control:focus {
+    border-color: rgba(255,255,255,0.5);
+}
+
+.hotspot-form .form-control:focus {
+    border-color: white;
+}
+
+.note-editor.note-frame {
+    border: 2px solid rgb(255, 255, 255);
+    box-shadow: none;
+    margin: 0;
+}
+.note-editor.note-frame ul,
+.note-editor.note-frame ul li{
+    list-style: disc;
+}
+.note-editor.note-frame ul{
+    padding-left: 10px;
+}
+
+.hotspot-form .btn {
+    border-radius: 25px;
+}
+
+.hotspot-form .btn-save {
+    padding: 0 42px;
+}
+
+.hotspot-form select {
+    height: 42px;
+}
+
+.hs-point-preview .viewer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.hs-point-preview .tip {/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&1+0,0+100 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    display: block;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    margin: 0;
+    opacity: 1;
+}
+
+.hs-point-preview {
+    width: 100%;
+    position: relative;
+    height: 240px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/*Summernote*/
+.note-editor .dropdown-menu > li{
+    padding: 0;
+    border: none;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.note-editor .dropdown-menu > li pre {
+    padding: 8px 12px;
+    border: none;
+}
+
+.note-editor .open > .dropdown-toggle.btn-default {background: rgba(0, 0, 0, 0.15);color: white;border-radius: 4px!important;}
+
+.note-editor .dropdown-menu > li:hover {
+    background: rgba(0,0,0,.25);
+}
+
+.note-editor .dropdown-menu > li * {margin: 0;}
+
+.note-editor .dropdown-menu > li p {margin: 0;}
+.note-editor .dropdown-menu li a{
+    padding: 4px 12px;
+    color: white;
+}
+
+.note-editor .dropdown-menu li a blockquote {padding: 0px 8px;}
+
+.note-editor .dropdown-menu li a i {
+    display: none;
+}
+
+.note-editor .note-align,
+.note-editor .note-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.note-editor .note-align .note-btn,
+.note-editor .note-list .note-btn {
+    background: transparent;
+    border-radius: 4px!important;
+}
+
+.note-editor .note-align .note-btn:hover {
+    background: rgba(0,0,0,.25);
+}
+.note-editor .note-btn{
+    line-height: 0;
+    border-radius: 4px!important;
+    background: rgb(56, 56, 56);
+    color: white;
+}
+.note-editor .note-toolbar{
+    padding: 4px;
+    background: #383838;
+}
+
+.note-editor .panel-heading.note-toolbar>.btn-group {
+    margin: 0;
+}
+.note-editor .panel-heading.note-toolbar .dropdown-menu{
+    border: none;
+    border-radius: 0;
+    margin-top: 5px;
+    padding: 6px;
+    background: #3e3e3e;
+    border: 1px solid rgba(255,255,255,.25);
+    color: white;
+}
+
+.onEditor.modal-open .modal .modal-dialog .modal-content {
+    color: white;
+}
+
+.onEditor .text-muted {
+    color: white;
+}

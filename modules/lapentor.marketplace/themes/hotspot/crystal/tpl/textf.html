@@ -1,0 +1,6 @@
+<div ng-if="vm.hotspot.content" class="hotspot-crystal-textf-tooltip" id="textf{{ hotspot.name }}" ng-style="{'background-color': config.popup_bg_color, 'color': config.popup_text_color, 'width': hotspot.popup_width}">
+    <div class="close close-black" ng-click="vm.togglePopover($event)"><i class="ilpt-close"></i></div>
+    <div class="hotspot-content hotspot-textf-content" ng-nicescroll>
+    	<div class="content-wrapper" ng-bind-html="hotspot.content"></div>
+    </div>
+</div>

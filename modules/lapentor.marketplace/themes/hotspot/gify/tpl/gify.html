@@ -1,0 +1,16 @@
+<!-- Default icon -->
+<div ng-if="!config[hotspot.type + '_icon_custom'] && !vm.hotspot.icon_custom" class="hotspot-gify hotspot-gify-{{hotspot.type}} hotspot" bg-src="{{ hotspot.icon_custom }}" ng-style="{width: hotspot.width*2, height: hotspot.width*2}">
+	<div class="thumb" bg-src="{{targetScene.pano_thumb}}"></div>
+	<div class="icon"></div>
+	<div class="custom_hs-name"><span>{{ hotspot.title }}</span></div>
+</div>
+
+<!-- Has global custom icon -->
+<div ng-if="config[hotspot.type + '_icon_custom'] && !vm.hotspot.icon_custom" class="hotspot-gify hotspot-gify-{{hotspot.type}} hotspot" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px; background-image:url('{{ config[hotspot.type + '_icon_custom'] }}');">
+	<div class="custom_hs-name"><span>{{ hotspot.title }}</span></div>
+</div>
+
+<!-- Has specific / single custom icon -->
+<div ng-if="vm.hotspot.icon_custom" class="hotspot-gify hotspot-gify-{{hotspot.type}} hotspot" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px; background-image:url('{{ hotspot.icon_custom }}');">
+	<div class="custom_hs-name"><span>{{ hotspot.title }}</span></div>
+</div>

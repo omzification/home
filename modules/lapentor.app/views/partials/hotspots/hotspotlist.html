@@ -1,0 +1,10 @@
+<div id="SceneEditHotspotList">
+	<ul>
+		<li ng-repeat="hotspot in vm.hotspots">
+			<img ng-src="assets/images/hotspots/{{ hotspot.type }}.png" alt="{{ hotspot.title }}" class="icon">
+			<span class="title">{{ hotspot.title }}</span>
+			<span ng-click="vm.deleteHotspot()" uib-tooltip="Delete hotspot" tooltip-placement="left" class="delete btn ilpt-trashcan"></span>
+			<span ng-click="vm.sceneEditSphere.moveViewerTo(hotspot.position.x, hotspot.position.y)" uib-tooltip="Move to hotspot location" tooltip-placement="left" class="moveto btn fa fa-bullseye"></span>
+		</li>
+	</ul>
+</div>

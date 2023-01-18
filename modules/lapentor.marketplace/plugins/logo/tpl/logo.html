@@ -1,0 +1,38 @@
+<style>
+    #PluginLogo .item-logo {
+        position: absolute;
+        z-index: 400;
+    }
+    #PluginLogo .item-logo.top-center,
+    #PluginLogo .item-logo.bottom-center {
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+        -moz-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+    }
+    #PluginLogo .item-logo.bottom-center{bottom: 0;}
+    #PluginLogo .item-logo img{
+        position: relative;
+        cursor: pointer;
+    }
+    .plugin-modal.logo-iframe-popup{
+        background-color: white;
+        height: 90vh;
+    }
+</style>
+<div id="PluginLogo" ng-if="!vm.config.version">
+    <a ng-if="vm.config.link" href="{{ vm.config.link }}" target="{{ vm.config.link != '#'?'_blank':'_self'}}">
+        <img class="{{ vm.config.align }} item-logo" ng-src="{{ vm.config.icon }}" width="{{ vm.config.width }}" style="{{ vm.margin }}">
+    </a>
+    <img ng-if="!vm.config.link" class="{{ vm.config.align }} item-logo" ng-src="{{ vm.config.icon }}" width="{{ vm.config.width }}" style="{{ vm.margin }}">
+</div>
+
+<!-- Version 2 -->
+<div id="PluginLogo" ng-if="vm.config.version">
+    <ul class="list-logos">
+        <li class="item-logo {{logo.align}}" ng-repeat="logo in vm.arrayTargetLogos | orderBy:'sort':false " ng-if="logo.scenes[vm.sceneId]" style="{{ logo.margins }}">
+            <img ng-click="vm.clickLogo(logo)" src="{{ logo.path }}" width="{{ logo.width }}" height="{{ logo.height }}"/>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,181 @@
+@media (max-width: 480px) {
+  .hs-header .close {
+    top: 0;
+    right: -10px;
+    box-shadow: none;
+    height: 25px;
+    padding: 0;
+    width: 25px;
+    line-height: 20px;
+  }
+  .hotspot-form,
+  .hotspot-form[type=article],
+  .hotspot-form[type=textf] {
+    width: 100%;
+    margin-left: -50%;
+    top: -45px;
+    transform: translateY(0);
+    -webkit-transform: translateY(0);
+    bottom: 0;
+    border-radius: 0;
+  }
+  .hs-body {
+    max-height: 85%;
+  }
+  #SphereEditable:after {
+    width: 61px;
+  }
+  #scene-editor-market .card-component {
+    width: 160px;
+    height: 87px;
+  }
+  header>.container .live-view {
+    background: transparent;
+    color: #28324e;
+    box-shadow: none;
+    font-size: 29px;
+    width: 38px;
+    padding: 0;
+    line-height: 32px;
+  }
+  header {
+    padding: 7px 5px;
+    margin-bottom: 15px;
+  }
+  .auth-form2 .login {
+    width: 90%;
+    padding: 25px;
+  }
+  #marketplaceToggle .text {
+    bottom: -26px;
+  }
+  #scene-toolbar {
+    background: transparent;
+    bottom: 0;
+    right: 0;
+    top: 0px;
+    border-radius: 0;
+    z-index: 2;
+    box-shadow: none;
+  }
+  #dashboard .search {
+    width: 88%;
+  }
+  #dashboard .btn-addNew {
+    right: 10px;
+    top: 40px;
+  }
+  #scene-editor-market .topbar li i {
+    display: none;
+  }
+  #scene-editor-market .topbar li {
+    padding: 0 10px;
+  }
+  .m-hidden {
+    display: none !important;
+  }
+  .m-show {
+    display: block !important;
+  }
+  .panel .panel-body {
+    padding: 10px;
+  }
+  .panel-list.x2 .panel {
+    width: 100%;
+  }
+  #dashboard .card-project {
+    width: 100%;
+    height: 130px;
+  }
+  header .logo img {
+    height: 25px;
+    float: left;
+    margin-top: 6px;
+  }
+  header .btn-addNew {
+    bottom: -66px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  #dropdown-header-profile .dropdown-menu {
+    left: -24px;
+  }
+  #scene-management .panel-header .toggle-button {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  #marketplaceToggle {
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    line-height: 37px;
+    left: 8px;
+    bottom: 16px;
+    padding: 0;
+  }
+  #scene-management .panel-header .cta-button {
+    top: 10px;
+  }
+  #scene-management .panel-body {
+    margin-top: 15px;
+  }
+  .toggle-management #scene-management {
+    width: 100%;
+  }
+  #editor header {
+    height: 45px;
+    padding-top: 4px;
+  }
+  #editor .main {
+    height: calc(100vh - 45px);
+  }
+  #editor .live-view {
+    border-radius: 50%;
+    width: 40px;
+    text-align: center;
+    padding: 0;
+    line-height: 37px;
+    background: transparent;
+    box-shadow: none;
+    right: 8px;
+    top: -1px;
+  }
+  #editor .live-view i {
+    font-size: 30px;
+    text-align: center;
+    margin: 0;
+    color: #28324e;
+  }
+  #scene-editor-market .inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    left: 0;
+    right: 0;
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0);
+    top: 0;
+  }
+  #scene-editor-market header .search {
+    margin-top: 4px;
+    width: 70%;
+    right: auto;
+    left: 49px;
+  }
+  #scene-editor-market header .title {
+    font-size: 24px;
+    margin: 0;
+  }
+  #scene-editor-market header .close {
+    /* height: 20px; */
+    right: 0;
+    /* top: 17px; */
+    top: 0;
+    box-shadow: none;
+    font-size: 47px;
+    height: 50px;
+  }
+}

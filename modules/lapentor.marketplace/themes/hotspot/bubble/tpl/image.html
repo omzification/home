@@ -1,0 +1,6 @@
+<div id="" class="hotspot-modal-bubble hotspot-bubble-image" ng-style="{'color': config.text_color, 'border-color': config.bg_color }">
+    <div class="close" ng-style="{'background-color': config.bg_color, 'color': config.text_color }" ng-click="vm.cancel()" ng-style="config.main_color"><i class="ilpt-close"></i></div>
+    <a ng-if="hotspot.url" target="_blank" ng-href="{{ hotspot.url || '#' }}"><img loading-src="{{ hotspot.src }}" alt="hotspot.title" class="image"></a>
+    <img ng-if="!hotspot.url" loading-src="{{ hotspot.src }}" alt="hotspot.title" class="image">
+    <p ng-if="hotspot.caption" class="caption" ng-style="{'background-color': config.bg_color }">{{ hotspot.caption }}</p>
+</div>

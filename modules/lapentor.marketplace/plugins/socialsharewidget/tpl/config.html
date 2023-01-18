@@ -1,0 +1,89 @@
+<style>
+    .custom-icon-reset{
+        position: absolute; right: 0;top: 20px; z-index: 2; 
+        transition: all 0.4s;
+        -webkit-transition: all 0.4s;
+    }
+    .custom-icon-reset:hover{
+        cursor: pointer;
+        color: #F6C964;
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+    }
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label for="" class="form-label">Share url <br><small>(if not set, the project public url will be use)</small></label>
+                
+                <div class="form-content">
+                    <input type="text" class="form-control" ng-model="vm.config.share_url">
+                </div>
+            </div>
+
+            <div class="form">
+                <label for="" class="form-label">Theme</label>
+                <div class="form-content">
+                    <select class="btn form-control" ng-model="vm.config.theme_id">
+                        <option value="gooey">Gooey</option>
+                        <option value="sticky">Sticky</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div ng-if="vm.config.theme_id == 'gooey'">
+                <div class="form" >
+                    <label class="form-label" for="">Position</label>
+                    <div class="form-content">
+                        <select class="btn form-control" ng-model="vm.config.position">
+                            <option value="bottom-left">Bottom left</option>
+                            <option value="bottom-right">Bottom right</option>
+                            <option value="top-left">Top left</option>
+                            <option value="top-right">Top right</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form">
+                    <label class="form-label" for="">Toggle icon color</label>
+                    <div class="form-content">
+                        <span class="demo-bg-block" style="background-color: {{ vm.config.toggle_icon_color }}"></span>
+                        <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.toggle_icon_color">
+                    </div>
+                </div>
+                <div class="form">
+                    <label class="form-label" for="">Toggle icon background color</label>
+                    <div class="form-content">
+                        <span class="demo-bg-block" style="background-color: {{ vm.config.toggle_icon_bg_color }}"></span>
+                        <input type="text" placeholder="click to choose" class="form-control" colorpicker="hex" ng-model="vm.config.toggle_icon_bg_color">
+                    </div>
+                </div>
+            </div>
+            <div ng-if="vm.config.theme_id == 'sticky'">
+                <div class="form">
+                    <label class="form-label" for="">Position</label>
+                    <div class="form-content">
+                        <select class="form-control" ng-model="vm.config.position">
+                            <option value="left">Left</option>
+                            <option value="right">Right</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form" ng-repeat="provider in vm.socialProviders" style="position: relative;">
+                <label class="form-label" for="">{{ provider.title }} icon</label>
+                <span ng-if="vm.config['custom_'+provider.slug+'_icon']" class="ilpt-close custom-icon-reset" ng-click="vm.deleteCustomIcon(provider.slug)" title="Remove custom icon"></span>
+                <div class="form-content">
+                    <img style="width: 40px;" class="img-center" ng-if="vm.config['custom_'+provider.slug+'_icon']" ng-src="{{ vm.config['custom_'+provider.slug+'_icon'] }}" alt="">
+                    <button class="btn btn-default form-control" ng-click="vm.openCustomIconMediaLib(provider.slug)">
+                        <i class="ilpt-insert-image"></i> Choose/upload {{ provider.title }} icon
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

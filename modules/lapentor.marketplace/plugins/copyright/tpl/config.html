@@ -1,0 +1,55 @@
+<div class="row">
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="">Enter copyright text</label>
+            <input type="text" ng-model="vm.config.text" class="form-control" style="font-size: {{vm.config.fontsize || '14'}}px; color: {{ vm.config.color || 'white'  }}; font-family: '{{vm.config.fontfamily}}'; ">
+        </div>
+        <label for="">Font Size</label>
+        <rzslider rz-slider-model="vm.config.fontsize" rz-slider-options="{floor: 8, ceil: 80, showSelectionBar: true, step: 1}"></rzslider>
+        <div class="divider-20"></div>
+        <div class="form-group">
+            <label for="">Choose a font</label>
+            <select ng-model="vm.config.fontfamily" class="form-control" ng-change="vm.fontFamilyChange()">
+                <option value="">---</option>
+                <option ng-repeat="font in vm.googlefonts" value="{{ font.family }}">{{ font.family }}</option>
+              </select>
+        </div>
+        <div class="divider-20"></div>
+        <div class="form">
+            <label>Text color</label>
+            <div class="form-content">
+                <span class="demo-bg-block" style="background-color: {{ vm.config.color }}"></span>
+                <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.color">
+            </div>
+        </div>
+        <div class="divider-20"></div>
+        <div class="form-group">
+            <label for="">Url</label>
+            <input type="text" ng-model="vm.config.url" class="form-control">
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label for="">Choose text position:</label>
+            <select ng-model="vm.config.position" class="form-control">
+                <option ng-repeat="opt in vm.positionOptions" ng-selected="{{ vm.config.position == opt.value }}" value="{{ opt.value }}">{{ opt.title }}</option>
+            </select>
+        </div>
+        <div class="form-group" ng-if="vm.config.position.indexOf('top') != -1">
+            <label for="">Top</label>
+            <rzslider rz-slider-model="vm.config.offset_top" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+        </div>
+        <div class="form-group" ng-if="vm.config.position.indexOf('bottom') != -1">
+            <label for="">Bottom</label>
+            <rzslider rz-slider-model="vm.config.offset_bottom" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+        </div>
+        <div class="form-group" ng-if="vm.config.position.indexOf('left') != -1">
+            <label for="">Left</label>
+            <rzslider rz-slider-model="vm.config.offset_left" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+        </div>
+        <div class="form-group"  ng-if="vm.config.position.indexOf('right') != -1">
+            <label for="">Right</label>
+            <rzslider rz-slider-model="vm.config.offset_right" rz-slider-options="{floor: 0, ceil: 300, showSelectionBar: true, step: 1 }"></rzslider>
+        </div>  
+    </div>
+</div>

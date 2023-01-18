@@ -1,0 +1,55 @@
+<div class="hs-section">
+	<span class="hs-section-tt">Youtube / Vimeo URL</span>
+	<div class="form-group">
+		<div class="form full">
+			<div class="form-content">
+				<input type="text" class="form-control" placeholder="e.g: https://youtu.be/fBD7QCQe5sY" ng-model="hotspot.src">
+			</div>
+		</div>
+	</div>
+
+	<span class="hs-section-tt">Display Type</span>
+	<div class="form-group">
+		<div class="form full">
+			<div class="form-content">
+				<select ng-model="hotspot.display_type" class="form-control">
+					<option value="popup">Full screen popup</option>
+					<option value="window">Small Window</option>
+				</select>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group" ng-if="hotspot.display_type === 'window'">
+		<div class="form full">
+			<div class="form-content">
+				<label for="">Width (px)</label>
+				<input ng-model="hotspot.window_width" type="number" min="100" placeholder="E.g: 480" class="form-control">
+			</div>
+		</div>
+	</div>
+	<div class="form-group" ng-if="hotspot.display_type === 'window'">
+		<div class="form full">
+			<div class="form-content">
+				<label for="">Height (px)</label>
+				<input ng-model="hotspot.window_height" type="number" min="100" placeholder="E.g: 300" class="form-control">
+			</div>
+		</div>
+	</div>
+
+	<span class="hs-section-tt" ng-if="hotspot.display_type === 'window'">Position</span>
+	<div class="form-group" ng-if="hotspot.display_type === 'window'">
+		<div class="form full">
+			<div class="form-content">
+				<select ng-model="hotspot.window_position" class="form-control">
+					<option value="bottom-right">Bottom Right</option>
+					<option value="bottom-left">Bottom Left</option>
+					<option value="top-left">Top Left</option>
+					<option value="top-right">Top Right</option>
+					<option value="center-top">Center Top</option>
+					<option value="center-bottom">Center Bottom</option>
+				</select>
+			</div>
+		</div>
+	</div>
+</div>

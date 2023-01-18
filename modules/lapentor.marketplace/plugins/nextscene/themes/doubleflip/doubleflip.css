@@ -1,0 +1,149 @@
+plugin-nextscene-doubleflip nav a {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  outline: none;
+  text-align: left;
+  z-index: 1000;
+}
+
+plugin-nextscene-doubleflip nav a.prev {
+  left: 0;
+}
+
+plugin-nextscene-doubleflip nav a.next {
+  right: 0;
+}
+
+plugin-nextscene-doubleflip nav a svg {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a.prev {
+  -webkit-perspective-origin: 100% 50%;
+  perspective-origin: 100% 50%;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a.next {
+  -webkit-perspective-origin: 0% 50%;
+  perspective-origin: 0% 50%;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip .icon-wrap {
+  position: relative;
+  z-index: 100;
+  display: block;
+  width: 45px;
+  height: 100px;
+  background-color: #16a085;
+  -webkit-transition: background-color 0.3s 0.3s;
+  transition: background-color 0.3s 0.3s;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip svg.icon {
+  position: relative;
+  top: 50%;
+  -webkit-transition: fill 0.3s 0.3s;
+  transition: fill 0.3s 0.3s;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  fill: #fff;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip div {
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  -webkit-transition: -webkit-transform 0.3s 0.3s;
+  transition: transform 0.3s 0.3s;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a.prev div,
+plugin-nextscene-doubleflip .nav-doubleflip a.prev h3 {
+  left: 100%;
+  -webkit-transform: rotateY(90deg);
+  transform: rotateY(90deg);
+  -webkit-transform-origin: 0% 50%;
+  transform-origin: 0% 50%;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a.next div,
+plugin-nextscene-doubleflip .nav-doubleflip a.next h3 {
+  right: 100%;
+  -webkit-transform: rotateY(-90deg);
+  transform: rotateY(-90deg);
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip .img,
+plugin-nextscene-doubleflip .nav-doubleflip h3 {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+plugin-nextscene-doubleflip .nav-doubleflip .img{
+  width: 100px;
+  height: 100px;
+  background-size: cover;
+  background-position: center;
+  display: block;
+}
+plugin-nextscene-doubleflip .nav-doubleflip h3 {
+  margin: 0;
+  padding: 5px;
+  background-color: #16a085;
+  color: #fff;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 12px;
+  line-height: 20px;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a:hover .icon-wrap {
+  background-color: #fff;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a:hover svg.icon {
+  fill: #47c9af;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a:hover div,
+plugin-nextscene-doubleflip .nav-doubleflip a:hover h3 {
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a:hover div {
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+
+plugin-nextscene-doubleflip .nav-doubleflip a:hover h3 {
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}

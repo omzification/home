@@ -1,0 +1,29 @@
+<style>
+.ace_editor {
+    height: 400px;
+}
+</style>
+<div oc-lazy-load="['bower_components/ace-builds/src-min-noconflict/ace.js', 'bower_components/angular-ui-ace/ui-ace.js']">
+<div class="form-group">
+	<div class="guideline">
+		<span><i class="ilpt-care" aria-hidden="true"></i> For advanced users only. Be aware of what you're doing</span>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="form full">
+				<label class="form-label" for="">Custom html</label>
+				<div class="form-content">
+        			<div ui-ace ng-model="vm.config.custom_html"></div>
+        		</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="form full">
+				<label class="form-label" for="">Custom css</label>
+				<div class="form-content">
+        			<div ui-ace ng-model="vm.config.custom_css"></div>
+        		</div>
+			</div>
+		</div>
+	</div>
+</div>

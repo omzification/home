@@ -1,0 +1,121 @@
+<style>
+    #controlbar-slash {
+        position: absolute;
+        bottom: 0;
+        text-align: center;
+        z-index: 100;
+        height: 100px;
+        left: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        max-width: 90%;
+    }
+    
+    #controlbar-slash ul {
+        height: 100%;
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        width: 100%;
+    }
+    
+    #controlbar-slash.small .toggle {
+        transform: rotate(-180deg);
+        top: 32px;
+        box-shadow: 0 -6px 12px rgba(0, 0, 0, 0.25);
+    }
+    
+    #controlbar-slash li {
+        float: left;
+        height: 100%;
+        -webkit-transform: skew(-15deg) translateY(20px);
+        -ms-transform: skew(-15deg) translateY(20px);
+        transform: skew(-15deg) translateY(20px);
+        -webkit-transition: all 0.2s ease;
+        transition: all 0.2s ease;
+        position: relative;
+        width: 62px;
+        margin-right: 0px;
+        cursor: pointer;
+        bottom: 0;
+        box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.38);
+        background-color: white;
+    }
+    
+    #controlbar-slash.small li {
+        -webkit-transform: skew(-15deg) translateY(90%);
+        -ms-transform: skew(-15deg) translateY(90%);
+        transform: skew(-15deg) translateY(90%);
+    }
+    
+    #controlbar-slash li:hover {
+        -webkit-transform: skew(-15deg) translateY(0px);
+        -ms-transform: skew(-15deg) translateY(0px);
+        transform: skew(-15deg) translateY(0px);
+    }
+    
+    #controlbar-slash li span {
+        background-size: contain;
+        width: 32px;
+        height: 32px;
+        height: {{ vm.config.icon_size ? vm.config.icon_size+'px': '32px'; }};
+        width: {{ vm.config.icon_size ? vm.config.icon_size+'px': '32px'; }};
+        color: inherit;
+        text-decoration: none;
+        display: block;
+        -webkit-transform: skew(15deg) translate(-35%, -50%);
+        -ms-transform: skew(15deg) translate(-35%, -50%);
+        transform: skew(15deg) translate(-35%, -50%);
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-top: -8px;
+        background-repeat: no-repeat;
+    }
+    
+    #controlbar-slash .toggle {
+        position: absolute;
+        top: -15px;
+        z-index: 199;
+        right: 16px;
+        display: block;
+        cursor: pointer;
+        width: 42px;
+        height: 42px;
+        line-height: 46px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: 50%;
+        transition: all 0.25s cubic-bezier(0.05, 0.88, 0.63, 0.96);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        font-size: 18px;
+    }
+    
+    #controlbar-slash .toggle:hover {
+        background: white;
+    }
+    
+    @media screen and (max-width: 768px) {
+        #controlbar-slash {
+            height: 90px;
+            max-width: 100%;
+        }
+        #controlbar-slash li {
+            height: 90px;
+        }
+        #controlbar-slash li span {
+            width: 32px;
+            height: 32px;
+            top: 45%;
+        }
+    }
+</style>
+<div id="controlbar-slash" ng-if="vm.availableButtons.length" ng-class="{'small': vm.minimize}">
+    <span class="toggle" ng-click="vm.minimize = !vm.minimize"><i class="ilpt-angle-down"></i></span>
+    <ul>
+        <li ng-repeat="btn in vm.availableButtons | orderBy:'index':false" id="{{ btn.id }}" title="{{ btn.name }}" tooltip="{{ btn.name }}" ng-class="{'divider': btn.isdivider}" ng-click="onbtnclick(btn)" ng-style="{'background-color': vm.config.bg_color[btn.id]}">
+            <span bg-src="{{ btn.icon_url_custom?btn.icon_url_custom:btn.icon_url }}"></span>
+        </li>
+    </ul>
+</div>

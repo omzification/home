@@ -1,0 +1,53 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <p class="intro">Select some scenes where this patch will apply</p>
+            <div class="form">
+                <div class="form-content">
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="select-all" ng-change="vm.toggleAll()" ng-model="vm.select_all">
+                        <label for="select-all"><span></span><strong>{{ !vm.select_all?'Select all scenes':'Deselect all' }}</strong></label>
+                    </div>
+                    <div ng-repeat="scene in vm.project.scenes" class="form-checkbox">
+                        <input type="checkbox" id="{{ vm.plugin.id }}{{ scene._id }}" ng-click="vm.selectScene()" ng-model="vm.selectValue[scene._id]">
+                        <label for="{{ vm.plugin.id }}{{ scene._id }}"><span></span> {{ scene.title }}</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form full">
+                <div class="form-content">
+                    <button class="btn btn-red form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-insert-image"></i> Choose/Upload patch image
+                    </button>
+                    <img id="logo" class="img-wrapper" style="max-height: 150px; margin: 20px auto; display: block;" ng-if="vm.config.icon" loading-src="{{ vm.config.icon }}" alt="{{ hotspot.caption }}">
+                    <input type="hidden" ng-model="vm.config.icon">
+                </div>        
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Scale</label>
+                <div class="form-content">
+                    <rzslider rz-slider-model="vm.config.scale" rz-slider-options="{floor: 0.1, ceil: 2, showSelectionBar: true, step: 0.1,precision: 1}"></rzslider>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label">Distorted</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.distorted" class="form-control" >
+                        <option value="no">False</option>
+                        <option value="yes">True</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label">Url (Optional)</label>
+                <div class="form-content">
+                    <input class="form-control" type="text" ng-model="vm.config.link" placeholder="Enter your url">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="modal-content" id="ProjectShareModal">
+    <div class="modal-header">
+        <button ng-click="projectShareVm.dismiss()" type="button" class="close"><i class="ilpt-close"></i></button>
+        <h4 class="modal-title"><i class="ilpt-share"></i> Share project</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="clearfix">
+            <button socialshare="" socialshare-provider="facebook" socialshare-url="{{ projectShareVm.shareUrl }}" class="theme-bg-after button button--nuka button--round-s button--text-thick"><i class="fa fa-facebook-official"></i> Facebook</button>
+            <button socialshare="" socialshare-provider="twitter" socialshare-url="{{ projectShareVm.shareUrl }}" socialshare-text="Woa...this is amazing" socialshare-hashtags="lapentor, 360photo, 360, vr" class="theme-bg-after button button--nuka button--round-s button--text-thick">
+                <i class="fa fa-twitter"></i> Twitter
+            </button>
+            <button class="theme-bg-after button button--nuka button--round-s button--text-thick" socialshare="" socialshare-provider="google+" socialshare-url="{{ projectShareVm.shareUrl }}">
+                <i class="fa fa-google-plus"></i> Google +
+            </button>
+            <button class="theme-bg-after button button--nuka button--round-s button--text-thick" socialshare="" socialshare-provider="reddit" socialshare-text="Check this out" socialshare-url="{{ projectShareVm.shareUrl }}">
+                <i class="fa fa-reddit"></i> Reddit
+            </button>
+        </div>
+        <div class="form-group">
+            <label for="">Share url</label>
+            <input type="text" readonly ng-model="projectShareVm.shareUrl" class="form-control">
+        </div>
+    </div>
+</div>

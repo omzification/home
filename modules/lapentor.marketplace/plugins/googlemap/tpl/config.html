@@ -1,0 +1,181 @@
+<style>
+.angular-google-map-container {
+    height: 350px;
+}
+
+#pac-input {
+    margin-top: 8px;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    background-color: #fff;
+    text-overflow: ellipsis;
+    padding: 12px;
+    width: 240px;
+    color: initial;
+}
+
+#pac-input:focus {
+    border-color: #4d90fe;
+}
+
+.pac-container {
+    z-index: 9999;
+}
+
+#type-selector {
+    color: #fff;
+    background-color: #4d90fe;
+    padding: 5px 11px 0px 11px;
+}
+
+#type-selector label {
+}
+
+#target {
+    width: 345px;
+}
+
+#GooglemapPluginConfigTpl .btn-delete {
+    float: right;
+    margin-top: -15px;
+    top: 50%;
+    position: absolute;
+    right: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+}
+
+#GooglemapPluginConfigTpl .custom-icon-wrap {
+    min-height: 40px;
+    position: relative;
+}
+
+#GooglemapPluginConfigTpl .latlng {
+    display: flex;
+    justify-content: space-between;
+}
+</style>
+<div class="row" id="GooglemapPluginConfigTpl">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Themes</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.theme" class="form-control">
+                        <option value="square">Square</option>
+                        <option value="circle">Circle</option>
+                        <option value="edge">Edge</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form" ng-if="vm.config.theme == 'edge'">
+                <label class="form-label" for="">Position</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.position" class="form-control">
+                        <option ng-selected="vm.config.position == 'left'" value="left">Left</option>
+                        <option ng-selected="vm.config.position == 'right'" value="right">Right</option>
+                        <option ng-selected="vm.config.position == 'top'" value="top">Top</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Show on start</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.show_on_start" class="form-control">
+                        <option value="1">Yes</option>
+                        <option value="0">Nope</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Map types</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.map_type" class="form-control" ng-change="vm.onMapTypeChange()">
+                        <option value="roadmap">Roadmap</option>
+                        <option value="satellite">Satellite</option>
+                        <option value="hybrid">Hybrid</option>
+                        <option value="terrain">Terrain</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Custom Map style <br><small>(get code from <a target="_blank" href="https://snazzymaps.com/">snazzymaps.com</a>)</small></label>
+                <div class="form-content">
+                    <textarea ng-model="vm.config.map_style" ng-change="vm.onMapChangeStyle()" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Map zoom</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.zoom" class="form-control" ng-change="vm.onMapChangeZoom()">
+                        <option ng-repeat="i in [].constructor(20) track by $index" value="{{$index + 1}}" {{($index + 1) == vm.config.zoom ? 'selected':''}}>{{ $index + 1 }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label">Display the location of <i class="fa fa-info-circle" uib-tooltip="Map will display single marker represent project location or the location of each selected scenes"></i></label>
+                <div class="form-content">
+                    <select ng-model="vm.config.type" ng-change="vm.mapChangeType()" class="form-control">
+                        <option value="project">Whole Project</option>
+                        <option value="scenes">Each Scene</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div ng-if="vm.config.type == 'scenes'">
+            <div class="form">
+                <label class="form-label">Choose a Scene</label>
+                <div class="form-content">
+                    <select ng-model="vm.targetScene" class="form-control" ng-change="vm.changeScene()">
+                        <option ng-repeat="scene in vm.project.scenes" value="{{ scene._id }}">{{ scene.title }}</option>
+                    </select>
+                    <button ng-if="vm.markers.scenes[vm.targetScene]" class="btn btn-default" ng-click="vm.deleteMarkerScene(vm.targetScene)"><i class="fa fa-trash"></i> Remove {{ vm.targetSceneTitle }} marker</button>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" for="">Marker custom icon</label>
+            <div class="form-content">
+                <div class="custom-icon-wrap">
+                    <img id="placemarker" class="placemarker" ng-if="vm.config.icon" ng-src="{{ vm.config.icon }}" style="width:{{vm.config.placemarkWidth}}px;height: {{vm.config.placemarkHeight}}px">
+                    <button ng-if="vm.config.icon" class="btn btn-default btn-delete" ng-click="vm.deleteIcon()"><i class="fa fa-trash"></i></button>
+                    <button class="btn-upload-marker btn form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-insert-image"></i> Change icon
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" ng-if="vm.config.icon" for="">Marker width (px)</label>
+            <div class="form-content">
+                <rzslider ng-if="vm.config.icon" rz-slider-model="vm.config.placemarkWidth" rz-slider-options="{floor: 10, ceil: 50, showSelectionBar: true,onChange : vm.markerUpdateWidthHeight()}"></rzslider>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="guideline">
+                <p><i class="ilpt-info"></i> Drag marker icon or search the location in the search box and click on the map to select your project/scene location</p>
+            </div>
+            <div id="map-canvas" style="height: 300px;"></div>
+            <div ng-if="vm.config.type == 'scenes'">
+                <small style="margin-top: 10px; text-align: center; display: block;" ng-hide="vm.markers.scenes[vm.targetScene]">{{ vm.targetScene?"You haven't choose the location yet. Click on map to select":'Select a scene' }}  
+            <b style="color: #d9534f;" ng-repeat="scene in vm.scenes" ng-if="scene._id == vm.targetScene">{{ scene.title }}</b> <span ng-show="vm.targetScene">location</span></small>
+                <div ng-show="vm.markers.scenes[vm.targetScene]">
+                    <p style="margin-top: 10px;"><b style="color: #d9534f; text-transform: capitalize;" ng-repeat="scene in vm.scenes" ng-if="scene._id == vm.targetScene">{{ scene.title }}</b> current location:</p>
+                    <ul class="latlng">
+                        <li><b>Lat</b>: {{ vm.markers.scenes[vm.targetScene].getPosition().lat() }}</li>
+                        <li><b>Long</b>: {{ vm.markers.scenes[vm.targetScene].getPosition().lng() }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row scenelist-global-config">
+    <div class="col-md-6 is_minimize">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Minimize on start</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.is_minimize" class="form-control">
+                        <option ng-selected="vm.config.is_minimize == 0" value="0">No</option>
+                        <option ng-selected="vm.config.is_minimize == 1" value="1">Yes</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 minimize_clickoutside">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Minimize when click outside</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.minimize_clickoutside" class="form-control">
+                        <option ng-selected="vm.config.minimize_clickoutside == 1" value="1">Yes</option>
+                        <option ng-selected="vm.config.minimize_clickoutside == 0" value="0">No</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- test -->
+<ng-include src="'modules/lapentor.marketplace/themes/scenelist/' + item.slug + '/tpl/config.html'"></ng-include>

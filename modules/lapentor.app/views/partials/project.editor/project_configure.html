@@ -1,0 +1,186 @@
+<div id="ProjectConfigure" class="bg-dark" role="dialog">
+    <div class="close close-black" ng-click="pcmVm.cancel()"><i class="ilpt-close"></i></div>
+    <div class="modal-header">
+        <div class="clearfix">
+            <h4 class="title">Project Configuration</h4>
+            <div class="topbar">
+                <ul class="filter">
+                    <li ng-if="pcmVm.currentFileType == 'pano'" ng-class="{'active': pcmVm.currentFileType == 'pano'}" ng-click="pcmVm.tabSelect('pano')">Panos</li>
+                    <li ng-if="pcmVm.currentFileType == 'asset'" ng-class="{'active': pcmVm.currentFileType == 'asset'}" ng-click="pcmVm.tabSelect('asset')">Assets</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="modal-body">
+        <div id="pj-config">
+            <uib-tabset active="activeJustified">
+                <uib-tab index="0" heading="Info" class="tab">
+                    <div id="pj-panel-info" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>Project info</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <div class="line edit-project-name">
+                                    <div class="tt">Project name</div>
+                                    <div class="content">
+                                        <input type="text" ng-model="pcmVm.project.title" class="form-control">
+                                        <img ng-if="pcmVm.titleIsLoading" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" class="title-loading">
+                                    </div>
+                                </div>
+                                <div class="line clearfix">
+                                    <div class="tt">Portfolio Listing <i class="ilpt-info" uib-tooltip="Decide whether your project is visible in the Public portfolio page or not. Note: Only Public project can be listed in the Portfolio page"></i></div>
+                                        <!-- <a class="theme-color" target="_blank" href="/u/{{ pcmVm.project.user.username }}">your Portfolio page</a> </div> -->
+                                    <div class="content">
+                                        <img ng-if="pcmVm.projectCanListInPortfolioLoading" ng-src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" class="loading-img pull-right" />
+                                        <toggle-switch ng-model="pcmVm.project.in_portfolio" ng-click="pcmVm.updateCanListInPortfolio()" on-label="On" off-label="Off"></toggle-switch>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Created at</div>
+                                    <div class="content">
+                                        <p class="">{{ pcmVm.project.created_at }}</p>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Total Scene</div>
+                                    <div class="content">
+                                        <p class="">{{ pcmVm.project.scenes.length }}</p>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Installed plugins</div>
+                                    <div class="content">
+                                        <ul class="tag-listing">
+                                            <li ng-repeat="plugin in pcmVm.project.plugins">
+                                                {{ plugin.name }}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="1" heading="Social">
+                    <div id="pj-panel-social" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>Custom social meta data <i class="ilpt-info" uib-tooltip="You can edit the meta information of your project when sharing on social media sites, so it will display text and image of your liking."></i></h4>
+                        </div>
+                        <div class="panel-body social-meta-info">
+                            <div class="blk-info">
+                                <div class="line">
+                                    <div class="tt">Title</div>
+                                    <div class="content">
+                                        <input type="text" ng-model="pcmVm.project.meta.title" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Description</div>
+                                    <div class="content">
+                                        <textarea ng-model="pcmVm.project.meta.description" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Image</div>
+                                    <div class="content">
+                                        <img class="rounded m-bot-10" ng-if="pcmVm.project.meta.image" loading-src="{{ pcmVm.project.meta.image }}" alt="">
+                                        <button class="btn btn-default form-control" ng-click="pcmVm.openMediaAssetLib()"> Change <i class="ilpt-insert-image"></i></button>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt"></div>
+                                    <div class="content">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-save bg-grad" ng-click="pcmVm.updateProject()">Save changes</button>
+                            <img ng-if="pcmVm.isSaving" ng-src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" class="loading-img pull-right" />
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="2" heading="Publish">
+                    <div id="pj-panel-publish" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>Publish</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <div class="line clearfix">
+                                    <div class="tt">Publicity <i class="ilpt-info" uib-tooltip="Decide whether your project is visible to the outside world or just you. Note: Only Public project can be listed in the Portfolio page"></i></div>
+                                    <div class="content">
+                                        <img ng-if="pcmVm.projectPublicityIsLoading" ng-src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" class="loading-img pull-right" />
+                                        <toggle-switch ng-model="pcmVm.project.public" ng-click="pcmVm.updatePublicAccess()" on-label="Public" off-label="Private"></toggle-switch>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Password protected <i class="ilpt-info" uib-tooltip="The password overlay won't be visible to you. Log out or open browser in Incognito mode to see this feature in action"></i></div>
+                                    <div class="content">
+                                        <toggle-switch ng-model="pcmVm.project.password.enable" ng-click="pcmVm.updatePasswordProject('checkbox')" on-label="On" off-label="Off"></toggle-switch>
+                                        <img ng-if="pcmVm.isUpdatingPassword" ng-src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" class="loading-img pull-right" />
+                                        <input type="password" ng-model="pcmVm.project.password.string" ng-if="pcmVm.project.password.enable" ng-change="pcmVm.updatePasswordProject('input')" placeholder="Enter project password here" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="3" heading="Analytic">
+                    <div id="pj-panel-analytic" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>Google Analytic</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <div class="line">
+                                    <div class="tt">Enter UID</div>
+                                    <div class="content">
+                                        <input type="text" ng-model="pcmVm.project.google.analytics_id" class="form-control ng-pristine ng-valid ng-not-empty ng-touched">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-save bg-grad" ng-click="pcmVm.updateGoogleProject()">Save changes</button>
+                            <img ng-if="pcmVm.isSavingGoogle" ng-src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" class="loading-img pull-right" />
+                        </div>
+                    </div>
+                </uib-tab>
+                <uib-tab index="4" heading="Export">
+                    <div id="pj-panel-export" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>Snapshots</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <table class="table list-exported-versions">
+                                    <thead>
+                                        <th>No.</th>
+                                        <th>Created at</th>
+                                        <th>Download</th>
+                                        <th>Delete</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="ver in pcmVm.exportedVersions" id="snapshot{{ ver._id }}">
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ ver.created_at | date:'shortDate' }}</td>
+                                            <td>
+                                                <a class="btn form-control" ng-if="ver.download_link" href="{{ ver.download_link }}" target="_blank">Download</a>
+                                            </td>
+                                            <td style="text-align: center;"><a href="#" ng-click="pcmVm.deleteSnapshot(ver._id)"><i class="ilpt-trash"></i></a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <fluid-loading type="opaque" ng-if="pcmVm.isDeletingSnapshot"></fluid-loading>
+                            </div>
+                        </div>
+                    </div>
+                </uib-tab>
+            </uib-tabset>
+        </div>
+    </div>
+    <div ng-if="pcmVm.isLoading" ng-include="'modules/loading.html'"></div>
+</div>

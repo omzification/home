@@ -1,0 +1,40 @@
+<style>
+#controlbar-crystal .item img {
+  height: {{vm.config.icon_size ? vm.config.icon_size+'px': '30px'; }};
+  width: {{ vm.config.icon_size ? vm.config.icon_size+'px': '30px'; }};
+}
+
+</style>
+<script type="text/javascript">
+function mouseOver(obj) {
+    $(obj).parent().find('li.nearby').removeClass("nearby");
+    $(obj).parent().find('li.hover').removeClass("hover");
+    $(obj).addClass("hover");
+    if ($(obj).prev().is('li')) {
+        $(obj).prev().addClass("nearby");
+    } else {
+        $(obj).prev().prev().addClass("nearby");
+    }
+
+    if ($(obj).next().is('li')) {
+        $(obj).next().addClass("nearby");
+    } else {
+        $(obj).next().next().addClass("nearby");
+    }
+}
+
+function mouseLeave(obj) {
+    $(obj).find('li.nearby').removeClass("nearby");
+    $(obj).find('li.hover').removeClass("hover");
+}
+</script>
+<div ng-style="vm.themeStyle" id="controlbar-crystal" ng-class="vm.config.position" ng-if="vm.availableButtons.length">
+    <ul onmouseleave="mouseLeave(this)">
+        <li onmouseover="mouseOver(this)" class="item {{ vm.config.position }}" id="{{ btn.id }}" ng-repeat="btn in vm.availableButtons | orderBy:'index':false" ng-class="{'divider': btn.isdivider}" ng-click="onbtnclick(btn)" tip-text="{{ btn.name }}">
+            <img src="{{ btn.icon_url_custom?btn.icon_url_custom:btn.icon_url }} " alt=" ">
+            <div id="tip" class="tip {{ vm.config.position }}" style="left: {{vm.config.size/2}}px">
+                <p id="tipText">{{btn.name}}</p>
+            </div>
+        </li>
+    </ul>
+</div>

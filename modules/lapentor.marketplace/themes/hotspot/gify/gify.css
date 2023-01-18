@@ -1,0 +1,347 @@
+hotspot {
+    display: block!important;
+}
+
+.hotspot-modal-gify {
+    background: white;
+    position: relative;
+}
+
+.hotspot-modal-gify.hotspot-gify-video {
+    width: 95vw;
+    max-width: 960px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hotspot-modal-gify.hotspot-gify-video iframe {
+    height: 90vh;
+}
+
+.hotspot-modal-gify.hotspot-modal-gify-image {
+    max-width: 720px;
+    width: 95vw;
+    margin: 0 auto;
+}
+
+hotspot-gify {
+    display: inline-block;
+    position: absolute;
+    z-index: 2;
+}
+
+.hotspot-gify {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80px;
+    height: 80px;
+    display: inline-block;
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+}
+
+.hotspot-gify:hover .custom_hs-name {
+    opacity: 1;
+    transform: translate(-50%, 0);
+    transition-delay: .35s;
+}
+
+.hotspot-gify .custom_hs-name {
+    font-size: 14px;
+    bottom: initial;
+    top: 0;
+    position: absolute;
+    transform: translate(-50%, 12px);
+    transition: all .35s cubic-bezier(0.26, 0.96, 0.55, 0.93);
+    z-index: 3;
+}
+
+.hotspot-gify-point .custom_hs-name {
+    top: 42%;
+}
+
+.hotspot-gify .icon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    color: initial;
+    text-align: center;
+    line-height: 94px;
+    font-size: 16px;
+}
+
+.hotspot-gify .icon:before {
+    font-family: 'fontAwesome';
+    content: "\f083";
+}
+
+.hotspot-gify-video .icon:before {
+    content: "\f03d";
+    color: #34495e;
+}
+
+.hotspot-gify-image .icon:before {
+    content: "\f03e";
+    color: #27ae60;
+}
+
+.hotspot-gify-url .icon:before {
+    content: "\f0ac";
+    color: #f1c40f;
+}
+
+.hotspot-gify-textf .icon:before {
+    content: "\f129";
+    content: "\f024";
+    color: #3498db;
+}
+
+.hotspot-gify-article .icon:before {
+    content: "\f15c";
+    color: #9b59b6;
+}
+
+.hotspot-gify-point .icon:before {
+    content: "\f041";
+    color: #e74c3c;
+}
+
+.hotspot-gify:not(.hotspot-gify-point):hover {
+    -webkit-animation: bounceOut 0.4s linear;
+    animation: bounceOut 0.4s linear;
+}
+
+hotspot-gify.active {
+    z-index: 999;
+}
+
+.hotspot-url-iframe-popup {
+    background: white;
+}
+
+.hotspot-modal-gify .caption {
+    text-align: center;
+    padding: 12px;
+}
+
+.hotspot-modal-gify img {
+    max-width: 100%;
+}
+
+.hotspot-modal-gify-image img {
+    margin: 0 auto;
+    display: block;
+}
+
+.hotspot-gify-article-popup {
+    padding: 24px 64px;
+    background: white;
+    width: 95vw;
+    max-width: 640px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hotspot-gify-article-popup .title {
+    font-weight: 300;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #DDD;
+    position: relative;
+    font-size: 23px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto 24px;
+}
+
+.hotspot-gify-article-popup .title:after {
+    content: '';
+    width: 64px;
+    height: 2px;
+    background: #333;
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.hotspot-gify-image .image {
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+.hotspot-gify-image .caption {
+    text-align: center;
+    /* font-style: italic; */
+    padding: 10px;
+    opacity: 0.4;
+}
+
+.hotspot-gify-textf-tooltip {
+    padding: 12px 0;
+    position: absolute;
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    width: 200px;
+    line-height: 16px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    transition: all .15s ease-out;
+    -webkit-transition: all .15s ease-out;
+    -moz-transition: all .15s ease-out;
+    -ms-transition: all .15s ease-out;
+    min-height: 40px;
+    left: 50%;
+    transform: translate(-50%, -64px);
+    top: 24px;
+}
+
+.hotspot-gify-textf-tooltip .hotspot-textf-content .content-wrapper {
+    padding: 0 12px;
+    text-align: justify;
+}
+
+.hotspot-textf-content img {
+    width: calc(100% + 24px);
+    max-width: none;
+    margin-left: -12px;
+}
+
+.hotspot-gify-textf-tooltip.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 9;
+    top: 0;
+}
+
+.hotspot-gify-point {
+    background-image: url(images/gif/hotspot-gif-2.gif);
+}
+
+.hotspot-gify-point .thumb {
+    background: url(https://brightcove04pmdo-a.akamaihd.net/5104226627001/5104226627001_5244714388001_5205235439001-vs.jpg?puId=5104226627001&videoId=5205235439001);
+    width: 150%;
+    height: 150%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: inset 0 0 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0, 0);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    opacity: 0;
+    z-index: 2;
+}
+
+.hotspot-gify-point:hover .thumb {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1, 1);
+}
+
+.hotspot-gify-url {
+    background-image: url(images/gif/url.gif);
+}
+
+.hotspot-gify-video {
+    background-image: url(images/gif/video.gif);
+}
+
+.hotspot-gify-image {
+    background-image: url(images/gif/image.gif);
+}
+
+.hotspot-gify-article,
+.hotspot-gify-video,
+.hotspot-gify-image,
+.hotspot-gify-textf,
+.hotspot-gify-url {
+    background-image: url(images/gif/hotspot-gif-1.gif);
+}
+
+
+/* bounce out */
+
+@-webkit-keyframes bounceOut {
+    0% {
+        box-shadow: 0 0 0 4px #777;
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    25% {
+        box-shadow: 0 0 0 1px #777;
+        opacity: 1;
+        -webkit-transform: scale(0.97);
+        transform: scale(0.97);
+    }
+    50% {
+        box-shadow: 0 0 0 7px #777;
+        opacity: 1;
+        -webkit-transform: scale(1.01);
+        transform: scale(1.01);
+    }
+    75% {
+        box-shadow: 0 0 0 4px #777;
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        box-shadow: 0 0 0 5px #777;
+        opacity: 1;
+    }
+}
+
+@keyframes bounceOut {
+    0% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    25% {
+        opacity: 1;
+        -webkit-transform: scale(0.8);
+        transform: scale(0.8);
+    }
+    50% {
+        opacity: 1;
+        -webkit-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    75% {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 640px) {
+    .hotspot-modal-gify.hotspot-gify-video iframe {
+        height: 280px;
+    }
+    .hotspot-gify-article-popup {
+        padding: 24px;
+    }
+    .hotspot-gify-point .thumb {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1, 1);
+        width: 70%;
+        height: 70%;
+        border: 4px solid white;
+    }
+}

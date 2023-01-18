@@ -1,0 +1,208 @@
+<style>
+#scenelist-royal {
+    position: absolute;
+    z-index: 300;
+    background: white;
+    left: 25px;
+    top: 25px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+    width: 290px;
+    color: {{ vm.config.color }};
+    border: 1px solid {{ vm.config.color }};
+}
+
+#scenelist-royal .royal-list {
+    font-size: 9px;
+    position: absolute;
+    left: 15px;
+    top: 10px;
+}
+
+#scenelist-royal.toggle {
+    width: 45px;
+    border-right: none;
+    border-bottom: none;
+}
+
+#scenelist-royal .toggle-icon {
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-size: 18px;
+    border-right: 1px solid;
+    height: 100%;
+    width: 45px;
+    line-height: 45px;
+    text-align: center;
+}
+
+#scenelist-royal>.header {
+    cursor: pointer;
+    padding-top: 12px;
+    padding-bottom: 11px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: inherit;
+    width: 100%;
+    text-overflow: ellipsis;
+    margin: 0;
+    position: relative;
+    z-index: 3;
+    border-bottom: 1px solid;
+    height: 45px;
+}
+
+#scenelist-royal>.header .title-wrap {
+    position: absolute;
+    height: 100%;
+    left: 45px;
+    text-align: center;
+    right: 0;
+    top: 0;
+    line-height: 45px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#scenelist-royal .royal-next,
+#scenelist-royal .royal-back {
+    right: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    line-height: 45px;
+    width: 30px;
+}
+
+#scenelist-royal .royal-next:hover,
+#scenelist-royal .royal-back:hover {
+	background-color: rgba(0,0,0,0.04);
+}
+#scenelist-royal .royal-back {
+    left: 0px;
+    right: auto;
+}
+
+#scenelist-royal .group-list {
+    width: 100%;
+    padding: 10px 0;
+}
+
+#scenelist-royal .group-list .group-title {
+    font-weight: bold;
+    font-size: 15px !important;
+}
+
+#scenelist-royal .group-list>li {
+    cursor: pointer;
+    position: relative;
+    border-color: rgba(6, 6, 6, 0.1)!important;
+    -webkit-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+}
+
+#scenelist-royal .item:hover {
+    background: {{ vm.config.color }};
+    color: white;
+}
+
+#scenelist-royal .group-list li {
+    padding: 5px 15px;
+    white-space: nowrap;
+    margin: 5px 0;
+    padding-right: 0;
+}
+
+#scenelist-royal .group-list > li {
+    padding-left: 40px;
+}
+#scenelist-royal .group-list li.have-group{
+    border-bottom: 1px solid #a1905d;
+    border-color: #a1905d!important;
+    transition: height 0.4s;
+    overflow: hidden;
+    height: auto;
+}
+#scenelist-royal .group-list li.have-group.minimized{
+    height: 35px!important;
+}
+#scenelist-royal .group-list li.have-group ul{
+    margin-top: 10px;
+}
+
+#scenelist-royal .group-list li.have-group:last-child {
+    border-bottom: none;
+}
+
+#scenelist-royal .group-list > li ul li {
+    list-style: none;
+    position: relative;
+    padding-left: 10px;
+    margin-left: -10px;
+}
+
+#scenelist-royal .group-list li > span {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    font-size: 13px;
+}
+
+#scenelist-royal .group-list li.active {
+    border-left: 5px solid {{ vm.config.color }};
+}
+
+#scenelist-royal .group-list>li .scenes>li span {
+    display: block;
+}
+#scenelist-royal .group-list {
+    max-height: 80vh;
+    overflow: hidden;
+}
+#scenelist-royal .project-logo {
+    max-width: 100%;
+}
+#scenelist-royal .group-list .item-logo {
+    padding: 0;
+    margin: 0;
+    margin-top: -10px;
+}
+</style>
+<div id="scenelist-royal" ng-class="{'toggle':vm.isToggle}" ng-style="vm.themeStyle" click-outside="vm.minimizeWhenClickOutside()">
+    <div class="header">
+        <div class="title-wrap" ng-if="!vm.isToggle">
+            <i class="royal-back" ng-click="vm.prevScene()"></i>
+            <span>{{ vm.currentscene.title }}</span>
+            <i class="royal-next" ng-click="vm.nextScene()"></i>
+        </div>
+        <div class="toggle-icon royal-menu" ng-click="vm.isToggle = !vm.isToggle"></div>
+    </div>
+    <!-- Logo -->
+    <ul class="group-list" ng-if="!vm.isToggle" ng-nicescroll>
+        <li class="item-logo" ng-if="vm.project.theme_scenelist.config.logo">
+            <img src="{{ vm.project.theme_scenelist.config.logo }}" alt="" class="project-logo">
+        </li>
+        <!-- Layout 1: scene have group -->
+        <li class="have-group" ng-if="vm.groups.length && !vm.allGroupIsEmpty" ng-repeat="group in vm.groups" ng-if="group.scenes.length > 0" ng-class="{'minimized': vm.config.is_minimize_group == 1}" ng-click="vm.toggleGroup(group._id)" id="lpt-group-{{ group._id }}">
+            <i class="royal-list"></i>
+            <span class="group-title">{{ group.title }}</span>
+            <ul class="scenes" ng-if="group.scenes.length > 0" ng-style="vm.themeStyle">
+                <li ng-repeat="scene in group.scenes" ng-class="{'active' : vm.currentscene._id == scene._id}" ng-click="$event.stopPropagation();vm.changeScene(scene)" class="item">
+                    <span>{{ scene.title }}</span>
+                </li>
+            </ul>
+        </li>
+
+        <!-- Layout 1: scene have no group -->
+        <li class="item" ng-if="!vm.groups.length || vm.allGroupIsEmpty" ng-repeat="scene in vm.scenes" ng-class="{'active' : vm.currentscene._id == scene._id}" ng-click="vm.changeScene(scene)" ng-style="vm.sceneStyle[$index]" ng-mouseenter="vm.sceneStyle[$index] = {'background': vm.config.active_scene_bg_color}" ng-mouseleave="vm.currentscene._id != scene._id ? vm.sceneStyle[$index] = {'background': 'initial'} : '' ">
+            <i class="royal-list"></i>
+            <span>{{ scene.title }}</span>
+        </li>
+    </ul>
+</div>

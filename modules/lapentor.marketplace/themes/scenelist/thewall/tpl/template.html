@@ -1,0 +1,260 @@
+<style>
+#scenelist-thewall {
+    position: fixed;
+    z-index: 300;
+    background: white;
+    right: 0;
+    top: 0;
+    width: 240px;
+    height: 100%;
+    font-weight: 500;
+    line-height: 140%;
+    -webkit-transition: all 0.25s ease-out;
+    transition: all 0.25s ease-out;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+#scenelist-thewall.dark {
+    background: #3E3E3E;
+}
+
+#scenelist-thewall.left {
+    right: auto;
+    left: 0;
+    -webkit-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
+
+#scenelist-thewall .nicescroll-cursors {
+    border: 0!important;
+    background: rgba(255, 255, 255, 0.5)!important;
+}
+
+#scenelist-thewall.toggle {
+    -webkit-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+}
+
+#scenelist-thewall .project-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #3E3E3E;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    position: relative;
+    margin: 0 0 16px 0;
+    padding: 18px 42px 4px 16px;
+}
+
+#scenelist-thewall.dark .project-title {
+    color: white;
+    opacity: 1;
+}
+
+#scenelist-thewall > .project-title {
+    opacity: 0.5;
+}
+
+#scenelist-thewall.toggle .project-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#scenelist-thewall .icon-toggle {
+    cursor: pointer;
+    width: 56px;
+    height: 42px;
+    line-height: 46px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    left: -42px;
+    top: 12px;
+    transition: all .15s ease-out;
+    -webkit-transition: all .15s ease-out;
+    background: white;
+}
+
+#scenelist-thewall.dark .icon-toggle {
+    background: #3E3E3E;
+}
+
+#scenelist-thewall .icon-toggle:hover {
+    left: -56px;
+}
+
+#scenelist-thewall.left .icon-toggle {
+    left: auto;
+    right: -42px;
+    padding-left: 12px;
+}
+
+#scenelist-thewall .btn-close img {
+    width: 15px;
+}
+
+#scenelist-thewall.left .icon-toggle:hover {
+    right: -56px;
+}
+
+#scenelist-thewall.left.toggle .icon-toggle {
+    right: 0;
+}
+
+#scenelist-thewall>h2 .icon-toggle .default {
+    display: block;
+    width: 42px;
+    height: 42px;
+}
+
+#scenelist-thewall.toggle .icon-toggle .default {
+    display: none;
+}
+
+#scenelist-thewall .icon-toggle .on-toggle {
+    display: none;
+}
+
+#scenelist-thewall.toggle .icon-toggle .on-toggle {
+    display: block;
+    transition: all .15s ease-out;
+    -webkit-transition: all .15s ease-out;
+}
+
+#scenelist-thewall.toggle .icon-toggle .on-toggle:hover {
+    transform: scale(.8, .8);
+    -webkit-transform: scale(.8, .8);
+}
+
+#scenelist-thewall .icon-toggle i {
+    font-size: 18px;
+}
+
+#scenelist-thewall.toggle .icon-toggle {
+  right: 0;
+  left: initial;
+  z-index: 310;
+  top: 0;
+}
+
+#scenelist-thewall .listing {
+    /* height: calc(100% - 58px); */
+    overflow: auto;
+    padding: 0 16px;
+}
+
+#scenelist-thewall .listing .group {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(125, 125, 125, 0.4);
+}
+
+#scenelist-thewall .listing .group:nth-last-child(1) {
+    border: none;
+}
+
+#scenelist-thewall .listing .group>.title {
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 20px;
+}
+
+#scenelist-thewall.dark .icon-toggle i {
+    color: white;
+}
+
+#scenelist-thewall.dark .listing .group>.title {color: white;}
+
+#scenelist-thewall .listing .scene {
+    cursor: pointer;
+    margin-bottom: 0px;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out;
+    padding: 6px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-bottom: 1px;
+    color: #3E3E3E;
+}
+
+#scenelist-thewall.dark .listing .scene {
+    color: white;
+}
+
+#scenelist-thewall .listing .scene.active,
+#scenelist-thewall .listing .scene.active:hover {
+    background: {{vm.config.featured_color || '#F5373A'}};
+    color: white;
+}
+
+#scenelist-thewall .listing .scene:hover {
+    background: rgba(0, 0, 0, .1);
+}
+
+#scenelist-thewall .listing .scene .thumb {
+    display: inline-block;
+    vertical-align: middle;
+    width: 36px;
+    height: 36px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid white;
+}
+
+#scenelist-thewall .listing .scene span {
+    display: inline-block;
+    text-overflow: ellipsis;
+    width: calc(100% - 64px);
+    vertical-align: middle;
+}
+#scenelist-thewall .project-logo {
+    max-height: 100vh;
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+    margin-bottom: 15px;
+}
+#scenelist-thewall .inner {
+    position: absolute;
+    top: 50px;
+    bottom: 0;
+}
+</style>
+<div id="scenelist-thewall" ng-style="vm.listStyle" ng-class="{'toggle':vm.isToggle, 'dark': vm.config.theme_type == 'fixed' && vm.config.theme == 'dark'}" class="{{ vm.config.position }}" click-outside="vm.minimizeWhenClickOutside()">
+    <h2 class="project-title">
+        {{ vm.project.title }}
+        {{ vm.project.theme_scenelist.config.scene_list_title }}
+    </h2>
+    <div ng-style="vm.listStyle" class="icon-toggle" ng-click="vm.toggleScenelistClass()">
+        <span class="default"><i class="ilpt-hamburger"></i></span>
+        <span class="on-toggle btn-close"><img src="/assets/images/icons/close.png" /></span>
+    </div>
+    <div ng-nicescroll class="inner">
+        <img src="{{ vm.project.theme_scenelist.config.logo }}" alt="" class="project-logo">
+        <div class="listing" ng-if="vm.groups.length != 0 && !vm.allGroupIsEmpty">
+            <div class="group" ng-repeat="group in vm.groups" ng-if="group.scenes.length > 0">
+                <span class="title">{{ group.title }}</span>
+                <ul class="scenes" ng-if="group.scenes.length > 0">
+                    <li class="scene" ng-repeat="scene in group.scenes" ng-class="{'active': scene._id == vm.currentscene._id }" ng-click="vm.changeScene(scene)">
+                        <div class="thumb" bg-src="{{scene.pano_thumb}}" ng-style="vm.thumbnailStyle"></div>
+                        <span>{{ scene.title }}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- No group or all group is empty -->
+        <ul class="listing" ng-if="vm.groups.length == 0 || vm.allGroupIsEmpty">
+            <li class="scene" ng-repeat="scene in vm.scenes" ng-class="{'active': scene._id == vm.currentscene._id }" ng-click="vm.changeScene(scene)">
+                <div class="thumb" bg-src="{{scene.pano_thumb}}" ng-style="vm.thumbnailStyle"></div>
+                <span>{{ scene.title }}</span>
+            </li>
+        </ul>
+    </div>
+</div>

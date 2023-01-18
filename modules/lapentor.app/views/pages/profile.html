@@ -1,0 +1,254 @@
+<div id="editprofile" class="page generic">
+    <ng-include src="'modules/lapentor.app/views/partials/header.html'"></ng-include>
+    
+    <div class="main">
+        <uib-tabset active="vm.activeTab">
+            <uib-tab index="0" heading="Profile">
+                <div class="container">
+                    <div id="profile-info" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>User Info</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <div class="line">
+                                    <div class="tt">Avatar</div>
+                                    <div class="content">
+                                        <div class="avatar" ngf-drop="vm.upload($files, 'avatar')">
+                                            <div class="cover-preview" bg-src="{{ vm.user.avatar }}" ngf-background="vm.preview['avatar']"></div>
+                                            <button class="btn form-control" ngf-select="vm.upload($files, 'avatar')"><i class="ilpt-insert-image"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Cover</div>
+                                    <div class="content">
+                                        <div class="cover" ngf-drop="vm.upload($files, 'cover')">
+                                            <img src="{{ vm.user.cover }}" alt="">
+                                            <button class="btn form-control" ngf-select="vm.upload($files, 'cover')"><i class="ilpt-insert-image"></i></button>
+                                        </div>
+                                        <uib-progressbar ng-if="vm.isUploading" value="vm.uploadProgress" title="{{ vm.uploadProgress }}%" class="progress-striped active"></uib-progressbar>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Email</div>
+                                    <div class="content">
+                                        <input type="text" ng-model="vm.user.email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Username</div>
+                                    <div class="content">
+                                        <input type="text" ng-model="vm.user.username" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">First name</div>
+                                    <div class="content">
+                                        <input type="text" ng-model="vm.user.first_name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Last name</div>
+                                    <div class="content">
+                                        <input type="text" ng-model="vm.user.last_name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Bio</div>
+                                    <div class="content">
+                                        <textarea rows="10" ng-model="vm.user.bio" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Socials</div>
+                                    <div class="content">
+                                        <div class="form-group">
+                                            <input type="text" placeholder="Website" ng-model="vm.user.website" class="form-control">
+                                            <input type="text" placeholder="Facebook" ng-model="vm.user.facebook" class="form-control">
+                                            <input type="text" placeholder="Google plus" ng-model="vm.user.googleplus" class="form-control">
+                                            <input type="text" placeholder="Twitter" ng-model="vm.user.twitter" class="form-control">
+                                        </div>
+                                    `</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn btn-save" ng-click="vm.saveProfile()">Save changes</button>
+                            <a target="_blank" href="/u/{{ vm.user.username }}" class="btn btn-clean">My Portfolio <i class="ilpt-arrow-right"></i></a>
+                            <img ng-if="vm.isSaving" class="loading-img pull-right" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" alt="">
+                        </div>
+                    </div>
+                </div>                
+            </uib-tab>
+            <uib-tab index="1" heading="Billing">
+                <div class="container">
+                    <div id="profile-billing" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>Billing Information</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <div class="line" ng-if="!vm.user.price_model_ver || vm.user.price_model_ver != 2">
+                                    <div class="tt">Current package</div>
+                                    <div class="content">
+                                        <input type="text" class="form-control" readonly="true" value="{{ vm.user.subscribed?'Premium':'Free' }}">
+                                    </div>
+                                </div>
+                                <div class="line" ng-if="vm.user.interval">
+                                    <div class="tt">Interval</div>
+                                    <div class="content">
+                                        <input type="text" readonly="true" class="form-control" value="{{ vm.user.interval }}">
+                                    </div>
+                                </div>
+                                <div class="line" ng-if="vm.user.card_brand">
+                                    <div class="tt">Billed to</div>
+                                    <div class="content">
+                                        <div class="credit-card">
+                                            <i class="ilpt-credit-card"></i>
+                                            <span>{{ vm.user.card_brand }} ending in <strong>{{ vm.user.card_last_four }}</strong></span>
+                                            <button ng-if="!vm.showUpdateCardDetailForm && vm.user.subscribed && !vm.user.subscriptions[0].ends_at" ng-click="vm.showUpdateCardDetailForm = true" class="btn form-control">Update Credit Card</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="line" ng-if="vm.user.subscriptions[0].ends_at">
+                                    <div class="content">
+                                        Your subscription will end at: {{ vm.user.subscriptions[0].ends_at }}
+                                    </div>
+                                </div> -->
+                                <div ng-if="vm.showUpdateCardDetailForm">
+                                    <div class="line credit-card" ng-if="vm.user.card_brand">
+                                        <div class="tt">Card number</div>
+                                        <div class="content">
+                                            <input type="text" class="form-control" size="20" ng-model="vm.card.number" data-stripe="number" placeholder="Card Number">
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="tt">Expired date</div>
+                                        <div class="content">
+                                            <input class="form-control" type="text" size="2" ng-model="vm.card.exp" data-stripe="exp" placeholder="MM/YYYY">
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="tt">CVC</div>
+                                        <div class="content">
+                                            <input class="form-control" type="text" size="4" ng-model="vm.card.cvc" data-stripe="cvc" placeholder="CVC">
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="tt"></div>
+                                        <div class="content">
+                                            <button ng-if="vm.showUpdateCardDetailForm" ng-click="vm.updateCard()" class="btn form-control">Update</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer clearfix">
+                            <img ng-if="vm.isLoading" class="loading-img pull-right" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" alt="">
+                            <button ng-if="vm.user.subscribed && !vm.user.subscriptions[0].ends_at" class="btn btn-clean pull-right" ng-click="vm.cancelSubscription()">Cancel subscription</button>
+                            <button ng-if="vm.user.subscriptions[0].ends_at" class="btn" ng-click="vm.resumeSubscription()">Resume subscription</button>
+                            <button class="btn" ng-if="!vm.user.subscribed" ng-controller="UpgradeCtrl as uVm" ng-click="uVm.openUpgradeForm(vm.user)">Upgrade now</button>
+                        </div>
+                    </div>
+
+                    <div id="profile-billing" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>INVOICES</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <table>
+                                    <thead>
+                                        <tr class="row header-row">
+                                            <th>#</th>
+                                            <th>AMOUNT</th>
+                                            <th>DATE</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="(key, invoice) in vm.invoices">
+                                            <td style="white-space: nowrap;">{{ invoice.id }}</td>
+                                            <td>${{ invoice.amount_paid / 100 }}</td>
+                                            <td>{{ vm.getInvoiceDate(invoice.date) }}</td>
+                                            <td>
+                                                <a href="{{ invoice.pdf }}" target="_blank"><img src="assets/images/icons/download.svg" alt="download-invoice"></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="2" heading="Settings">
+                <div class="container">
+                    <div id="profile-change-password" class="panel">
+                        <div class="panel-header no-border">
+                            <h4>Change password</h4>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <div class="line">
+                                    <div class="tt">Password</div>
+                                    <div class="content">
+                                        <input type="password" ng-model="vm.user.password" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="line">
+                                    <div class="tt">Password confirmation</div>
+                                    <div class="content">
+                                        <input type="password" ng-model="vm.user.repassword" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button class="btn" ng-click="vm.saveProfile()">Save changes</button>
+                            <img ng-if="vm.isSaving" class="loading-img pull-right" src="bower_components/SVG-Loaders/svg-loaders/puff-dark.svg" width="30" alt="">
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+            <uib-tab index="3" heading="Project Analytics">
+                <div class="container">
+                    <div id="profile-billing" class="panel">
+                        <div class="panel-header no-border">
+                            <h4 class="panel-header__title">Analytics</h4>
+                            <select ng-model="vm.timeRange">
+                                <option value="7days">7 days</option>
+                                <option value="30days">30 days</option>
+                            </select>
+                        </div>
+                        <div class="panel-body">
+                            <div class="blk-info">
+                                <table>
+                                    <thead>
+                                        <tr class="row header-row">
+                                            <!-- <th>#</th> -->
+                                            <th>Project</th>
+                                            <th>Total Views</th>
+                                            <th>Unique Users</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="(key, project) in vm.projectViews">
+                                            <!-- <td>{{ project._id }}</td> -->
+                                            <td><a href="{{ project.slug | shareUrl }}">{{ project.title }}</a></td>
+                                            <td>{{ project[vm.timeRange].page_view }}</td>
+                                            <td>{{ project[vm.timeRange].unique_users }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+    <!-- footer -->
+    <ng-include src="'modules/lapentor.app/views/partials/footer.html'"></ng-include>
+</div>

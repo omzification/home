@@ -1,0 +1,36 @@
+<div id="l1" ng-show="vm.lensflareShow" ng-style="vm.lensflare['l1']" class="transp" style="background-image:url('modules/lapentor.marketplace/plugins/lensflare/images/l1.png')" ></div>
+<div id="l2" ng-show="vm.lensflareShow" ng-style="vm.lensflare['l2']" class="transp" style="background-image:url('modules/lapentor.marketplace/plugins/lensflare/images/l2.png')" ></div>
+<div id="l3" ng-show="vm.lensflareShow" ng-style="vm.lensflare['l3']" class="transp" style="background-image:url('modules/lapentor.marketplace/plugins/lensflare/images/l3.png')" ></div>
+<div id="flash"></div>
+<style type="text/css">
+    #main_area {
+        position:relative;
+        height:100%;
+    }
+    .transp {
+        filter:alpha(opacity=20);
+        opacity:0.15;
+        left:-1000px;
+        position:absolute;
+        background-size: cover;
+        z-index: 1;
+        pointer-events: none;
+    }
+    #l8{
+        background-image:url('modules/lapentor.marketplace/plugins/lensflare/images/flare1.png');
+        left:-1000px;
+        background-size: cover;
+        position:absolute;
+        z-index:1;
+        pointer-events: none;
+    }
+    #flash{
+        background: white;
+        opacity: 0;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+</style>

@@ -1,0 +1,150 @@
+<style>
+    .item-logo {
+    margin: 0 0 12px 0;
+    border: 1px solid rgba(255,255,255,0.25);
+    position: relative;
+    }
+    .item-logo img {
+        width: 100%;
+    }
+
+    .item-logo.active {
+        border-color: #F6C964;
+        box-shadow: 0 0 12px rgba(246, 201, 100, 0.25);
+    }
+
+    .item-logo .photo-close {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        line-height: 20px;
+        background-color: white;
+        color: #262626;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.75);
+        text-align: center;
+        position: absolute;
+        right: -10px;
+        top: -10px;
+        border-radius: 50%;
+        cursor: pointer;
+        z-index: 11;
+        transition: all 0.25s cubic-bezier(0.05, 0.88, 0.63, 0.96);
+        -webkit-transition: all 0.25s cubic-bezier(0.05, 0.88, 0.63, 0.96);
+        opacity: 0;
+        transform: scale(1.5,1.5);
+        -webkit-transform: scale(1.5,1.5);
+    }
+
+    .item-logo:hover .photo-close {
+        transform: scale(1.0,1.0);
+        -webkit-transform: scale(1.0,1.0);
+        opacity: 1;
+    }
+</style>
+<div id="logo">
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form">
+                    <label class="form-label">Choose Image</label>
+                    <div class="form-content">
+                        <ul class="list-logos" ui-sortable="vm.sortableOptions">
+                            <li class="item-logo" ng-repeat="logo in vm.arrayTargetLogos() | orderBy:'sort':false " ng-class="{'active': vm.targetLogo == logo._id}" logo-id="{{ logo._id }}">
+                                <img class="logo" ng-if="logo.path" ng-src="{{ logo.thumb }}" ng-click="vm.showOptionLogo(logo._id)">
+                                <i class="photo-close ilpt-close" ng-click="vm.deleteLogo(logo._id)"></i>
+                            </li>
+                        </ul>
+                        <button class="btn btn-fl form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-plus"></i> <i class="ilpt-insert-image"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9 row" ng-if="vm.targetLogo">
+                <div class="col-md-6">
+                    <div class="form">
+                        <label class="form-label">Align</label>
+                        <div class="form-content">
+                            <select ng-model="vm.config.logos[vm.targetLogo].align" class="btn form-control" >
+                                <option value="">Select</option>
+                                <option value="top-center">Top center</option>
+                                <option value="bottom-center">Bottom center</option>
+                                <option value="top-left">Top left</option>
+                                <option value="top-right">Top right</option>
+                                <option value="bottom-left">Bottom left</option>
+                                <option value="bottom-right">Bottom right</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form" ng-if="vm.config.logos[vm.targetLogo].align && vm.config.logos[vm.targetLogo].align.indexOf('top') != -1">
+                        <label class="form-label" for="">Top (px)</label>
+                        <div class="form-content">
+                            <rzslider rz-slider-model="vm.config.logos[vm.targetLogo].margin_top" rz-slider-options="{floor: 0, ceil: 1000, showSelectionBar: true, step: 1 }"></rzslider>
+                        </div>
+                    </div>
+                    <div class="form" ng-if="vm.config.logos[vm.targetLogo].align && vm.config.logos[vm.targetLogo].align.indexOf('bottom') != -1">
+                        <label class="form-label" for="">Bottom (px)</label>
+                        <div class="form-content">
+                            <rzslider rz-slider-model="vm.config.logos[vm.targetLogo].margin_bottom" rz-slider-options="{floor: 0, ceil: 1000, showSelectionBar: true, step: 1 }"></rzslider>
+                        </div>
+                    </div>
+                    <div class="form" ng-if="vm.config.logos[vm.targetLogo].align && vm.config.logos[vm.targetLogo].align.indexOf('left') != -1">
+                        <label class="form-label" for="">Left (px)</label>
+                        <div class="form-content">
+                            <rzslider rz-slider-model="vm.config.logos[vm.targetLogo].margin_left" rz-slider-options="{floor: 0, ceil: 1000, showSelectionBar: true, step: 1 }"></rzslider>
+                        </div>
+                    </div>
+                    <div class="form" ng-if="vm.config.logos[vm.targetLogo].align && vm.config.logos[vm.targetLogo].align.indexOf('right') != -1">
+                        <label class="form-label" for="">Right (px)</label>
+                        <div class="form-content">
+                            <rzslider rz-slider-model="vm.config.logos[vm.targetLogo].margin_right" rz-slider-options="{floor: 0, ceil: 1000, showSelectionBar: true, step: 1 }"></rzslider>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form">
+                        <label class="form-label">URL <br><small>(open this url when click on image)</small></label>
+                        <div class="form-content">
+                            <input class="form-control" type="text" ng-model="vm.config.logos[vm.targetLogo].link" placeholder="Enter your url">
+                        </div>
+                    </div>
+                    <div class="form">
+                        <label for="" class="form-label">Open URL</label>
+                        <div class="form-content">
+                            <select ng-model="vm.config.logos[vm.targetLogo].modal" class="btn form-control" >
+                                <option value="">on new window</option>
+                                <option value="iframe">in a popup</option>
+                            </select>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="form">
+                        <label class="form-label" for="">Width (px)</label>
+                        <div class="form-content">
+                            <input type="number" class="form-control" ng-model="vm.config.logos[vm.targetLogo].width" ng-change="vm.changeWidth()">
+                        </div>
+                    </div>
+                    <div class="form">
+                        <label class="form-label" for="">Height (px)</label>
+                        <div class="form-content">
+                            <input type="number" class="form-control" ng-model="vm.config.logos[vm.targetLogo].height" disabled="true">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form">
+                        <label for="" class="form-label">Choose Scene to display</label>
+                        <div class="form-content">
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="select-all" ng-change="vm.toggleAll()" ng-model="vm.select_all">
+                                <label for="select-all"><span></span><strong>{{ !vm.select_all?'Select all scenes':'Deselect all' }}</strong></label>
+                            </div>
+                            <div ng-repeat="scene in vm.scenes" class="form-checkbox">
+                                <input type="checkbox" id="{{ vm.plugin.id }}{{ scene._id }}" ng-click="vm.selectScene()" ng-model="vm.config.logos[vm.targetLogo]['scenes'][scene._id]">
+                                <label for="{{ vm.plugin.id }}{{ scene._id }}"><span></span> {{ scene.title }}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

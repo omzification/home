@@ -1,0 +1,58 @@
+<div class="form-group row">
+    <div class="col-md-6">
+        <div class="form">
+            <label class="form-label" for="">Open on start</label>
+            <div class="form-content">
+                <select class="form-control" ng-model="vm.config.open_on_start">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" for="">Position</label>
+            <div class="form-content">
+                <select class="form-control" ng-model="vm.config.position">
+                    <option value="top">Top</option>
+                    <option value="left">Left</option>
+                    <option value="bottom">Bottom</option>
+                    <option value="right">Right</option>
+                </select>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" for="">Angle</label>
+            <div class="form-content">
+                <rzslider rz-slider-model="vm.config.angle" rz-slider-options="{floor: 0, ceil: 360, showSelectionBar: true, step: 10}"></rzslider>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" for="">Icon Distance <i class="ilpt-info" uib-tooltip="Distance from toggle menu button to plugin class="form-label" button"></i></label>
+            <div class="form-content">
+                <rzslider rz-slider-model="vm.config.distance" rz-slider-options="{floor: 60, ceil: 500, showSelectionBar: true, step: 10}"></rzslider>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form">
+            <label class="form-label" for="">Icon size (px)</label>
+            <div class="form-content">
+                <input type="number" placeholder="e.g: 30" class="form-control" ng-model="vm.config.icon_size">
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" for="">Background color</label>
+            <div class="form-content">
+                <span class="demo-bg-block" style="background-color: {{ vm.config.bg_color }}"></span>
+                <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color">
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" for="">Toggle icon color</label>
+            <div class="form-content">
+                <span class="demo-bg-block" style="background-color: {{ vm.config.toggle_icon_color }}"></span>
+                <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.toggle_icon_color">
+            </div>
+        </div>
+    </div>
+</div>

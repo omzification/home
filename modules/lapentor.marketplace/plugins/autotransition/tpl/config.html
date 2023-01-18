@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <h3 class="form-title">Auto Rotate</h3>
+            <div class="form">
+                <div class="form-checkbox">
+                    <input type="checkbox" id="{{ vm.plugin.id }}-auto" ng-model="vm.config.enabled">
+                    <label for="{{ vm.plugin.id }}-auto"><span></span>Enabled</label>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Wait time (seconds)</label>
+                <div class="form-content">
+                    <input class="form-control" type="number" ng-model="vm.config.waittime" placeholder="Default is 2 seconds" min="1">
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Speed</label>
+                <div class="form-content">
+                    <input class="form-control" type="number" ng-model="vm.config.speed" placeholder="Default is 1" min="1">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <h3 class="form-title">Auto change scene</h3>
+            <div class="form">
+                <div class="form-checkbox">
+                    <input type="checkbox" id="{{ vm.plugin.id }}-change" ng-model="vm.config.changeEnabled">
+                    <label for="{{ vm.plugin.id }}-change"><span></span>Enabled</label>
+                </div>
+            </div>
+            <div class="form">
+                <label class="form-label" for="">Wait time (seconds)</label>
+                <div class="form-content">
+                    <input class="form-control" type="number" ng-model="vm.config.changeWaittime" placeholder="Default is 10 seconds" min="1">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

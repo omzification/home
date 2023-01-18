@@ -1,0 +1,197 @@
+plugin-socialsharewidget-gooey #PluginSocialsharewidget {
+  position: absolute;
+  z-index: 200;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget.bottom-left {
+  left: 35px;
+  right: auto;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget svg {
+  display: none;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .btn {
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+  position: relative;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu {
+  margin: 0 auto 20px;
+  position: relative;
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-toggle-button,
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-bounce,
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  position: relative;
+  font-size: 20px;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-toggle-button {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #464646;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-toggle-icon {
+  font-size: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-bounce {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-button {
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget {
+  position: absolute;
+  bottom: 35px;
+  right: 50px;
+  z-index: 200;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget.bottom-left {
+  left: 35px;
+  right: auto;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget.top-left {
+  left: 35px;
+  right: auto;
+  bottom: auto;
+  top: 35px;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget.top-right {
+  right: 35px;
+  left: auto;
+  bottom: auto;
+  top: 35px;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget svg {
+  display: none;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .btn {
+  height: 30px;
+  width: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
+  position: relative;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu {
+  margin: 0 auto 20px;
+  position: relative;
+  -webkit-filter: url("#goo");
+  filter: url("#goo");
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-toggle-button,
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-bounce,
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-button {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  margin-left: -25px;
+  margin-top: -25px;
+  color: #FFFFFF;
+  border: none;
+  outline: none;
+  position: relative;
+  font-size: 20px;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-toggle-button {
+  background: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  color: #464646;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-toggle-icon {
+  font-size: 22px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-bounce {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  line-height: 40px;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-button {
+  width: 40px;
+  height: 40px;
+  margin-left: -20px;
+  margin-top: -20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+plugin-socialsharewidget-gooey #PluginSocialsharewidget .menu-item-custom-icon {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="14px" viewBox="0 0 8 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>prev-arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Next-scene-plugin" transform="translate(-9.000000, -323.000000)" fill="#A1905D">
+            <g id="next-copy" transform="translate(-25.500000, 329.500000) scale(-1, 1) translate(25.500000, -329.500000) translate(-91.000000, 264.000000)">
+                <g id="prev-arrow" transform="translate(27.000000, 65.909091) scale(-1, 1) translate(-27.000000, -65.909091) translate(23.000000, 59.000000)">
+                    <path d="M7.27353846,13.6834545 C7.10230769,13.6834545 6.93107692,13.6196206 6.80046154,13.492253 L0.0575384615,6.90909091 L6.80061538,0.325928854 C7.062,0.0710434783 7.48538462,0.0710434783 7.74676923,0.325928854 C8.008,0.581114625 8.008,0.994458498 7.74676923,1.24964427 L1.94953846,6.90909091 L7.74661538,12.5685375 C8.00784615,12.8237233 8.00784615,13.2370672 7.74661538,13.492253 C7.616,13.6197708 7.44476923,13.6834545 7.27353846,13.6834545 L7.27353846,13.6834545 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

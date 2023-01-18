@@ -1,0 +1,161 @@
+plugin-nextscene-ontheline nav a {
+  position: absolute;
+  top: 50%;
+  display: block;
+  outline: none;
+  text-align: left;
+  z-index: 1000;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+plugin-nextscene-ontheline nav a.prev {
+  left: 0;
+}
+
+plugin-nextscene-ontheline nav a.next {
+  right: 0;
+}
+
+plugin-nextscene-ontheline nav a svg {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+}
+
+plugin-nextscene-ontheline .nav-multithumb a {
+  width: 60px;
+  height: 100px;
+}
+plugin-nextscene-ontheline .nav-multithumb .icon-wrap {
+  position: absolute;
+  top: 50%;
+  display: block;
+  width: 32px;
+  height: 32px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+plugin-nextscene-ontheline .nav-multithumb a.next .icon-wrap {
+  right: 0;
+}
+plugin-nextscene-ontheline .nav-multithumb .icon-wrap::after {
+  position: absolute;
+  top: 50%;
+  width: 20px;
+  height: 1px;
+  background: #fff;
+  content: '';
+  -webkit-transition: width 0.3s 0.2s;
+  transition: width 0.3s 0.2s;
+  -webkit-backface-visibility: hidden;
+  /* needed because of Chrome bug with prefixed calc */
+  backface-visibility: hidden;
+}
+plugin-nextscene-ontheline .nav-multithumb a.prev .icon-wrap::after {
+  left: -webkit-calc(100% - 10px);
+  left: calc(100% - 10px);
+}
+plugin-nextscene-ontheline .nav-multithumb a.next .icon-wrap::after {
+  right: -webkit-calc(100% - 10px);
+  right: calc(100% - 10px);
+}
+plugin-nextscene-ontheline .nav-multithumb svg.icon {
+  fill: #fff;
+}
+plugin-nextscene-ontheline .nav-multithumb div {
+  position: absolute;
+  top: -25%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: end;
+  width: 170px;
+  pointer-events: none;
+  -webkit-box-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+plugin-nextscene-ontheline .nav-multithumb div::after {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 20px 5px 0;
+  width: 100%;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-weight: 300;
+  font-size: 0.7em;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+plugin-nextscene-ontheline .nav-multithumb a.prev div::after {
+  content: 'Previous';
+}
+plugin-nextscene-ontheline .nav-multithumb a.next div::after {
+  content: 'Next';
+  text-align: right;
+}
+plugin-nextscene-ontheline .nav-multithumb a.prev div {
+  left: 40px;
+}
+plugin-nextscene-ontheline .nav-multithumb a.next div {
+  right: 28px;
+}
+plugin-nextscene-ontheline .nav-multithumb div img {
+  margin: 0 5px;
+  opacity: 0;
+  box-shadow: 0 1px 0 #fff, 0 -1px 0 #fff;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transform: scale(0.3);
+  transform: scale(0.3);
+  height: 68px;
+}
+plugin-nextscene-ontheline .nav-multithumb a.prev div img {
+  float: left;
+}
+plugin-nextscene-ontheline .nav-multithumb a.next div img {
+  float: right;
+  /* height: 68px; */
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover {
+  width: 200px;
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover .icon-wrap::after {
+  width: 200px;
+  -webkit-transition-delay: 0s;
+  transition-delay: 0s;
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover div {
+  pointer-events: auto;
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover div::after {
+  opacity: 1;
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2s;
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover img {
+  opacity: 1;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover div img:first-child {
+  -webkit-transition-delay: 0.3s;
+  transition-delay: 0.3s;
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover div img:nth-child(2) {
+  -webkit-transition-delay: 0.35s;
+  transition-delay: 0.35s;
+}
+plugin-nextscene-ontheline .nav-multithumb a:hover div img:nth-child(3) {
+  -webkit-transition-delay: 0.4s;
+  transition-delay: 0.4s;
+}

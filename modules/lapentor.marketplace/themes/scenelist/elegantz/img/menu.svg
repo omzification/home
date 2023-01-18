@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="24px" viewBox="0 0 35 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 40.3 (33839) - http://www.bohemiancoding.com/sketch -->
+    <title>menu</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="menu" fill="#FFFFFF">
+            <path d="M2.604,4.083 L20.104,4.083 C21.208,4.083 22.104,3.187 22.104,2.083 C22.104,0.979 21.208,0.083 20.104,0.083 L2.604,0.083 C1.5,0.083 0.604,0.979 0.604,2.083 C0.604,3.187 1.5,4.083 2.604,4.083 L2.604,4.083 Z" id="Shape"></path>
+            <path d="M2.604,14.083 L32.104,14.083 C33.208,14.083 34.104,13.187 34.104,12.083 C34.104,10.979 33.208,10.083 32.104,10.083 L2.604,10.083 C1.5,10.083 0.604,10.979 0.604,12.083 C0.604,13.187 1.5,14.083 2.604,14.083 L2.604,14.083 Z" id="Shape"></path>
+            <path d="M32.104,19.917 L2.604,19.917 C1.5,19.917 0.604,20.813 0.604,21.917 C0.604,23.021 1.5,23.917 2.604,23.917 L32.104,23.917 C33.208,23.917 34.104,23.021 34.104,21.917 C34.104,20.813 33.209,19.917 32.104,19.917 L32.104,19.917 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

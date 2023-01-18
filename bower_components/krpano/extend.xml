@@ -1,0 +1,67 @@
+<krpano>
+    <include url="plugins/showtext.xml" />
+    <include url="plugins/webvr.xml" />
+    <include url="plugins/arrows.xml"/>
+    <layer name="connections"></layer>
+    <layer name="chevronshape" keep="true">
+        <arrow>
+            <point name="p0" x="0" y="46" />
+            <point name="p1" x="-10" y="40" />
+            <point name="p2" x="-10" y="34" />
+            <point name="p3" x="0" y="40" />
+            <point name="p4" x="10" y="34" />
+            <point name="p5" x="10" y="40" />
+            <center dist="180" shadowdrop="0.75">
+                <functionv>
+                    <point name="p0" vlookat="-90" posv="90" />
+                    <point name="p1" vlookat="0" posv="25" />
+                    <point name="p2" vlookat="90" posv="90" />
+                </functionv>
+            </center>
+        </arrow>
+    </layer>
+    <style name="chevron" fillcolor="0xd7d7d7" fillalpha="1.0" bordercolor="0xd7d7d7" borderalpha="1.0" borderwidth="1.0"
+           onover="hidefloatingarrow(); set(fillcolor,0xffffff); set(bordercolor,0xd7d7d7); set(borderwidth,1.0);"
+           onout="if(garrow_settings.show_floatingarrow, mousemove();); set(fillcolor,0xd7d7d7); set(bordercolor,0xd7d7d7); set(borderwidth,1.0);"
+           zorder="50" keep="false">
+    </style>
+    <textstyle name="chevron_style" font="Arial" fontsize="13" bold="true" roundedge="4" background="false" border="false" textcolor="0xFFFFFF" textalign="center" vcenter="true" edge="bottom" xoffset="0" yoffset="0" padding="10" textshadow="1.0" textshadowrange="10.0" textshadowangle="0" textshadowcolor="0x000000" textshadowalpha="1.0"></textstyle>
+    <action name="addchevrons">
+        set(y,0);
+        for(set(i,0), i LT hotspot.count, inc(i),
+
+            if( (hotspot[get(i)].lpttype == 'point') AND (hotspot[get(i)].hptype != 'clone') AND (hotspot[get(i)].sceneId == krpano.sceneId) ,
+                addlayer(connections);
+                set(hotspot[get(i)].visible, false);
+                set(hotspot[get(i)].arrow, true);
+                copy(hs,hotspot[get(i)]);
+
+                set(layer[connections].connection[get(y)].name, get(hs.name));
+                set(layer[connections].connection[get(y)].title, get(hs.title));
+                txtadd(layer[connections].connection[get(y)].name, '-chevron');
+                set(layer[connections].connection[get(y)].hdir, get(hs.ath));
+                set(layer[connections].connection[get(y)].shape, 'chevronshape');
+                set(layer[connections].connection[get(y)].arrowstyle, 'chevron');
+                set(layer[connections].connection[get(y)].onhover, showtext( get(layer[connections].connection[get(name)].title), chevron_style) );
+                set(layer[connections].connection[get(y)].onclick, get(hs.onclick));
+
+                inc(y);
+            );
+        );
+
+    </action>
+    <action name="removechevrons">
+        for(set(i,0), i LT hotspot.count, inc(i),
+
+        if( (hotspot[get(i)].lpttype == 'point') ,
+        copy(hs,hotspot[get(i)]);
+        set(chvname, get(hs.name)); txtadd(chvname, '-chevron');
+        set(chvshdname, get(hs.name)); txtadd(chvshdname, '-chevronshadow');
+        removehotspot(get(chvname)); removehotspot(get(chvshdname));
+        );
+        );
+        removelayer(connections, true);
+
+    </action>
+
+</krpano>

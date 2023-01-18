@@ -1,0 +1,308 @@
+#LiveSphereViewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.LiveSphereAudioAllow {
+    display: none;
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    right: 30px;
+    background-color: white;
+    border-radius: 4px;
+    width: 280px;
+    text-align: center;
+    padding: 15px;
+    z-index: 100;
+    margin: 0 auto;
+}
+
+.LiveSphereAudioAllow--pc {
+    display: block;
+}
+
+.LiveSphereAudioAllow .btn-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+    .LiveSphereAudioAllow {
+        display: block;
+    }
+}
+
+.LiveSphereAudioAllow .btn {
+    background-color: lightgray;
+    /* padding: 10px 15px; */
+    margin-top: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.LiveSphereAudioAllow .btn:last-child {
+    background-color: #333;
+    color: white;
+}
+
+ul, li {
+    padding: 0;
+    list-style: none;
+    margin: 0;
+}
+
+#LiveSpherePasswordWrap {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1d1d1d;
+}
+
+#LiveSpherePasswordWrap .inner {
+    width: 280px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+#LiveSpherePasswordWrap .btn:hover,
+#LiveSpherePasswordWrap .btn:focus {
+    color: black;
+}
+
+#LiveSpherePasswordWrap .btn {
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    border-radius: 0;
+}
+#block-ui {
+    display: none;
+}
+
+.modal-content iframe {
+    max-width: 100%;
+}
+.modal.link-dialog.in {
+    z-index: 1900;
+}
+
+.modal.link-dialog [type="checkbox"] {
+    display: block;
+}
+/* Hotspot */
+
+hotspot{
+    display: block!important;
+}
+
+hotspot iframe {
+    width: 100%;
+}
+
+.hotspot-modal img {
+    margin: auto;
+    display: block;
+}
+
+.hotspot-modal video {
+    max-width: 100%;
+}
+
+.custom_hs-name {
+    color: white;
+    font-size: 18px;
+    text-shadow: 0 0 12px #000, 0 4px 12px #000;
+    font-weight: 600;
+    position: relative;
+    bottom: 8px;
+    transition: all .15s ease-out;
+    -webkit-transition: all .15s ease-out;
+    opacity: 0;
+    text-align: center;
+    display: block;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    pointer-events: none;
+    width: 320px;
+}
+
+hotspot:hover .custom_hs-name {
+    bottom: 16px;
+    opacity: 1;
+}
+
+.modal .modal-dialog .hotspot-url-iframe-popup .close {
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    text-align: center;
+    z-index: 2;
+    opacity: .5;
+    position: absolute;
+    background: #333;
+    opacity: 1;
+    color: white;
+    text-shadow: none;
+}
+
+.modal .modal-dialog .hotspot-url-iframe-popup .close:hover {
+    opacity: 1;
+}
+
+.modal .modal-dialog .hotspot-url-iframe-popup {
+    background: white;
+}
+
+.hotspot-window-video {
+    width: 480px;
+    height: 300px;
+    position: fixed;
+    z-index: 999;
+    bottom: 20px;
+    right: 20px;
+}
+
+.hotspot-window-video.top-left {
+    top: 20px;
+    left: 20px;
+    bottom: auto;
+    right: auto;
+}
+
+.hotspot-window-video.top-right {
+    top: 20px;
+    right: 20px;
+    left: auto;
+    bottom: auto;
+}
+
+.hotspot-window-video.bottom-left {
+    bottom: 20px;
+    left: 20px;
+    top: auto;
+    right: auto;
+}
+
+.hotspot-window-video.center-top {
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    right: auto;
+}
+
+.hotspot-window-video.center-bottom {
+    transform: translateX(-50%);
+    bottom: 20px;
+    left: 50%;
+    top: auto;
+    right: auto;
+}
+
+.hotspot-window-video iframe {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+
+.hotspot-modal-video {
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, .5);
+}
+
+.hotspot-window-video .close,
+.hotspot-modal-video .close {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    right: -18px;
+    top: -18px;
+    opacity: 1;
+    color: initial;
+    border-radius: 50%;
+    text-shadow: none;
+    padding: 0;
+    text-align: center;
+    line-height: 38px;
+    background-repeat: no-repeat;
+    background-position: center;
+    font-size: 12px;
+    transition: all .15s ease-out;
+    background: #ffffff;
+    z-index: 3;
+}
+
+.hotspot-modal-video iframe {
+    height: 90vh;
+}
+
+#LptPrompt {
+    width: 290px;
+    padding: 20px;
+    background-color: black;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    color: white;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+#LptPrompt input {
+    width: 100%;
+    color: black;
+    border: none;
+    height: 38px;
+    padding-left: 10px;
+    outline: none;
+}
+
+#LptPrompt h4 {
+    margin-top: 0;
+    font-size: 17px;
+    margin-bottom: 20px;
+}
+
+#LptPrompt .close {
+    opacity: 1;
+}
+
+#LptProjectLocked {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="67px" height="67px" viewBox="0 0 67 67" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+    <title>textf</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M42.2004927,6.72687692 C32.5534619,-2.24229231 16.9573188,-2.24229231 7.31217423,6.72687692 C-2.42256539,15.7793538 -2.42256539,30.2801538 7.22352227,39.2493231 L24.7105928,55.4276769 L42.2004927,39.1660154 C51.8446941,30.1968462 51.9352323,15.6960462 42.2004927,6.72687692 Z M22.6345428,18.4153846 L26.4069666,18.4153846 L26.4069666,32.1956044 L22.6345428,32.1956044 L22.6345428,18.4153846 Z M22.6345428,12.2769231 L26.4069666,12.2769231 L26.4069666,15.721978 L22.6345428,15.721978 L22.6345428,12.2769231 Z" id="path-1"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feMorphology radius="0.25" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="textf">
+            <g id="Info" transform="translate(9.000000, 5.000000)">
+                <g id="Group-3" transform="translate(0.000000, 0.181698)">
+                    <g id="Combined-Shape">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use stroke="#FFFFFF" stroke-width="0.5" fill-opacity="0.7" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <g id="Group" transform="translate(22.634543, 13.153846)"></g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

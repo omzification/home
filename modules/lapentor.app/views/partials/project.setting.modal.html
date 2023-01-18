@@ -1,0 +1,56 @@
+<div class="modal-content" id="ProjectSetting">
+    <div class="modal-header">
+        <button ng-click="projectSettingVm.dismiss()" type="button" class="close"><span>&times;</span></button>
+        <h4 class="modal-title"><span class="glyphicon glyphicon-cog"></span> Settings</h4>
+    </div>
+    <div class="modal-body clearfix">
+        <div class="row">
+            <div class="col-md-6 col-sm-6">
+                <h4>
+                    <span class="glyphicon glyphicon-refresh"></span> Auto rotate 
+                    <span class="glyphicon glyphicon-info-sign info" uib-tooltip="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"></span>
+                </h4>
+                <hr>
+                <div class="form-group">
+                    <input class="form-control" type="checkbox" id="settings.auto_rotate.active" ng-model="projectSettingVm.project.settings.auto_rotate.active" required>
+                    <label for="settings.auto_rotate.active"><span></span>Enable</label>
+                </div>
+                <div class="form-group">
+                    <label for="">Idle time (second)</label> <span class="glyphicon glyphicon-question-sign" uib-tooltip="The time in seconds to wait after the last user-interaction before starting the automatic rotation."></span>
+                    <input class="form-control" type="number" ng-model="projectSettingVm.project.settings.auto_rotate.idle_time">
+                </div>
+                <div class="form-group">
+                    <label for="">Speed</label> <span class="glyphicon glyphicon-question-sign" uib-tooltip="The maximum rotation speed in second. Use a negative value for a rotation to left."></span>
+                    <input class="form-control" type="number" ng-model="projectSettingVm.project.settings.auto_rotate.speed" placeholder="Default is 10 second">
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+                <h4><span class="glyphicon glyphicon-transfer"></span> Auto change scene
+                    <span class="glyphicon glyphicon-info-sign info" uib-tooltip="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna"></span>
+                </h4>
+                <hr>
+                <div class="form-group">
+                    <input class="form-control" type="checkbox" id="settings.auto_change_scene.active" ng-model="projectSettingVm.project.settings.auto_change_scene.active">
+                    <label for="settings.auto_change_scene.active"><span></span>Enable</label>
+                </div>
+                <div class="form-group">
+                    <label for="">Idle time (second)</label> <span class="glyphicon glyphicon-question-sign" uib-tooltip="The time in seconds to wait after the last user-interaction before starting the automatic rotation."></span>
+                    <input class="form-control" type="text" ng-model="projectSettingVm.project.settings.auto_change_scene.idle_time">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="checkbox" ng-model="projectSettingVm.project.settings.auto_change_scene.random" id="settings.auto_change_scene.random">
+                    <label for="settings.auto_change_scene.random"><span></span>Random</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-danger" ng-click="projectSettingVm.updateProject()">
+                    <span ng-hide="projectSettingVm.isLoading" class="glyphicon glyphicon-floppy-disk"></span>
+                    <img ng-show="projectSettingVm.isLoading" src="bower_components/SVG-Loaders/svg-loaders/puff.svg" width="20" alt="">
+                     Save
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

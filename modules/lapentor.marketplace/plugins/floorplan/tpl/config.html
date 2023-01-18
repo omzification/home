@@ -1,0 +1,214 @@
+<style>
+#FloorplanPluginConfig > h4 {
+    margin-top: 0;
+}
+
+.form .form-content .placemarker {
+    width: 25px;
+    height: 25px;
+    display: block;
+    margin:0 auto 12px;
+}
+
+.item-flooplan.active {
+    border-color: #F6C964;
+    box-shadow: 0 0 12px rgba(246, 201, 100, 0.25);
+}
+
+.item-flooplan {
+    margin: 0 0 12px 0;
+    border:1px solid rgba(255,255,255,0.25);
+}
+
+.item-flooplan:first-child {
+}
+
+.floorplan {
+    width: 100%;
+    
+    background:white;
+}
+
+#map-floorplan {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    margin: 0 auto;
+    height: 300px;
+    border: 1px solid rgba(255,255,255,.25);
+}
+
+.map-placemarker {
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dropdown-menu {
+    max-width: 200px;
+}
+
+.btn-upload-marker {
+    font-size: 12px;
+    padding: 0;
+    background: #F16F49;
+    color: #FFF;
+}
+
+#FloorplanPluginConfig .floorplan-preview {
+    border: 4px solid rgba(255,255,255,.25);
+    height: 255px;
+    width: 100%;
+    line-height: 255px;
+    text-align: center;
+}
+
+#FloorplanPluginConfig .btn-upload-marker i {
+    font-size: 18px;
+}
+
+#FloorplanPluginConfig .col-sm-3 {
+    padding-right: 0;
+}
+#krpanoTour {
+    margin-top:12px;
+    border:1px solid rgba(255,255,255,.25);
+}
+</style>
+<div class="clearfix" id="FloorplanPluginConfig">
+    <div class="form-group">
+        <div class="guideline">
+           <span><i class="ilpt-info"></i> Watch our <a target="_blank" href="https://www.youtube.com/watch?v=u_juzKT6Rxs">tutorial</a></span>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form">
+                    <label class="form-label">Marker icon</label>
+                    <div class="form-content">
+                        <img id="placemarker" class="placemarker" ng-if="vm.config.icon" ng-src="{{ vm.config.icon }}" alt="{{ hotspot.caption }}" data-drag="true" jqyoui-draggable="{onDrag : 'vm.drag'}" data-jqyoui-options="{helper: 'clone',revert: 'invalid', appendTo: '#map-floorplan'}" ng-model="placemarker">
+                        <button class="btn-upload-marker btn btn-fl form-control" ng-click="vm.openMediaLib('icon')">
+                            <i class="ilpt-insert-image"></i>
+                        </button>
+                    </div>
+                    <input type="hidden" ng-model="vm.config.icon">
+                </div>
+                <div class="form">
+                    <label class="form-label" for="">Marker width (px)</label>
+                    <div class="form-content">
+                        <rzslider rz-slider-model="vm.config.placemarkWidthHeight" rz-slider-options="{floor: 10, ceil: 50, showSelectionBar: true,onChange : vm.markerUpdateWidthHeight()}"></rzslider>
+                    </div>
+                </div>
+                <div class="form">
+                    <label class="form-label">Floor plan images</label>
+                    <div class="form-content">
+                        <ul class="list-floorplans">
+                            <li class="item-flooplan" ng-repeat="floorplan in vm.config.floorplans" context-menu="vm.menuOptionsFloorplan" ng-class="{'active': vm.mapId == floorplan._id}">
+                                <img class="floorplan" ng-if="floorplan.path" ng-src="{{ floorplan.thumb }}" ng-click="vm.showFloorplan(floorplan._id)">
+                            </li>
+                        </ul>
+                        <button class="btn btn-fl form-control" ng-click="vm.openMediaLib('floorplan')">
+                        <i class="ilpt-plus"></i> <i class="ilpt-insert-image"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="form full" ng-show="vm.formMap">
+                    <div class="form-content">
+                        <input class="map-id" type="hidden" ng-model="vm.mapId">
+                        <div id="map-floorplan" class="map-floorplan" ng-if="vm.map" style="
+            background-image: url('{{ vm.map  }}');
+            width: {{ vm.mapWidth+'px' }};
+            height: {{ vm.mapHeight+'px' }};
+            background-size: cover" data-drop="true" data-jqyoui-options="{accept: '#placemarker'}" jqyoui-droppable="{onDrop : 'vm.newPlacemarker'}">
+                            <div class="map-placemarker" ng-repeat="(key , placemarker) in vm.placemarkers" context-menu="vm.menuOptionsPlacemarker" bg-src="{{ vm.config.icon }}" ng-style="{top: placemarker.top + 'px', left: placemarker.left + 'px', 'background-image' : 'url('+vm.config.icon+')', width : vm.config.placemarkWidthHeight+'px',height:vm.config.placemarkWidthHeight+'px'}" data-drag="true" jqyoui-draggable="{onDrag : 'vm.drag',onStop: 'vm.updatePlacemarker(key)'}" data-jqyoui-options="{containment: '#map-floorplan'}" >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form">
+                    <label class="form-label" for="" ng-if="vm.formMap">Width (px)</label>
+                    <div class="form-content">
+                        <rzslider ng-if="vm.formMap" rz-slider-model="vm.mapWidth" rz-slider-options="{floor: 200, ceil: 600, showSelectionBar: true,onChange : vm.floorplanUpdate(vm.mapId)}"></rzslider>
+                        <div ng-if="!vm.map" class="floorplan-preview">
+                            Select or upload floor plan on the left to start editing
+                        </div>
+                    </div>
+                </div>
+                <div class="form" ng-show="vm.formMap">
+                    <label  class="form-label" for="">Title</label>
+                    <div class="form-content">
+                        <input type="text" class="form-control" ng-model="vm.mapName" placeholder="Title" ng-change="vm.floorplanUpdate(vm.mapId)">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="form">
+            <label class="form-label">Open on start</label>
+            <div class="form-content">
+                <select ng-model="vm.config.on_start" class="form-control">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label">Position</label>
+            <div class="form-content">
+                <select ng-model="vm.config.position" class="form-control">
+                    <option value="center">Center</option>
+                    <option value="bottom-left">Bottom left</option>
+                    <option value="bottom-right">Bottom right</option>
+                </select>
+            </div>
+        </div>
+        <div class="form">
+            <label class="form-label" for="">Wrapper background</label>
+            <div class="form-content">
+                <span class="demo-bg-block" style="background-color: {{ vm.config.bg_color }}"></span>
+                <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color">
+            </div>
+        </div>
+        <div class="form">
+            <div class="form-checkbox">
+                <input id="map-radar" type="checkbox" ng-model="vm.config.radars.active">
+                <label for="map-radar"><span></span> Enable Radar <i class="ilpt-info" uib-tooltip="This will show a Radar along with current marker"></i></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form" ng-if="vm.config.radars.active">
+                    <label class="form-label" for="">Radar offset left (px)</label>
+                    <div class="form-content">
+                        <input type="number" class="form-control" ng-model="vm.config.radars.left" min="0" max="{{vm.config.placemarkWidthHeight}}" step="0.5" onkeypress="return false" />
+                    </div>
+                </div>
+                <div class="form" ng-if="vm.config.radars.active">
+                    <label class="form-label" for="">Radar offset top (px)</label>
+                    <div class="form-content">
+                        <input type="number" class="form-control" ng-model="vm.config.radars.top" min="0" max="{{vm.config.placemarkWidthHeight}}" step="0.5" onkeypress="return false" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form" ng-if="vm.config.radars.active">
+                    <label class="form-label" for="">Radar radius (px)</label>
+                    <div class="form-content">
+                        <input type="number" class="form-control" ng-model="vm.config.radars.radius" min="50" max="100" step="10" onkeypress="return false" />
+                    </div>
+                </div>
+                <div class="form" ng-if="vm.config.radars.active">
+                    <label class="form-label" for="">Radar BG color</label>
+                    <div class="form-content">
+                        <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.radars.background" onkeypress="return false">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

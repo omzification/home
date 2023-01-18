@@ -1,0 +1,84 @@
+<script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+
+<div id="MediaLibrary" class="{{ vm.isCreateScene?'on-creating_scene':'' }} bg-dark" role="dialog" ngf-drop="vm.upload($files, $invalidFiles)"
+  ngf-drag-over-class="'dragover'" ngf-multiple="true" ngf-max-total-size="{{ vm.currentFileType == 'pano'?'300MB':'200MB' }}">
+    <div class="close close-black" ng-click="vm.cancel()"><i class="ilpt-close"></i></div>
+    <div class="drop-overlay">
+        <span class="dropbox">Drop files here</span>
+    </div>
+    <div class="modal-header">
+        <div class="clearfix">
+            <h4 class="title">Media library</h4>
+            <input class="search" type="text" placeholder="Search" ng-model="vm.search['name']">
+            <div class="topbar">
+                <ul class="filter">
+                    <li ng-if="vm.currentFileType == 'pano'" ng-class="{'active': vm.currentFileType == 'pano'}" ng-click="vm.tabSelect('pano')">Panos</li>
+                    <li ng-if="vm.currentFileType == 'asset'" ng-class="{'active': vm.currentFileType == 'asset'}" ng-click="vm.tabSelect('asset')">Assets</li>
+                </ul>
+            </div>
+        </div>
+        <uib-progressbar ng-if="vm.isUploading" value="vm.uploadProgress" title="{{ vm.uploadProgress }}%" class="progress-striped active"></uib-progressbar>
+        <!-- for frontend -->
+        <uib-progressbar ng-if="vm.isCreateScene" value="vm.makePanoProgress" title="{{ vm.makePanoProgress }}%" class="progress-striped active"></uib-progressbar>
+        <!--  -->
+    </div>
+    <div class="modal-body">
+        <div class="library">
+            <div class="gallery">
+                <p class="empty-msg" ng-if="vm.currentFileType == 'pano'"><i class="ilpt-information"></i> Select one or many images and press <strong>Make Sphere</strong> to process your still image. <br> Support file type: JPEG, JPG, PNG, TIFF</p>
+                <h4 class="empty-msg" ng-if="!(vm.files | filter:{type: vm.currentFileType}).length"><i class="ilpt-upload-cloud"></i> Drag or Upload your pano to get started</h4>
+
+                <div class="photo {{ vm.selectedMedias.indexOf(pano._id)!=-1?'checked':'' }}" ng-repeat="pano in vm.files | filter:vm.search | filter:{type: vm.currentFileType}" ng-click="vm.selectMedia(pano._id)">
+                    <div class="check btn-icon">
+                        <i class="ilpt-check-1"></i>
+                    </div>
+                    <div class="thumbnail" bg-src="{{ pano.thumb }}">
+                        <div class="check-sphere" ng-if="pano.scene > 0"></div>
+                        <a href="{{ pano.path }}" class="download-asset-btn" download onclick="event.stopPropagation();"><i class="ilpt-cloud-download" style="position: relative;"></i></a>
+                    </div>
+                    <span class="name">{{ pano.name }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="rendering-progress {{ vm.isCreateScene?'':'hide' }}">
+            <h5>Rendering {{ vm.rendering }} / {{ vm.renderingTotal }} Sphere...</h5>
+            <ul class="scene-list">
+
+                <li ng-repeat="file in vm.filesCreateScene" class="item {{ file.class }}">
+                    <span class="name">{{ file.name }}</span>
+                    <div id="{{ file._id }}" class="status"></div>
+                </li>
+
+            </ul>
+        </div>
+        <!--<span class="note">You will be redirect to Editor after Rendering finish…<a href="" class="btn bg-grad">Start Editing now</a></span>-->
+    </div>
+    <div class="modal-footer">
+        <div class="button-group">
+            <div class="btn-reveal" ng-if="vm.currentFileType == 'pano' && (vm.files.length > 0)" ng-show="vm.selectedMedias.length > 0">
+                <button class="btn bg-grad toggler">{{ isReplacePano?'Replace':'Make' }} Sphere</button>
+                <div class="reveal up">
+                    <ul>
+                        <li class="" ng-if="vm.currentFileType == 'pano'" ng-click="vm.makePano()">Standard</li>
+                        <li class="" ng-if="vm.currentFileType == 'pano'" ng-click="vm.makePano('multires')">Multiresolution</li>
+                    </ul>
+                </div>    
+            </div>
+            <!-- <button ng-if="vm.currentFileType == 'pano'" ng-click="vm.makePanoDropBox()" class="btn btn-line" ><i class="fa fa-dropbox"></i> Load from Dropbox</button> -->
+            <button class="btn bg-grad" ng-if="vm.currentFileType == 'asset' && vm.selectedMedias.length > 0" ng-click="vm.chooseAsset()">Choose file</button>
+            <button class="btn btn-line" ngf-max-total-size="{{ vm.currentFileType == 'pano'?'300MB':'200MB' }}" ng-model="files" ngf-accept="'image/*, audio/*, *.mp3'" ngf-select="vm.upload($files, $invalidFiles)" multiple>Upload {{ vm.currentFileType }}</button>
+            <button class="btn btn-line" ng-click="vm.selectAll()" ng-show="vm.selectedMedias.length > 0">{{ vm.selectedMedias.length==vm.files.length?"Deselect all":"Select all" }}</button>
+            <button class="btn btn-line" ng-show="vm.selectedMedias.length > 0" ng-click="vm.deleteSelected()"><i class="ilpt ilpt-trash" style="font-size: 12px;"></i> Delete</button>
+        </div>
+    </div>
+
+    <div ng-if="vm.isLoading" ng-include="'modules/loading.html'"></div>
+</div>
+<style>
+    .picker-dialog-bg{
+        z-index: 2000;
+    }
+    .picker-dialog{
+        z-index: 2001;
+    }
+</style>

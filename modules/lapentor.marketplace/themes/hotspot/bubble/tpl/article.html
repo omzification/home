@@ -1,0 +1,9 @@
+<div id="" class="hotspot-modal hotspot-modal-bubble hotspot-bubble-article-popup" ng-style="{'border-color': config.bg_color }">
+    <div class="close" ng-click="vm.cancel()" ng-style="{'background-color': config.bg_color, 'color': config.text_color }"><i class="ilpt-close"></i></div>
+    <div class="wrapper">
+	    <div class="content">
+		    <h2 class="title">{{ hotspot.title }}</h2>
+		    <article ng-bind-html="hotspot.content"></article>
+		</div>
+	</div>
+</div>

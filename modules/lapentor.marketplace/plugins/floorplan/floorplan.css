@@ -1,0 +1,117 @@
+#PluginFloorplan {
+    position: absolute;
+    z-index: 400;
+    background: rgb(27, 27, 27);
+    padding-top: 50px;
+    left: 0;
+    bottom: 0;
+    top: auto;
+}
+
+#PluginFloorplan.center {
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    bottom: auto;
+}
+
+#PluginFloorplan.bottom-right {
+    left: auto;
+    right: 0;
+}
+
+#PluginFloorplan canvas {
+    background-size: 100% 100%;
+    position: relative;
+    width: 100%;
+}
+
+#PluginFloorplan .list {
+    position: absolute;
+    left: 50%;
+    top: 12px;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+#PluginFloorplan .list li {
+    float: left;
+    margin-right: 10px;
+    color: white;
+    cursor: pointer;
+    text-transform: capitalize;
+    opacity: .8;
+    position: relative;
+}
+
+#PluginFloorplan .list li.active {
+    opacity: 1;
+}
+
+#PluginFloorplan .close-btn {
+    transition: all 0.4s;
+    background: #FFF;
+    color: black;
+    text-align: center;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    line-height: 30px;
+    opacity: .8;
+    cursor: pointer;
+    z-index: 2;
+}
+
+#PluginFloorplan .close-btn:hover {
+    opacity: 1;
+    font-size: 14px;
+}
+
+#PluginFloorplan .list li.active:before,
+#PluginFloorplan .list li:hover:after {
+    content: "";
+    width: 60%;
+    height: 1px;
+    background: white;
+    display: block;
+    bottom: -4px;
+    position: absolute;
+    left: 50%;
+    margin-left: -30%;
+}
+
+#map-floorplan {
+    background-repeat: no-repeat;
+    z-index: 4;
+    position: relative;
+}
+
+#PluginFloorplan .map-container {
+    position: absolute;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    left: 50%;
+    width: 100%;
+}
+
+#PluginFloorplan .map-placemarker {
+    position: absolute;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,272 @@
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Quicksand:400,500&subset=vietnamese');
+    #scenelist-tremble {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background: white;
+        height: 100vh;
+        transition: all 0.8s;
+        z-index: 500;
+        transform: translateY(-100%);
+        -webkit-transform: translateY(-100%);
+    }
+    
+    #scenelist-tremble.show {
+        transform: translateY(0);
+    }
+    
+    #scenelist-tremble .menu__item {
+        line-height: 1;
+        position: relative;
+        display: block;
+        margin: 1em 0;
+        outline: none;
+    }
+    
+    #scenelist-tremble .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        background-color: black;
+    }
+    
+    #scenelist-tremble .scroller {
+        bottom: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100vh;
+        overflow: auto;
+        margin: auto;
+        position: relative;
+        counter-reset: itemCounter;
+    }
+    
+    #scenelist-tremble .menu--ama {
+        position: relative;
+        counter-reset: itemCounter;
+        left: 50%;
+        transform: translateX(-50%);
+        -webkit-transform: translateX(-50%);
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item {
+        font-family: 'Quicksand', sans-serif;
+        font-size: 1.25em;
+        font-weight: 500;
+        margin: 3em 0;
+        padding-left: 0.5em;
+        color: #32343c;
+    }
+    
+    #scenelist-tremble .menu__item .menu__item-name span {
+        color: #32343c!important;
+    }
+    
+    #scenelist-tremble .menu__item.active .menu__item-name::before,
+    #scenelist-tremble .menu__item.active .menu__item-name::after {
+        background: {
+            {
+                vm.config.featured_color
+            }
+        }
+        ;
+    }
+    
+    #scenelist-tremble .menu__item.active .menu__item-name span,
+    #scenelist-tremble .menu__item:hover .menu__item-name span {
+        color: {
+            {
+                vm.config.featured_color
+            }
+        }
+        !important;
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item::before {
+        content: counter(itemCounter, decimal-leading-zero);
+        font-size: 0.85em;
+        font-weight: bold;
+        position: absolute;
+        right: 100%;
+        bottom: calc(100% - 0.35em);
+        counter-increment: itemCounter;
+        color: #ddd;
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item:hover::before,
+    #scenelist-tremble .menu--ama .menu__item:focus::before {
+        color: var(--menu-item-color);
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item-name {
+        font-size: 1.5em;
+        font-weight: 500;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0.5em 0 0 0;
+        white-space: pre;
+        text-transform: lowercase;
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item-name::before,
+    #scenelist-tremble .menu--ama .menu__item-name::after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 0;
+        width: 2.5em;
+        height: 4px;
+        background: #ddd;
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item-name::after {
+        background: var(--menu-item-color);
+        transform: scale3d(0, 1, 1);
+        -webkit-transform: scale3d(0, 1, 1);
+        -webkit-transform-origin: 0% 50%;
+        transform-origin: 0% 50%;
+        transition: transform 0.5s;
+        -webkit-transition: transform 0.5s;
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item:hover .menu__item-name::after,
+    #scenelist-tremble .menu--ama .menu__item:focus .menu__item-name::after {
+        transform: scale3d(1, 1, 1);
+        -webkit-transform: scale3d(1, 1, 1);
+    }
+    
+    #scenelist-tremble .menu--ama .menu__item-name span {
+        display: inline-block;
+    }
+    
+    #scenelist-tremble .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        cursor: pointer;
+        font-family: 'Quicksand', sans-serif;
+        width: 30px;
+    }
+    
+    #scenelist-tremble-menu {
+        position: absolute;
+        bottom: -74px;
+        left: 50%;
+        margin-left: -30px;
+        width: 0;
+        height: 0;
+        z-index: 10;
+        border: 44px solid transparent;
+        border-top: 30px solid white;
+        cursor: pointer;
+    }
+    
+    #scenelist-tremble-menu:after,
+    #scenelist-tremble-menu:before {
+        content: "";
+        position: absolute;
+        right: -7px;
+        width: 2px;
+        height: 15px;
+        background: {
+            {
+                vm.config.featured_color
+            }
+        }
+        ;
+        display: block;
+        -webkit-transform: rotate(57deg);
+        transform: rotate(57deg);
+        top: -19px;
+        border-radius: 10px;
+    }
+    
+    #scenelist-tremble-menu:after {
+        -webkit-transform: rotate(-57deg);
+        transform: rotate(-57deg);
+        left: -7px;
+        right: auto;
+    }
+    
+    #scenelist-tremble.show #scenelist-tremble-menu {
+        transform: rotate(180deg);
+        bottom: 0;
+        border-top: 30px solid {
+            {
+                vm.config.featured_color
+            }
+        }
+        ;
+    }
+    
+    #scenelist-tremble.show #scenelist-tremble-menu:after,
+    #scenelist-tremble.show #scenelist-tremble-menu:before {
+        background: white;
+    }
+    /*Has group*/
+    
+    #scenelist-tremble .menu__item .scenes {
+        margin-top: 20px;
+    }
+    
+    #scenelist-tremble .menu__item .scenes li {
+        margin-bottom: 10px;
+        list-style: disc;
+    }
+    
+    #scenelist-tremble .menu__item .scenes li:hover,
+    #scenelist-tremble .menu__item .scenes li.active {
+        color: {
+            {
+                vm.config.featured_color
+            }
+        }
+        ;
+    }
+    
+    #scenelist-tremble .logo {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        width: 200px;
+    }
+    
+    @media screen and (max-width: 578px) {
+        #scenelist-tremble .logo {
+            left: 50%;
+            margin-left: -100px;
+            max-height: 50px;
+            width: auto;
+            max-width: 90%;
+            top: 10px;
+        }
+        #scenelist-tremble .menu--ama {
+            margin-top: 50px;
+        }
+    }
+</style>
+<div id="scenelist-tremble" ng-class="{'show': vm.isScenelistOpen}">
+    <div id="scenelist-tremble-menu" ng-click="vm.toggleScenelist()"></div>
+    <img ng-src="{{ vm.config.logo }}" alt="" class="logo">
+    <!-- Has group -->
+    <div class="scroller">
+        <nav class="menu menu--ama" ng-if="vm.groups.length != 0 && !vm.allGroupIsEmpty">
+            <a class="menu__item" href="#" ng-repeat="group in vm.groups" ng-if="group.scenes.length > 0">
+                <span class="menu__item-name">{{ group.title }}</span>
+                <ul class="scenes" ng-if="group.scenes.length > 0">
+                    <li class="scene" ng-repeat="scene in group.scenes" ng-class="{'active': scene._id == vm.currentscene._id }" ng-click="vm.changeScene(scene)">
+                        {{ scene.title }}
+                    </li>
+                </ul>
+            </a>
+        </nav>
+    </div>
+
+    <!-- No group or all group is empty -->
+    <nav class="menu menu--ama" ng-if="vm.groups.length == 0 || vm.allGroupIsEmpty">
+        <a class="menu__item" href="#" ng-repeat="scene in vm.scenes" ng-click="vm.changeScene(scene)" ng-class="{'active': scene._id == vm.currentscene._id }">
+            <span class="menu__item-name">{{ scene.title }}</span>
+        </a>
+    </nav>
+</div>

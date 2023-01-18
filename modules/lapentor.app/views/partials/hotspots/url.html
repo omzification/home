@@ -1,0 +1,18 @@
+<div class="hs-section">
+	<span class="hs-section-tt">LINK</span>
+	<div class="form-group">
+		<div class="form full">
+			<div class="form-content">
+				<input type="url" class="form-control" placeholder="e.g: http://lapentor.com" ng-model="vm.hotspot.url" name="url">
+				<span class="error" ng-show="vm.hotspotForm.url.$error.url">Not a valid url</span>
+				<p class="tip">(*) Must include http:// or https://</p>
+			</div>
+		</div>
+		<div class="form auto">
+			<label for="" class="form-label">Embeded <i class="ilpt-info" uib-tooltip="Open external site on popup window"></i></label>
+			<div class="form-content">
+				<toggle-switch ng-model="vm.hotspot.iframe" on-label="Yes" off-label="No"></toggle-switch>
+			</div>
+		</div>
+	</div>
+</div>

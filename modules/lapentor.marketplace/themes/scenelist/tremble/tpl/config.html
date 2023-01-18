@@ -1,0 +1,43 @@
+<style>
+    .scenelist-global-config .minimize_clickoutside{
+        display: none;
+    }
+</style>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <!-- <div class="form">
+                <label class="form-label" for="">Menu position</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.menu_position" class="btn form-control">
+                        <option ng-selected="vm.config.menu_position == 'top'" value="left">Top</option>
+                        <option ng-selected="vm.config.menu_position == 'left'" value="left">Left</option>
+                        <option ng-selected="vm.config.menu_position == 'right'" value="right">Right</option>
+                        <option ng-selected="vm.config.menu_position == 'bottom'" value="right">Bottom</option>
+                    </select>
+                </div>
+            </div> -->
+            <div class="form">
+                <label class="form-label" for="">Featured color</label>
+                <div class="form-content">
+                    <span class="demo-bg-block" style="background-color: {{ vm.config.featured_color }}"></span>
+                    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.featured_color">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Set Logo</label>
+                <div class="form-content">
+                    <button class="btn form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-insert-image"></i> Choose/Upload image
+                    </button>
+                    <img id="logo" class="img-wrapper" style="max-height: 150px; margin: 20px auto; display: block;" ng-if="vm.config.logo" loading-src="{{ vm.config.logo }}" alt="">
+                    <input type="hidden" ng-model="vm.config.logo">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

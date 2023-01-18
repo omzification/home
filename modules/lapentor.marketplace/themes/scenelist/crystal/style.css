@@ -1,0 +1,377 @@
+#scenelist-crystal {
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    color: white;
+    text-align: center;
+}
+
+#scenelist-crystal.bottom.off {
+    bottom: -120px;
+}
+
+#scenelist-crystal.bottom {
+    bottom: 0;
+    top: auto;
+    background: url(img/bottom-gradient.png) repeat-x top;
+}
+
+#scenelist-crystal {
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s linear;
+    -o-transition: all 0.3s linear;
+    transition: all 0.3s linear;
+    color: white;
+    text-align: center;
+}
+
+#scenelist-crystal.bottom.off {
+    bottom: -120px;
+}
+
+#scenelist-crystal.bottom {
+    bottom: 0;
+    top: auto;
+    background: url(img/bottom-gradient.png) repeat-x top;
+}
+
+#scenelist-crystal.top {
+    top: 84px;
+    bottom: auto;
+    background: url(img/top-gradient.png) repeat-x top;
+}
+
+#scenelist-crystal.top.has-group .group-titles {
+    margin-bottom: 0;
+    top: 34px;
+}
+
+#scenelist-crystal.top.off {
+    top: -120px;
+}
+
+#scenelist-crystal.small {
+    height: 42px;
+    min-height: initial;
+    width: 42px;
+    left: 10px;
+    top: 10px;
+}
+
+#scenelist-crystal.small .tab-nav {
+    display: none;
+}
+
+#scenelist-crystal .scenelist-toggle {
+    z-index: 11;
+    text-align: right;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    text-align: center;
+}
+
+#scenelist-crystal .scenelist-toggle img {
+    width: 22px;
+    margin-top: 10px;
+    position: relative;
+    z-index: -1;
+}
+
+#scenelist-crystal .scenelist-toggle i {
+    color: white;
+    font-size: 24px;
+}
+
+#scenelist-crystal .tab-nav {
+    width: 100%;
+    top: 0;
+    height: 80px;
+}
+
+#scenelist-crystal .tab-nav li {
+    cursor: pointer;
+    width: 150px;
+    height: 75px;
+    text-indent: initial;
+    border-radius: 0;
+    display: inline-block;
+    overflow: hidden;
+    margin-right: 10px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+#scenelist-crystal .tab-nav li.active {
+    border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+#scenelist-crystal .group-titles li {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#scenelist-crystal .tab-nav span {
+    font-size: 12px;
+    font-weight: 100;
+}
+
+#scenelist-crystal .group-titles li.active,
+#scenelist-crystal .group-titles li:hover {
+    border-bottom: 2px solid white;
+}
+
+#scenelist-crystal .tab-nav li.show {
+    display: block;
+}
+
+#scenelist-crystal .tab-nav li span {
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='rgba(0, 0, 0, 0)', endColorstr='#000000', GradientType=0);
+    display: block;
+    width: 100%;
+    padding: 25px 10px 5px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    border: none;
+    text-shadow: 0 2px 5px #000;
+}
+
+#scenelist-crystal-scroll-wrapper {
+    position: absolute;
+    width: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#scenelist-crystal-scroll-wrapper .scene .title {
+    font-family: 'Lato-Light', sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#scenelist-crystal-scroll-wrapper .mCustomScrollBox {
+    display: inline-block;
+    width: auto;
+}
+
+#scenelist-crystal.has-group #scenelist-crystal-scroll-wrapper {
+    padding-top: 5px;
+}
+
+.scenelist-item-background {
+    background-color: rgba(0, 0, 0, 0.35);
+    width: 150px;
+    height: 75px;
+    position: relative;
+}
+
+.scenelist-item-background:hover {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.scenelist-item-background.active {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#scenelist-crystal .button-left-shadow {
+    position: absolute;
+    background: url(img/roll-shadow.png) no-repeat;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+}
+
+#scenelist-crystal .button-right-shadow {
+    position: absolute;
+    background: url(img/roll-shadow-right.png) no-repeat;
+    right: 0;
+    bottom: 0;
+    width: 100px;
+    height: 100px;
+}
+
+#scenelist-crystal .scene-Arrow {
+    outline: none;
+}
+
+#scenelist-crystal .scene-Arrow_Left {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    opacity: 1;
+    height: 75px;
+    margin-bottom: 8px;
+    background: none;
+    border: none;
+}
+
+#scenelist-crystal .scene-Arrow_Right {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 1;
+    height: 75px;
+    margin-bottom: 8px;
+    background: none;
+    border: none;
+}
+
+#scenelist-crystal .scene-Arrow_Icon {
+    width: 20px;
+    height: 44px;
+    fill: #bbb;
+}
+
+#scenelist-crystal .group {
+    width: 250px;
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+}
+
+#scenelist-crystal .group:hover .group-list {
+    max-height: 80vh;
+}
+
+#scenelist-crystal .group:hover .group-titles .arrow-toggle {
+    transform: rotateX(180deg) rotateY(180deg);
+}
+
+#scenelist-crystal.bottom .group-list {
+    max-height: 0px;
+    position: absolute;
+    bottom: 114px;
+    right: 0px;
+    text-align: right;
+    width: 250px;
+    background: url(img/left-shadow.png) repeat-y right;
+    -webkit-transition: max-height 0.3s ease-in-out;
+    -moz-transition: max-height 0.3s ease-in-out;
+    -o-transition: max-height 0.3s ease-in-out;
+    -ms-transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+#scenelist-crystal.top .group-list {
+    max-height: 0px;
+    position: absolute;
+    top: 68px;
+    right: 0px;
+    text-align: right;
+    width: 250px;
+    background: url(img/left-shadow.png) repeat-y right;
+    -webkit-transition: max-height 0.3s ease-in-out;
+    -moz-transition: max-height 0.3s ease-in-out;
+    -o-transition: max-height 0.3s ease-in-out;
+    -ms-transition: max-height 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+#scenelist-crystal .group-list li {
+    height: 34px;
+    line-height: 34px;
+    padding-right: 34px;
+    font-size: 16px;
+    border-image: url("img/separate-line.png");
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    opacity: 0.7;
+    transition-duration: 0.15s;
+    cursor: pointer;
+}
+
+#scenelist-crystal .group-list li:hover {
+    opacity: 1;
+    transform: scale(1.1) translateX(-3px);
+}
+
+#scenelist-crystal .group-list li.active {
+    display: none;
+}
+
+#scenelist-crystal.small .group-titles {
+    display: none;
+}
+
+#scenelist-crystal .group-titles {
+    position: relative;
+    margin-bottom: 80px;
+    z-index: 2;
+    background: url(img/left-shadow.png) repeat-y right;
+    text-align: right;
+    height: 34px;
+    line-height: 34px;
+    font-size: 17px;
+    font-weight: 100;
+    padding-right: 16px;
+    cursor: pointer;
+}
+
+#scenelist-crystal.no-group .group-titles {
+    display: none;
+}
+
+#scenelist-crystal .group-titles .arrow-toggle {
+    background: url(img/arrow-toggle.png) no-repeat center;
+    background-size: contain;
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    margin: 0px 5px;
+    -webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    -o-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+#scenelist-crystal .noselect {
+    font-family: 'Lato-Light', sans-serif;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media screen and (max-width: 568px) {
+    #scenelist-crystal .group-titles {
+        position: static;
+    }
+}

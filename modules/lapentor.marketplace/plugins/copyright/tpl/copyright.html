@@ -1,0 +1,31 @@
+<style>
+    #PluginCopyright {
+        position: absolute;
+        z-index: 200;
+        color: white;
+        font-size: 14px;
+        font-family: sans-serif;
+        background-image: url(modules/lapentor.marketplace/plugins/copyright/images/gradient-right.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        min-width: 158px;
+        padding: 10px 20px 10px 50px;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    
+    #PluginCopyright.bottom-left,
+    #PluginCopyright.top-left {
+        background-image: url(modules/lapentor.marketplace/plugins/copyright/images/gradient-left.png);
+        padding: 10px 50px 10px 20px;
+    }
+    
+    #PluginCopyright a {
+        display: block;
+        color: inherit;
+    }
+</style>
+<h3 id="PluginCopyright" ng-style="vm.style" class="{{ vm.config.position }}"><a target="_blank" ng-href="{{vm.config.url||'#'}}">{{ vm.config.text }}</a></h3>

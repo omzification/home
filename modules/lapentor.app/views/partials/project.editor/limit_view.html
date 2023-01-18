@@ -1,0 +1,31 @@
+<div id="limitViewWrapper" ng-show="vm.showLimitViewButtons">
+    <button id="applyLimitForAll" ng-click="vm.applyLimitForAllScenes()" class="btn btn-warning">
+        Apply for all scenes
+    </button>
+    <button ng-click="vm.saveLimitView('left')" class="btn btn-warning left">
+        <p>Limit Left</p>
+        <span class="num">{{ vm.scene.limit_view.left }}</span>
+    </button>
+    <button ng-click="vm.saveLimitView('right')" class="btn btn-warning right">
+        <p>Limit Right</p>
+        <span class="num">{{ vm.scene.limit_view.right }}</span>
+    </button>
+    <button ng-click="vm.saveLimitView('top')" class="btn btn-warning up">
+        <p>Limit Top</p>
+        <span class="num">{{ vm.scene.limit_view.top }}</span>
+    </button>
+    <button ng-click="vm.saveLimitView('bottom')" class="btn btn-warning down">
+        <p>Limit Bottom</p>
+        <span class="num">{{ vm.scene.limit_view.bottom }}</span>
+    </button>
+    <div class="btn btn-default reset btn-reveal">
+        <i class="ilpt-reload"></i>
+        <div class="reveal down">
+            <ul class="">
+                <li ng-click="vm.resetLimitView('all')">Reset all scene</li>
+                <li ng-click="vm.resetLimitView('one')">Reset this scene </li>
+            </ul>
+        </div>
+    </div>
+    <button ng-click="vm.showLimitViewButtons = false" class="btn btn-default closeit"><i class="ilpt-close"></i></button>
+</div>

@@ -1,0 +1,25 @@
+<div id="scenelist-elegantz" ng-style="vm.themeStyle" ng-class="{'small':vm.isSmall, 'no-group': vm.groups.length == 0, 'has-group': vm.groups.length != 0}" click-outside="vm.minimizeWhenClickOutside()" class="{{ vm.config.position }}">
+    <span class="scenelist-toggle" ng-click="vm.isSmall = !vm.isSmall">
+        <i ng-show="!vm.isSmall" ng-class="{'ilpt-angle-down': !vm.isSmall, '': vm.isSmall}"></i>
+        <i class="ilpt-angle-up" ng-show="vm.isSmall"></i>
+    </span>
+    
+    <div id="scenelist-elegantz-scroll-wrapper" ng-scrollable>
+        <!-- No group -->
+        <ul class="tab-nav clearfix" ng-if="vm.groups.length == 0">
+            <li ng-repeat="s in vm.project.scenes" class="scene" bg-src="{{ s.pano_thumb }}" ng-class="{'active': s._id == vm.currentscene._id}" ng-click="vm.changeScene(s)">
+                <span>{{ s.title }}</span>
+            </li>
+        </ul>
+
+        <!-- Have group -->
+        <ul class="tab-nav clearfix" ng-repeat="g in vm.groups" ng-if="vm.groups.length != 0 && vm.currentGroup._id == g._id">
+            <li class="scene" ng-repeat="s in g.scenes" bg-src="{{ s.pano_thumb }}" ng-class="{'active': s._id == vm.currentscene._id}" ng-click="vm.changeScene(s)">
+                <span>{{ s.title }}</span>
+            </li>
+        </ul>
+        <ul class="group-titles" ng-if="vm.groups.length">
+            <li ng-repeat="g in vm.groups" ng-click="vm.currentGroup = g; vm.initScrollbar()" ng-class="{'active': vm.currentGroup._id == g._id}">{{ g.title }}</li>
+        </ul>
+    </div>
+</div>

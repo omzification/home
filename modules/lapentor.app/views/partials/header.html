@@ -1,0 +1,107 @@
+<header class="p-top p-bot-x2">
+    <div class="container">
+        <a ui-sref="index" class="logo">
+            <img src="assets/images/logo.jpg" alt="lapentor logo" class="m-hidden">
+            <img src="assets/images/logo-circle.png" alt="lapentor logo" class="m-show">
+        </a>
+        <div class="pull-right">
+            <ul class="home-menu">
+                <li><a ui-sref="index" href="">Dashboard</a></li>
+                <!-- <li><a href="#" ng-if="!vm.user.subscribed" ng-controller="UpgradeCtrl as uVm" ng-click="uVm.openUpgradeForm(vm.user)">Cloud Hosting</a></li> -->
+                <!-- <li class="m-hidden"><a target="_blank" href="http://help.lapentor.com">Document</a></li> -->
+                <li id="dropdown-header-profile" class="dropdown">
+                    <div class="dropdown-toggle" type="button" id="userMenuDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                        <div class="avatar">
+                            <span class="thumb" bg-src="{{ vm.user.avatar || 'assets/images/logo-circle.png' }}"></span>
+                            <img src="assets/images/deco-grad.jpg" class="deco-grad" ng-if="vm.user.subscribed">
+                        </div>
+                        <div class="username">
+                            <span class="name">{{ vm.user.username }}</span>
+                            
+                            <!-- Price version 1: -->
+                            <!-- <section ng-if="!vm.user.price_model_ver">
+                                <span class="trial-remain" ng-if="vm.user.trial_remain > -1">{{ vm.user.trial_remain<0?'':vm.user.trial_remain }} day{{ vm.user.trial_remain>1?'s':''}} left</span>
+                            </section> -->
+                            <!-- END Price version 1: -->
+                        </div>
+                    </div>
+                    <ul class="dropdown-menu" aria-labelledby="userMenuDropdown">
+                        <li><a ui-sref="edit-profile({user: vm.user})" href=""><i class="ilpt-user-2"></i>My account</a></li>
+                        <li><a href="/u/{{ vm.user.username }}" target="_blank"><i class="ilpt-rectangle-star"></i>Public portfolio</a></li>
+                        <li ng-if="!vm.user.subscribed" ng-controller="UpgradeCtrl as uVm" ng-click="uVm.openUpgradeForm(vm.user)"><a href="#"><i class="ilpt-military-badge"></i></i>Activate Cloud Hosting</a></li>
+                        <li class="m-show"><a target="_blank" href="http://lapentor.com/knowledge-base/">Knowledge base</a></li>
+                        <li class="m-show"><a target="_blank" href="http://lapentor.com/faq/">FAQ</a></li>
+                        <!-- <li role="separator" class="divider"></li> -->
+                        <li><a ui-sref="logout" href=""><i class="ilpt-exit"></i>Sign out</a></li>
+                    </ul>
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
+<div id="upgradeModal" ng-controller="UpgradeCtrl as uVm" ng-click="uVm.closeUpgradeForm()">
+    <div class="card" ng-click="$event.stopPropagation()">
+        <div class="inner">
+            <div class="price-tag">
+                <h2 class="price">{{ uVm.price }}<span>/{{ uVm.method === 'yearly' ? 'year' : 'month'}}</span></h2>
+                <p class="save" ng-if="uVm.method == 'yearly'">Save 20%</p>
+            </div>
+            <ul class="plans clearfix">
+                <li ng-click="uVm.switchMethod('monthly')" ng-class="{'active': uVm.method == 'monthly'}"><span>Monthly</span></li>
+                <li ng-click="uVm.switchMethod('yearly')" ng-class="{'active': uVm.method == 'yearly'}"><span>Yearly</span></li>
+            </ul>
+            <div class="wrapper">
+                <form name="uVm.upgradeForm" ng-if="!uVm.showCongrat">
+                    <div class="form-group">
+                        <div class="form cc">
+                            <i class="ilpt-credit-card"></i>
+                            <input type="text" size="20" ng-model="uVm.card.number" data-stripe="number" placeholder="Card Number">
+                        </div>
+                        <div class="exp">
+                            <div class="form">
+                                <i class="ilpt-calendar"></i>
+                                <input type="text" size="2" ng-model="uVm.card.exp_month" data-stripe="exp_month" placeholder="MM">
+                            </div>
+                            <div class="form">
+                                <input type="text" size="2" ng-model="uVm.card.exp_year" data-stripe="exp_year" placeholder="YY">
+                            </div>
+                        </div>
+                        <div class="form cvc">
+                            <i class="ilpt-lock"></i>
+                            <input type="text" size="4" ng-model="uVm.card.cvc" data-stripe="cvc" placeholder="CVC">
+                        </div>
+                        <div class="form">
+                            <input type="text" size="4" ng-model="uVm.coupon" placeholder="Coupon">
+                        </div>
+                    </div>
+                </form>
+                
+                <!-- Congrat message -->
+                <div id="congrat" ng-if="uVm.showCongrat">
+                    <strong>Congratulations</strong>
+                    <p>Enjoy unlimited features of Lapentor</p>
+                </div>
+            </div>
+            <!-- <div class="btn" ng-click="uVm.showPaymentForm = true" ng-if="!uVm.showPaymentForm && !uVm.showCongrat">I'm ready</div> -->
+            <div class="btn bg-grad" ng-if="!uVm.showCongrat" ng-click="uVm.submit()">
+                <span>Upgrade now</span> <img ng-if="uVm.isLoading" src="bower_components/SVG-Loaders/svg-loaders/puff.svg" width="20" alt="">
+            </div>
+            <div class="credit-stripe"><span>Powered by <strong><a href="https://stripe.com/">Stripe</a></strong></span></div>
+        </div>
+        <div class="outer">
+            <ul class="features">
+                <h5>WHAT INCLUDED</h5>
+                <li>Unlimited projects</li>
+                <li>Premium Themes & Plugins</li>
+                <li>Unique Portfolio page</li>
+                <li>Multiresolution</li>
+                <li>Mobile responsive</li>
+                <li>24/7 support</li>
+                <li>On-demand features</li>
+                <li>...</li>
+            </ul>
+        </div>
+    </div>
+</div>

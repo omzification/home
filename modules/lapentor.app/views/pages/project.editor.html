@@ -1,0 +1,125 @@
+<script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="pe9ecqfet132t30"></script>
+
+<div id="editor" class="page" ng-class="{'toggle-market-min': vm.minimizeMarket}">
+    <header>
+        <div class="pull-left">
+            <div class="project-meta">
+                <a href="" ui-sref="index" class="go-home"><i class="ilpt-home"></i></a>
+                <div id="project-configure" class="back" ng-click="vm.modalProjectConfigure()">
+                    <span>{{ vm.project.title }}</span>
+                    <i class="ilpt-gear"></i>
+                </div>
+                <div id="project-status">
+                     <!-- Price version 1: -->
+                    <section ng-if="!vm.user.price_model_ver">
+                        <div class="{{ vm.project.public? 'active':'inactive' }}"><span class="dot"></span>{{vm.project.public?'Public':'Private'}} </div>
+                    </section>
+                    <!-- END Price version 1: -->
+                    
+                    <!-- Price version 2: -->
+                    <!-- <section ng-if="vm.user.price_model_ver == 2">
+                        <div ng-if="vm.project.remaining_day > 0" class="active"><span class="dot"></span> Available for {{ vm.project.remaining_day }} days</div>
+                        <div ng-if="vm.project.remaining_day <= 0" class="inactive"><span class="dot"></span> Only you can see</div>
+                    </section> -->
+                    <!-- END Price version 2: -->
+                </div>
+                <!-- <span id="project-configure" class="btn-reveal"> -->
+                    <!-- <div class="reveal down">
+                        <ul class="">
+                            <li>Project Info</li>
+                            <li>Analytic</li>
+                            <li>Social Metadata</li>
+                            <li>Export</li>
+                        </ul>
+                    </div> -->
+                <!-- </span> -->
+            </div>
+        </div>
+        <div class="" style="">
+            <ul class="project-workflow" style="width: 100px;">
+                <!-- <li class="item active">
+                    <i class="ilpt-feather-pen"></i> <span>Edit</span>
+                </li> -->
+                <li class="item" ng-click="vm.openLiveView()" style="width: 100%">
+                    <i class="ilpt-eye"></i> <span>Preview</span>
+                </li>
+                <!-- <li id="workflow-publish" class="btn-reveal">
+                    <div class="item">
+                        <i class="ilpt-play"></i> <span>Publish</span>
+                    </div>
+                    <div class="reveal down">
+                        <ul>
+                            <li>Cloud Hosting
+                                <div class="state">
+                                    <span class="active">On</span>
+                                    <span class="inactive">Off</span>
+                                </div>
+                            </li>
+                            <li>Self Hosting</li>
+                        </ul>
+                    </div>
+                </li> -->
+            </ul>
+        </div>
+        <div class="pull-right">
+            <div class="project-distribute">
+                <a id="editor-share" href="#" class="btn btn-reveal">
+                    <span class="m-hidden"><i class="ilpt-share"></i> Share</span>
+                    <div class="reveal down">
+                        <ul class="">
+                            <li>
+                                <span>SHARE</span>
+                                <button socialshare="" socialshare-provider="facebook" socialshare-url="{{ vm.project.slug | shareUrl }}" class="socialshare-btn"><i class="ilpt-social-facebook"></i> </button>
+                                <button socialshare="" socialshare-provider="twitter" socialshare-url="{{ vm.project.slug | shareUrl }}" socialshare-text="Woa...this place is amazing" socialshare-hashtags="lapentor, sphere360, vr" class="socialshare-btn">
+                                    <i class="ilpt-social-twitter"></i>
+                                </button>
+                                <button class="socialshare-btn" socialshare="" socialshare-provider="google+" socialshare-url="{{ vm.project.slug | shareUrl }}">
+                                    <i class="ilpt-social-google-plus"></i>
+                                </button>
+                                <button class="socialshare-btn" socialshare="" socialshare-provider="reddit" socialshare-text="720kb is enough!" socialshare-url="{{ vm.project.slug | shareUrl }}">
+                                    <i class="ilpt-social-reddit"></i>
+                                </button>
+                            </li>
+                            <li>
+                                <span>EMBEDED CODE</span>
+                                <textarea select-on-click readonly class="form-control" rows="5"><iframe src="{{ vm.project.slug | shareUrl }}" frameborder="0" width="100%" height="400px" scrolling="no" allow="vr,gyroscope,accelerometer" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" oallowfullscreen="true" msallowfullscreen="true"></iframe></textarea>
+                            </li>
+                            <li>
+                                <span>QR CODE</span>
+                                <qrcode size="170" data="{{ vm.project.slug | shareUrl }}"></qrcode>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+                <a id="editor-get_link" href="#" class="btn btn-reveal">
+                    <span class="m-hidden"><i class="ilpt-link"></i> Get link</span>
+                    <div class="reveal down">
+                        <ul class="">
+                            <li>
+                                <input type="text" readonly value="{{ vm.project.slug | shareUrl }}" class="form-control" select-on-click>
+                                <button>Copy</button>
+                            </li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </header>
+    <div class="main">
+        <fluid-loading type="opaque" ng-if="vm.sphereIsLoading"></fluid-loading>
+        
+        <div id="scene-editor" ng-class="{'toggle-management': vm.sceneListOpen }">
+            <editor-scenes-management></editor-scenes-management>
+            <ul id="hotspotForms">
+                <hotspot-editable ng-repeat="hotspot in vm.hotspots" currentscene="vm.scene" hotspots="vm.hotspots" hotspot="hotspot" scenes="vm.project.scenes" scenesphereinstance="vm.sceneEditSphere" project="vm.project"></hotspot-editable>
+            </ul>
+            <div class="embed" id="SphereEditable" ng-click="vm.sceneListOpen = false"></div>
+            <div id="whiteSplash"></div>
+            <editor-market ng-if="!vm.showLimitViewButtons"></editor-market>
+            <editor-controlbar class="m-hidden" ng-if="!vm.showLimitViewButtons"></editor-controlbar>
+        </div>
+        <editor-toolbar></editor-toolbar>
+        <span id="fov" class="pull-right">Zoom level: {{ vm.fov.toFixed(2) }}</span>
+    </div>
+</div>
+<media-library project="vm.project"></media-library>

@@ -1,0 +1,155 @@
+<style>
+    #controlbar-gooey {
+        position: absolute;
+        bottom: 45px;
+        left: 50%;
+        z-index: 100;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+    }
+    
+    #controlbar-gooey.top {
+        top: 45px;
+        bottom: auto;
+    }
+    
+    #controlbar-gooey.left {
+        left: 45px;
+        bottom: auto;
+        top: 50%;
+        -webkit-transform: translate(0%, -50%);
+        -ms-transform: translate(0%, -50%);
+        transform: translate(0%, -50%);
+    }
+    
+    #controlbar-gooey.right {
+        right: 45px;
+        bottom: auto;
+        left: auto;
+        top: 50%;
+        -webkit-transform: translate(0%, -50%);
+        -ms-transform: translate(0%, -50%);
+        transform: translate(0%, -50%);
+    }
+    
+    #controlbar-gooey svg {
+        display: none;
+    }
+    
+    #controlbar-gooey .btn {
+        width: 30px;
+        height: 30px;
+        height: {{ vm.config.icon_size ? vm.config.icon_size+'px': '30px'; }};
+        width: {{ vm.config.icon_size ? vm.config.icon_size+'px': '30px'; }};
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        padding: 0;
+        position: relative;
+    }
+    
+    #controlbar-gooey .menu {
+        margin: 0 auto 20px;
+        position: relative;
+        -webkit-filter: url("#goo");
+        filter: url("#goo");
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+    }
+    
+    #controlbar-gooey .menu-toggle-button,
+    #controlbar-gooey .menu-item-bounce,
+    #controlbar-gooey .menu-item-button {
+        background: #FF9800;
+        border-radius: 50%;
+        width: 56px;
+        height: 56px;
+        margin-left: -28px;
+        margin-top: -28px;
+        color: #fff;
+        border: none;
+        outline: none;
+        position: relative;
+    }
+    
+    #controlbar-gooey .menu-toggle-button {
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        z-index: 199;
+    }
+    
+    #controlbar-gooey .menu-toggle-icon {
+        font-size: 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        line-height: 56px;
+    }
+    
+    #controlbar-gooey .menu-item-bounce {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    #controlbar-gooey .menu-item-button {
+        padding: 0;
+        height: {{ vm.config.icon_size ? vm.config.icon_size * 1.5+'px': '42px'; }};
+        width: {{ vm.config.icon_size ? vm.config.icon_size * 1.5+'px': '42px'; }};
+        margin-left: - {{ vm.config.icon_size ? vm.config.icon_size * 0.75+'px': '21px'; }};
+        margin-top: - {{ vm.config.icon_size ? vm.config.icon_size * 0.75+'px': '21px'; }};
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition:all .15s ease-out;
+        -webkit-transition:all .15s ease-out;
+    }
+    
+    #controlbar-gooey .menu-items li span {
+        -webkit-transition: opacity 1s;
+        transition: opacity 1s;
+    }
+    
+    #controlbar-gooey .menu-items.closed li span {
+        opacity: 0;
+    }
+    
+    #controlbar-gooey .menu-item:hover .menu-item-button {
+        top: 8px;
+        box-shadow: 0 0 24px white;
+    }
+    
+    #controlbar-gooey .menu-item:hover {
+        z-index: 199;
+        position: relative;
+    }
+</style>
+<div id="controlbar-gooey" ng-class="vm.config.position" click-outside="vm.closeMenu()">
+    <ul class="menu-items">
+        <li class="menu-item" ng-repeat="btn in vm.availableButtons | orderBy:'index':false">
+            <button class="menu-item-button" ng-style="{'background': vm.config.bg_color}" ng-click="onbtnclick(btn)">
+                <span id="{{ btn.id }}" title="{{ btn.name }}" bg-src="{{ btn.icon_url_custom?btn.icon_url_custom:btn.icon_url }}" tooltip="{{ btn.name }}" class="btn menu-item-icon" ng-class="{'divider': btn.isdivider}"></span>
+            </button>
+            <div class="menu-item-bounce" ng-style="{'background': vm.config.bg_color}"></div>
+        </li>
+    </ul>
+    <button class="menu-toggle-button" ng-style="{'background': vm.config.bg_color}">
+        <i ng-style="{color: vm.config.toggle_icon_color}" class="ilpt-plus menu-toggle-icon"></i>
+    </button>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+</div>

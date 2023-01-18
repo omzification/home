@@ -1,0 +1,64 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label class="form-label" for="">Position</label>
+                <div class="form-content">
+                    <select ng-model="vm.config.position" class="btn form-control">
+                        <option ng-selected="vm.config.position == 'left'" value="left">Left</option>
+                        <option ng-selected="vm.config.position == 'right'" value="right">Right</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form">
+                <label for="" class="form-label">Set Logo</label>
+                <div class="form-content">
+                    <button class="btn form-control" ng-click="vm.openMediaLib()">
+                        <i class="ilpt-insert-image"></i> Choose/Upload image
+                    </button>
+                    <img id="logo" class="img-wrapper" style="max-height: 150px; width: auto; margin: 20px auto; display: block;" ng-if="vm.config.logo" loading-src="{{ vm.config.logo }}" alt="">
+                    <input type="hidden" ng-model="vm.config.logo">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <div class="form">
+                <label for="" class="form-label">Styling</label>
+                <div class="form-content">
+                    <div class="form-checkbox">
+                        <input type="radio" name="position" id="themeTypeFixed" ng-model="vm.config.theme_type" value="fixed">
+                        <label for="themeTypeFixed"><span></span><strong>Predefined theme</strong></label>
+                    </div>
+                    <div class="sub-form" ng-if="vm.config.theme_type == 'fixed'">
+                        <label class="form-label" for="">Choose a Theme</label>
+                        <div class="form-content">
+                            <select ng-model="vm.config.theme" class="btn form-control">
+                                <option value="light" ng-selected="vm.config.theme == 'light'">Light</option>
+                                <option value="dark" ng-selected="vm.config.theme == 'dark'">Dark</option>
+                            </select>
+                        </div>
+                        <label class="form-label" for="">Featured color</label>
+                        <div class="form-content">
+                            <span class="demo-bg-block" style="background-color: {{ vm.config.featured_color }}"></span>
+                            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.featured_color">
+                        </div>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="radio" name="position" id="themeTypeCustom" ng-model="vm.config.theme_type" value="custom">
+                        <label for="themeTypeCustom"><span></span><strong>Custom color</strong></label>
+                    </div>
+                    <div class="sub-form" ng-if="vm.config.theme_type == 'custom'">
+                        <label class="form-label" for="">Background color</label>
+                        <div class="form-content">
+                            <span class="demo-bg-block" style="background-color: {{ vm.config.bg_color }}"></span>
+                            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.bg_color">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

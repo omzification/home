@@ -1,0 +1,46 @@
+/*COLOR: #0060AF*/
+.theme-color {
+    color: #0060AF;
+}
+
+.theme-bg,
+.theme-bg-after:after,
+.theme-bg-after:before,
+.theme-bg-hover:hover {
+    background-color: #0060AF;
+}
+
+.theme-bg-opacity {
+    background-color: rgba(240, 97, 66, 0.85);
+}
+
+.theme-bg-opacity-after:after {
+    background-color: rgba(239, 82, 67, 0.85);
+}
+
+.theme-border {
+    border-color: #0060AF!important;
+}
+
+.btn-line-theme {
+    border-color: #0060AF;
+    color: #0060AF;
+}
+
+.bg-grad {
+    color: white;
+    background: #f6c964;
+    background: -webkit-linear-gradient(135deg, #F3676C 0%, #ef5141 100%);
+    background: -webkit-linear-gradient(135deg, #F3676C 0%, #ef5141 100%);
+    background: linear-gradient(135deg, #F3676C 0%, #ef5141 100%);
+}
+
+.bg-grad:focus,
+.bg-grad:active {
+    color: white;
+    background: #f6c964;
+    background: -webkit-linear-gradient(-45deg, #f6c964 0%, #ef5141 100%);
+    background: -webkit-linear-gradient(315deg, #f6c964 0%, #ef5141 100%);
+    background: linear-gradient(135deg, #f6c964 0%, #ef5141 100%);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
+}

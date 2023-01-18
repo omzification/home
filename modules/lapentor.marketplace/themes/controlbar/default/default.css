@@ -1,0 +1,93 @@
+#controlbar-default {
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.75);
+    position: absolute;
+    z-index: 100;
+    background: white;
+    left: 50%;
+    bottom: 8px;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    padding: 3px 8px;
+}
+
+#controlbar-default ul {
+    width: auto;
+    max-width: 90vw;
+    display: block;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 0;
+}
+
+#controlbar-default.left ul,
+#controlbar-default.right ul {
+    display: block;
+}
+
+#controlbar-default.left,
+#controlbar-default.right {
+    left: 10px;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    top: 50%;
+    bottom: auto;
+    padding: 8px 3px;
+}
+
+#controlbar-default.right {
+    left: auto;
+    right: 10px;
+}
+
+#controlbar-default.left .divider,
+#controlbar-default.right .divider {
+    background-image: url('') !important;
+    background-color: #EF5041;
+    height: 2px;
+}
+
+#controlbar-default.left .item,
+#controlbar-default.right .item {
+    display: block;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+#controlbar-default.top {
+    top: 25px;
+    bottom: auto;
+}
+
+#controlbar-default .item {
+    position: relative;
+    display: inline-block;
+    padding: 2px;
+    margin: 0 1px;
+    border-radius: 4px;
+    -webkit-transition: all .15s ease-out;
+    transition: all .15s ease-out;
+    cursor: pointer;
+}
+
+#controlbar-default .item:hover {
+    background: #DDD;
+}
+
+#controlbar-default .item img {
+    width: 30px;
+    height: 30px;
+}
+
+#controlbar-default .item:last-child {
+    margin-right: 0;
+}

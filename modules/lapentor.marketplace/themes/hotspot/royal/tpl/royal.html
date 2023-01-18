@@ -1,0 +1,30 @@
+<style>
+    #sprite-lptHotspot{{vm.hotspot._id}}{
+        z-index: 2!important;
+    }   
+</style>
+<!-- default hotspot -->
+<div ng-if="!config[hotspot.type + '_icon_custom'] && !vm.hotspot.icon_custom && vm.hotspot.type != 'sound'" class="hotspot hotspot-royal hotspot-royal-{{vm.hotspot.type}}" ng-class="{'hide-title': config.show_title != 'yes'}" ng-mouseenter="vm.onmouseover()" ng-mouseleave="vm.onmouseout()" style="margin-top: {{hotspot.margin_top}}px; margin-left: {{hotspot.margin_left}}px">
+    <div class="hotspot-wrap x-small">
+        <span class="hotspot-outline"></span><span class="hotspot-outline"></span><span class="hotspot-outline"></span>
+        <span class="hotspot-background centerer thumb" ng-style="config.main_color"></span>
+        <span class="hotspot-background-arrow" ng-style="config.arrow_color"></span>
+        <span class="hotspot-icon coverer icon"></span>
+        <span class="hotspot-content">
+            <span class="text" ng-style="config.text_style">{{ vm.hotspot.title }}</span>
+        </span>
+        <span class="hotspot-seen">
+            <span class="icon-check-small" style="background-image: none;"><svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="51" height="38" viewBox="0 0 51 38"><defs><style>.cls-2 { fill: #023a78; }</style></defs><path d="M50.126 4.6L23.158 31.572l.952.953-4.6 4.6-.95-.953-.954.953-4.6-4.6.954-.953L0 17.61l4.598-4.6 13.96 13.963L45.53-.002l4.598 4.6z" id="path-1" class="cls-2" fill-rule="evenodd"></path></svg></span>
+        </span>
+    </div>
+</div>
+<!-- Has global custom icon -->
+<div class="hotspot-royal hotspot-royal-{{vm.hotspot.type}} hotspot-royal-custom" ng-if="config[hotspot.type + '_icon_custom'] && !vm.hotspot.icon_custom && vm.hotspot.type != 'sound'" ng-mouseenter="vm.onmouseover()" ng-mouseleave="vm.onmouseout()" style="cursor: pointer;width: {{vm.hotspot.width}}px; height: {{vm.hotspot.width}}px; background-image: url('{{ config[hotspot.type + '_icon_custom'] }}')">
+    <div class="custom_hs-name"><span>{{ hotspot.title }}</span></div>
+</div>
+</div>
+<!-- Has specific / single custom icon -->
+<div class="hotspot-royal hotspot-royal-{{vm.hotspot.type}} hotspot-royal-custom" ng-if="vm.hotspot.icon_custom && vm.hotspot.type != 'sound'" ng-mouseenter="vm.onmouseover()" ng-mouseleave="vm.onmouseout()" style="width: {{vm.hotspot.width}}px; height: {{vm.hotspot.width}}px; background-image: url('{{vm.hotspot.icon_custom}}')">
+    <div class="custom_hs-name"><span>{{ hotspot.title }}</span></div>
+</div>
+

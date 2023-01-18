@@ -1,0 +1,26 @@
+<div class="form-group">
+	<div class="form">
+	    <label class="form-label" for="">Background color</label>
+	    <div class="form-content">
+		    <span class="demo-bg-block" style="background-color: {{ vm.project.theme_controlbar.config.bg_color }}"></span>
+		    <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.project.theme_controlbar.config.bg_color">
+	   	</div>
+	</div>
+	<div class="form">
+		<label class="form-label">Position</label>
+		<div class="form-content">
+			<select ng-model="vm.project.theme_controlbar.config.position" class="form-control">
+				<option value="top">Top</option>
+				<option value="bottom">Bottom</option>
+				<option value="left">Left</option>
+				<option value="right">Right</option>
+			</select>
+		</div>
+	</div>
+	<div class="form">
+		<label class="form-label" for="">Icon size (px)</label>
+		<div class="form-content">
+    		<input type="number" placeholder="e.g: 30" class="form-control" ng-model="vm.project.theme_controlbar.config.icon_size">
+    	</div>
+	</div>
+</div>

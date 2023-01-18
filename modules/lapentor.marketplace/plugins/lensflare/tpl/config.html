@@ -1,0 +1,34 @@
+<div class="clearfix" id="LensflarePluginConfig">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="guideline">
+                    <span class="title">HOW TO USE</span>
+                    <ul class="fancy-list">
+                        <li>Choose a scene</li>
+                        <li>Drag the scene to point the cross icon to your lensflare position</li>
+                        <li>Press Save</li>
+                    </ul>
+                </div>
+                <div class="form">
+                    <label class="form-label">Choose a Scene</label>
+                    <div class="form-content">
+                        <select ng-model="vm.targetScene" class="btn form-control" ng-change="vm.selectScene()">
+                            <option ng-repeat="scene in vm.project.scenes" value="{{ scene._id }}">{{ scene.title }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="form full">
+                    <div class="form-content">
+                        <div id="lensTour" ng-show="vm.shouldShowPreview" style="height: 300px;"></div>
+                        <button ng-if="vm.config.lensflare[vm.targetScene]" class="btn form-control" ng-click="vm.removeLensflare()"><i class="ilpt-trashcan"></i> Remove lensflare</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

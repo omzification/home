@@ -1,0 +1,19 @@
+<style>
+.hotspot-grady-image .image {
+    width: 100%;
+    display: block;
+}
+
+.hotspot-grady-image .caption {
+    text-align: center;
+    padding: 10px;
+    font-size: smaller;
+    color: #9e9e9e;
+}
+</style>
+<div id="" class="hotspot-modal-grady hotspot-grady-image" ng-style="{'background-color': config.popup_bg_color }">
+	<div class="close" ng-click="cancel()" ng-style="{'background-color': config.popup_bg_color }"><i class="ilpt-close"></i></div>
+    <a ng-if="hotspot.url" target="_blank" ng-href="{{ hotspot.url || '#' }}"><img loading-src="{{ hotspot.src }}" alt="hotspot.title" class="image"></a>
+    <img ng-if="!hotspot.url" loading-src="{{ hotspot.src }}" alt="hotspot.title" class="image">
+    <p class="caption" ng-style="{color: config.popup_text_color}">{{ hotspot.caption }}</p>
+</div>

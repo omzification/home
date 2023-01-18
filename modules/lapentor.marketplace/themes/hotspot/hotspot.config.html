@@ -1,0 +1,57 @@
+<style>
+    .hotspot-config-form{
+        text-align: center;
+    }
+    .hotspot-config-form .thumb{
+        width: 40px;
+        display: block;
+        margin: 12px auto;
+    }
+    .hotspot-config-form .icon-wrap{
+        position: relative;
+    }
+    .hotspot-config-form .icon-wrap .btn-delete{
+        position: absolute;
+        font-size: 19px;
+        right: 0;
+        top: 12px;
+        cursor: pointer;
+        color: white;
+        opacity: 0.25;
+    }
+    .hotspot-config-form .icon-wrap .btn-delete:hover{
+        opacity: 1;
+    }
+</style>
+<div class="form-group row">
+    <div class="form full hotspot-config-form col-md-4" ng-repeat="hpType in hotspotTypes">
+        <label for="">{{ hpType.tooltip }} icon</label>
+        <div class="form-content">
+            <div class="icon-wrap">
+                <img ng-src="{{ hpType.icon }}" class="thumb">
+                <i class="ilpt-close btn-delete" ng-click="resetCustomHotspotIcon(hpType.name)"></i>
+            </div>
+            <button class="btn form-control" ng-click="openCustomIconMediaLib(hpType.name)">
+                Change <i class="ilpt-insert-image"></i>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="form-group row">
+    <div class="form col-md-6">
+        <label class="form-label" for="">Theme BG color <i class="ilpt-info" uib-tooltip="Apply for Info, Article, Image Hotspot"></i></label>
+        <div class="form-content">
+            <span class="demo-bg-block" style="background-color: {{ vm.config.popup_bg_color }}"></span>
+            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.popup_bg_color">
+        </div>
+    </div>
+    <div class="form col-md-6">
+        <label class="form-label" for="">Theme Text color <i class="ilpt-info" uib-tooltip="Apply for Info, Article, Image Hotspot popup"></i></label>
+        <div class="form-content">
+            <span class="demo-bg-block" style="background-color: {{ vm.config.popup_text_color }}"></span>
+            <input type="text" placeholder="click to choose" class="form-control" colorpicker="rgba" ng-model="vm.config.popup_text_color">
+        </div>
+    </div>
+</div>
+
+<ng-include src="'modules/lapentor.marketplace/themes/hotspot/' + item.slug + '/tpl/config.html'"></ng-include>

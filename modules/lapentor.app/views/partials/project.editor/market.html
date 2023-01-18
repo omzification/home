@@ -1,0 +1,52 @@
+<!-- <button title="Power-Ups" id="marketplaceToggle" class="theme-bg bg-grad" ng-click="vm.toggleMarketplace()">
+    <i class="fa fa-bolt"></i>
+    <span class="count" title="Installed items">{{ vm.installedItemsCount }}</span>
+</button> -->
+<div id="scene-editor-market" ng-if="vm.marketIsOpened" ng-class="{'toggle-installedPlugin': vm.showInstalled}">
+    <div class="inner" ng-click="$event.stopPropagation()">
+        <header class="clearfix">
+            <h2 class="title">
+                <span class="m-hidden">Power-Ups</span>
+            </h2>
+            <span class="installed" ng-click="vm.filterInstalled = !vm.filterInstalled"></span>
+            <input type="text" placeholder="Search items..." class="search" ng-model="vm.searchItemKeyword" focusme="true">
+            <div class="close close-black" ng-click="vm.toggleMarketplace()"><i class="ilpt-close"></i></div>
+            <div class="topbar">
+                <ul class="filter">
+                    <li ng-click="vm.showTab('all')" ng-class="{'active': vm.filterCategoryType == '' || vm.filterCategoryType == undefined}">All ({{ vm.items.length }})</li>
+                    <li ng-click="vm.showTab('plugin')" ng-class="{'active': vm.filterCategoryType == 'plugin'}">Plugins</li>
+                    <li ng-click="vm.showTab('theme','scenelist')" ng-class="{'active': vm.filterThemeType == 'scenelist'}">Scene list</li>
+                    <li ng-click="vm.showTab('theme','hotspot')" ng-class="{'active': vm.filterThemeType == 'hotspot'}"> Hotspot</li>
+                    <li ng-click="vm.showTab('theme','controlbar')" ng-class="{'active': vm.filterThemeType == 'controlbar'}">Control bar</li>
+                </ul>
+            </div>
+        </header>
+        <div class="content">
+            <div class="categories clearfix" ng-repeat="cat in vm.categories | filter: {slug: vm.filterThemeType } | filter:{type: vm.filterCategoryType} | filter:{name: vm.filterCategoryName }" ng-if="cat.slug != 'features'">
+                <h3 class="title">{{ cat.name }}</h3>
+                <ul class="items">
+                    <li class="card-component theme-bg-opacity-after" ng-repeat="item in vm.items | filter:{installed: vm.filterInstalled} | filter: vm.searchItemKeyword" ng-if="item.categories.indexOf(cat.slug) != -1 && !item.installed" ng-class="{'active': item.installed}">
+                        <fluid-loading ng-show="vm.isUpdating == item._id"></fluid-loading>
+                        <div class="thumbnail" bg-src="{{ item.screenshot }}"></div>
+                        <span class="name">{{ item.name }}</span>
+                        <button ng-if="!item.installed" class="install-btn btn bg-grad" ng-click="vm.install(item)">Install</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="installed-items" ng-class="{'small': !vm.showInstalled}">
+            <h3 class="title" ng-click="vm.showInstalled = !vm.showInstalled">INSTALLED PLUGINS / THEMES <span class="theme-color">({{ vm.installedItemsCount }})</span> <i class="ilpt-{{ vm.showInstalled?'down':'up'}}"></i></h3>
+            <ul class="items" ng-show="vm.showInstalled">
+                <li class="card-component theme-bg-opacity-after" ng-repeat="item in vm.items | filter:{installed: true} | filter: vm.searchItemKeyword | filter:{type: vm.filterCategoryType} | filter:{theme_type: vm.filterThemeType }">
+                    <fluid-loading ng-show="vm.isUpdating == item._id"></fluid-loading>
+                    <div class="thumbnail" bg-src="{{ item.screenshot }}"></div>
+                    <span class="name">{{ item.name }}</span>
+                    <button ng-if="!item.installed" class="install-btn btn" ng-click="vm.install(item)">Install</button>
+                    <button ng-if="item.has_config && item.installed" class="toggle-config btn" ng-click="vm.openConfigPage(item)">Config</button>
+                    <i ng-if="item.installed" class="ilpt-close uninstall-btn" title="Uninstall" ng-click="vm.uninstall(item)"></i>
+                </li>
+            </ul>
+        </div>
+        <marketplace-item-config project="vm.project"></marketplace-item-config>
+    </div>
+</div>

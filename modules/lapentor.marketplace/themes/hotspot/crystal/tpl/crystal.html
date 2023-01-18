@@ -1,0 +1,15 @@
+<style>
+#sprite-lptHotspot{{vm.hotspot._id}}{
+    z-index: 2!important;
+}
+</style>
+<div class="hotspot-crystal hotspot-crystal-{{hotspot.type}} hotspot" ng-class="{'hide-title': config.show_title != 'yes'}" ng-if="hotspot.type != 'sound' && !hotspot.icon_custom && !config[hotspot.type + '_icon_custom']" id="hotspot_{{hotspot._id}}" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px;"">
+    <span id="icon-{{hotspot.type}}" class="icon" ng-if="!hotspot.icon_custom"></span>
+    <span class="thumb" ng-if="!hotspot.icon_custom && hotspot.type == 'point'" bg-src="{{targetScene.pano_thumb}}"></span>
+    <span class="icon" ng-if="hotspot.icon_custom" bg-src="{{ hotspot.icon_custom }}"></span>
+    <span class="title">{{ hotspot.title }}</span>
+</div>
+<div class="hotspot-crystal hotspot-crystal-{{hotspot.type}} hotspot hotspot-custom" ng-if="hotspot.type != 'sound' && hotspot.icon_custom && !config[hotspot.type + '_icon_custom']" uib-tooltip="{{ hotspot.title }}" tooltip-append-to-body="true" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px; background-image: url('{{ hotspot.icon_custom }}');">
+</div>
+<div class="hotspot-crystal hotspot-crystal-{{hotspot.type}} hotspot hotspot-custom" tooltip-append-to-body="true" uib-tooltip="{{ hotspot.title }}" ng-if="hotspot.type != 'sound' && !hotspot.icon_custom && config[hotspot.type + '_icon_custom']" style="width: {{ hotspot.width }}px; height: {{ hotspot.width }}px; background-image: url('{{ config[hotspot.type + '_icon_custom'] }}');"">
+</div>

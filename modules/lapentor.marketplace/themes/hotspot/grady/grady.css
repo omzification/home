@@ -1,0 +1,102 @@
+.hotspot-modal-grady {
+    background:white;
+    position: relative;
+}
+
+.hotspot-modal-grady.hotspot-grady-video {
+    width: 90vw;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+}
+
+.hotspot-modal-grady.hotspot-grady-video iframe {
+    height: 84vh;
+}
+
+.hotspot-modal-grady.hotspot-grady-image {
+    width: 720px;
+    margin: 0 auto;
+}
+.hotspot-modal-grady .caption {
+    text-align: center;
+    padding: 10px;
+}
+
+.hotspot-modal-grady img {
+    max-width: 100%;
+}
+.hotspot-grady-textf {
+    padding: 16px 16px 24px 16px;
+    position: absolute;
+    border-radius: 4px;
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
+    background-color: white;
+    width: auto;
+    font-size: 14px;
+    line-height: 16px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s;
+    -webkit-transition: opacity 0.4s;
+    -moz-transition: opacity 0.4s;
+    -ms-transition: opacity 0.4s;
+    z-index: 99;
+    min-height: 40px;
+    max-width: 280px;
+    pointer-events: none;
+}
+
+.hotspot-grady-textf .close {
+    position: absolute;
+    top: 12px;
+    right: 8px;
+    background: white;
+    box-shadow: 0 0 18px 2px white;
+    opacity: 1;
+    font-size: 16px;
+    text-shadow: none;
+    width: 24px;
+    height: 24px;
+}
+
+.hotspot-grady-textf.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.hotspot-grady-textf:before {
+    content: "";
+    border: 10px solid transparent;
+    border-right: 14px solid #FFF;
+    position: absolute;
+    left: -18px;
+    top: 10px;
+}
+
+.hotspot-grady-article .close i {
+    color: white;
+}
+
+.modal .modal-dialog .modal-content .hotspot-modal-grady .close {
+    background: transparent;
+    color: initial;
+    height: 34px;
+    width: 34px;
+    line-height: 34px;
+    text-align: center;
+    z-index: 2;
+    opacity: .5;
+    position: relative;
+}
+
+.modal-dialog .modal-content .hotspot-modal-grady .close:hover {
+    opacity: 1;
+}
+
+@media screen and (max-width: 480px) {
+    .hotspot-modal-grady .close {
+        right: 0;
+    }
+}

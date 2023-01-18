@@ -1,0 +1,17 @@
+<div class="modal-body">
+    <div class="close" ng-click="vmPm.cancel()"><i class="ilpt-close"></i></div>
+    <div class="form-group">
+        <div class="form full">
+            <label for="" class="form-label">Choose represented Scene of this Marker</label>
+            <div class="form-content">
+                <select ng-model="vmPm.targetScene" class="form-control" ng-change="vmPm.select()">
+                    <option ng-repeat="scene in vmPm.project.scenes" value="{{ scene._id }}">{{ scene.title }}</option>
+                </select>
+                <div id="krpanoTour" ng-show="vmPm.shouldShowPreview" style="height: 300px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-save bg-grad" ng-click="vmPm.dismiss()">Save</button>
+</div>
