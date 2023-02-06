@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="">
+    <meta name="author" content="Omar Dirar">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/slaptop/assets/slaptop.css">
+    <link rel="stylesheet" href="/slaptop/assets/ATypewriterForMe.ttf">
+    <script src="/slaptop/slaptop.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>setupNav()</script>
+  </head>
+
+  <body>
+    <div id="desktop">
+    <nav>
+        <div class="nav-item">
+            <button id="nav-logo">
+                <img src="/slaptop/assets/icons/Home.png">
+            </button>
+        </div>
+        <div class="nav-item">
+            <button>File</button>
+            <ul style="">
+                <li>
+                    <button id="nav-new-folder">New Folder<ins>N</ins></button>
+                </li>
+                <li>
+                    <button id="startBtn" onclick="openCam()">Open<ins>O</ins></button>
+                </li>
+                <li>
+                    <button onclick="window.print()">Print<ins>P</ins></button>
+                </li>
+                <li>
+                    <button disabled="">Close Window</button>
+                </li>
+                <li class="line"></li>
+                <li>
+                    <button disabled="">Find...<ins>F</ins></button>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-item">
+            <button>View</button>
+            <ul style="">
+                <li>
+                    <button id="nav-tos">Terms of Service</button>
+                </li>
+                <li>
+                    <button id="nav-pp">Privacy Policy</button>
+                </li>
+                    <li class="nav-divisor"></li>
+                <li>
+                    <button id="nav-about">About</button>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-item">
+            <button>Special</button>
+            <ul style="">
+                <li>
+                    <button onclick="openFullscreen()">Fullscreen</button>
+                </li>
+                <li>
+                    <button disabled="">Log Out</button>
+                </li>
+            </ul>
+        </div>
+        <div class="nav-item">
+            <button id="nav-contact">Contact</button>
+        </div>
+    </nav>
+    <div id="CV" class="desktop-icon">
+        <div>
+            <img src="/slaptop/assets/icons/Text.png">
+        </div>
+        <span> CV </span>
+     </div>
+     <div id="files" class="desktop-icon">
+        <div>
+            <img src="/slaptop/assets/icons/Folder.png">
+        </div>
+        <span> files </span>
+     </div>
+     <div id="pics" class="desktop-icon">
+        <div>
+            <img src="/slaptop/assets/icons/Folder.png">
+        </div>
+        <span> pics </span>
+     </div>
+     <div id="demo">
+        <h1>The XMLHttpRequest Object</h1>
+        <button type="button" class="folder" onclick="loadDoc('test.txt')" dataPage="/slaptop/dialogs/test.txt">Change Content</button>
+        </div>
+        
+        <script>
+        function loadDoc(data) {
+          var $dialog = $('<div></div>')
+          .load('/slaptop/dialogs/' + data)
+          .dialog({
+                autoOpen: false,
+                width: 500,
+                height: 300,
+                title: data
+            });
+          $dialog.dialog('open');
+        }
+        </script>
+    </div>
+</body>

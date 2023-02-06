@@ -1,0 +1,11 @@
+{"picsFolder":[
+    { "name":"John" },
+    { "name":"Anna" },
+    { "name":"Peter" }
+  ]}
+
+  {"John":[
+    { "name":"Test", "source":"slaptop/assets/icons/Home.png" },
+    { "name":"Test2", "source":"slaptop/assets/icons/Home.png" },
+    { "name":"Test3", "source":"slaptop/assets/icons/Home.png" }
+  ]}
