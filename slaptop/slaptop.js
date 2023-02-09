@@ -1,3 +1,5 @@
+//navbar
+
 setupNav = function () {
 
     $(document).ready(function(){
@@ -22,3 +24,5 @@ setupNav = function () {
   
 
 }
+
+

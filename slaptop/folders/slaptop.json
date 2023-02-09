@@ -1,0 +1,48 @@
+{"desktop":[
+  {
+    "folder": "CV",
+    "content": ""
+  },
+  {
+    "folder": "files",
+    "content": ""
+  },
+  {
+    "folder": "pics",
+    "content":[{
+      "subFolder":"smelly",
+      "photos":[
+          {"caption":"leak" },
+          {"caption":"caffeinated" },
+          {"caption":"vandal" },
+          {"caption":"every_lil_helps" },
+          {"caption":"vandal_2" },
+          {"caption":"huh" }
+      ]
+    },
+    {
+      "subFolder":"cramped",
+      "photos":[
+          { "src":"dog", "name":"Fido" },
+          { "src":"cat", "name":"Felix" },
+          { "src":"hamster", "name":"Lightning" }
+      ]
+    },
+    {
+      "subFolder":"round",
+      "photos":[
+          { "src":"dog", "name":"Fido" },
+          { "src":"cat", "name":"Felix" },
+          { "src":"hamster", "name":"Lightning" }
+      ]
+    },
+    {
+      "subFolder":"wood",
+      "photos":[
+          { "src":"dog", "name":"Fido" },
+          { "src":"cat", "name":"Felix" },
+          { "src":"hamster", "name":"Lightning" }
+      ]
+    }]
+  }
+]}

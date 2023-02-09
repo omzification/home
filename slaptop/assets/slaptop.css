@@ -2,7 +2,7 @@
 
 :root {
     --primary-color: #f1f1f1;
-    --secondary-color: #0090ee;
+    --secondary-color: #000000;
     --background-color: #000000;
 
     --font-body-family: "Courier New", monospace;
@@ -277,7 +277,11 @@ ins::before {
     vertical-align:text-bottom;
 }
 
-/* desktop icons */
+.ui-dialog-title, span {
+    font-family: var(--font-body-family);
+  }
+
+/* icons */
 
 .desktop-icon {
     width: 168px;
@@ -299,9 +303,8 @@ ins::before {
   background-color: lightgray;
   border-radius: 2px;
   border-color: lightgray;
-  
 }
-              
+
 .desktop-icon > span {
     background-color: white;
     padding-left: 5px;
@@ -323,4 +326,101 @@ ins::before {
 .desktop-icon > div > img {
     max-width: 100%;
     max-height:100%
+}
+
+.folder-icon {
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    text-align: center;
+    padding: 5px;
+    float: left;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+    cursor:pointer;
+}
+
+.folder-icon > span {
+    background-color: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 130px;
+    border-bottom:1px solid white;
+    font-family: var(--font-body-family);
+}
+
+
+.folder-icon > div {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: calc(130px - 1.5em / 0.625);
+}
+
+
+
+.folder-icon > div > img {
+    max-width: 100%;
+    max-height:100%
+}
+
+.folder-icon:hover > span, .folder-icon:hover > div > img {
+  background-color: lightgray;
+  border-radius: 2px;
+  border-color: lightgray;
+}
+
+.card-pic {
+    height: 150px;
+    text-align: center;
+    padding: 5px;
+    text-overflow: ellipsis;
+    cursor:pointer;
+}
+
+.card-pic > span {
+    background-color: #fff;
+    padding-left: 5px;
+    padding-right: 5px;
+    max-width: 100%;
+    border-bottom:1px solid white;
+    font-family: var(--font-body-family);
+}
+
+
+.card-pic > div {
+    width: 100%;
+    height: calc(150px - 1.5em / 0.625);
+}
+
+
+
+.card-pic > div > img {
+    max-width: 100%;
+    max-height:100%
+}
+
+.card-pic:hover > span, .card-pic:hover > div > img{
+    background-color: lightgray;
+    border-radius: 2px;
+    border-color: lightgray;
+    border-style: solid;
+    border-width: 3px;
+    
+  }
+
+.ui-dialog {
+    max-height: calc(90% - 1em - 5px);
+    max-width: calc(90% - 1em - 5px);
+    display: flex;
+    flex-direction: column;
+
+}
+
+.tagsFolderContent {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+overflow: auto;
 }
