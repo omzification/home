@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'omardirar'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5F1566DBD16944FCA66147E28AC18012 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A9FDDDE8F620462CBD4DE1531FE06FAD }}
           package: .
