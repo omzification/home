@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/angular/angular.js/issues"
   },
-  "homepage": "http://angularjs.org"
+  "homepage": "http://angularjs.org",
+  "dependencies": {
+    "flickr-sdk": "^6.0.0"
+  }
 }

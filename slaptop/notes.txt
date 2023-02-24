@@ -1,0 +1,210 @@
+
+                 exif.forEach(element => {
+                const tags = ['LensMake', 'LensModel', 'Flash', 'FNumber', 'FocalLength', 'ExposureTime', 'ISO'];
+                const iterator = tags.values();
+
+                for (const [key, value] of Object.entries(element)) {
+                  const tag = element.tag
+                  if (value === tags) 
+                   return 
+
+
+                }
+
+
+              });  
+
+        const content =  {"albumID": res.body.photoset.id, content:[ "<div id=" + res.body.photoset.photo[index].id +
+             " class=" + 'card-pic' + "><img src=" + 'https://live.staticflickr.com/'
+             + res.body.photoset.photo[index].server + '/' + 
+             res.body.photoset.photo[index].id + '_' + res.body.photoset.photo[index].secret + '.jpg' + "></div>"]};
+
+         const album = {"id": res.body.photoset.photo[index].id, "title":res.body.photoset.photo[index].title, "content": content};
+
+var flickr = new Flickr('04ec818edf19dcf85b42097da1da9734');
+
+flickr.photosets.getList({
+  user_id: '197155581@N04'
+}).then(function (res) {
+    var albumsList = res.body.photosets;
+  console.log('yay!', albumsList);
+  albumsList.photoset.forEach(album => {
+    var albumTitle = album.title._content;
+    var albumID = album.id;
+    albumData(albumID);
+});
+}).catch(function (err) {
+  console.error('bonk', err);
+});
+
+function albumData(albumID) {
+    flickr.photosets.getPhotos({
+    user_id: '197155581@N04',
+    photoset_id: albumID
+}).then(function (res) {
+    var album = res.body.photoset;
+    var albumPhotos = album.photo;
+    var albumTitle = album.title;
+  albumPhotos.forEach(pic => {
+    const picID = pic.id;
+    const picSecret = pic.secret;
+    const picServer = pic.server;
+  loadAlbums(albumTitle, albumID, picID, picSecret, picServer)
+});
+
+$('.picsFolderContent')
+          .append('<div id="'
+               + albumID +
+               '-folder" class="folder-icon"><div><img src="/slaptop/assets/icons/Folder.png"></div><span>'
+               + albumTitle +
+               '</span></div>');
+});
+}
+
+function loadAlbums(albumTitle, albumID, picID, picSecret, picServer) {
+
+    for (let i = 0; i < picsTag.length; i++) {
+        const albumsID = albumID[i];
+    }
+var $albumDialog = $('<div id="albumFolderContent-' + albumID + '"></div>');
+var $albumDialogContent = $("<div id=" + picID +
+ " class=" + 'card-pic' + "><img src=" + 'https://live.staticflickr.com/'
++ picServer + '/' +
+picID + '_' + picSecret + '.jpg' + "></div>");
+
+$('#test').append($albumDialog);
+$albumDialog.dialog({
+          autoOpen: false,
+          title: albumTitle,
+          resizable: false,
+      });
+$albumDialog.append($albumDialogContent);
+
+$('#albumFolderContent-' + albumID + '')
+
+}
+
+  var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+
+        $.getJSON(flickerAPI, {
+        id: "197155581@N04",
+        tags: "test, test2",
+        tagmode: "any",
+        format: "json"
+        })
+        .done(function (result, status, xhr) {
+        
+        console.log("Connecting to Flickr: " + status);
+        
+        const picsData = result.items;
+        
+        console.log('Flickr pics: ');
+        console.log(picsData);
+        
+        
+        if (status == "success") {
+          picsFolder(picsData)
+        }
+        
+        }).fail(function (xhr, status, error) {
+        console.log("Result: " + status + " " + error + " " + xhr.status + " " + xhr.statusText);
+        $('.picsFolderContent').append('<span> oops. something seems to have gone wrong :/ </span>');
+        });
+        
+        
+        // loading 'pics' folder with sub-folders using photo tags
+        
+        function picsFolder(picsData) {
+        
+        picsTag = picsData.map(item => item.tags)
+        .filter((value, index, self) => self.indexOf(value) === index);
+        
+        console.log("Picture Tags: " + picsTag);
+        
+        for (let i = 0; i < picsTag.length; i++) {
+        
+        const tag = picsTag[i];
+        
+        tagData = picsData.filter(tagGroup => tagGroup.tags == picsTag[i]);
+        
+        $('.picsFolderContent')
+          .append('<div id="'
+               + tag +
+               '-folder" class="folder-icon"><div><img src="/slaptop/assets/icons/Folder.png"></div><span>'
+               + tag +
+               '</span></div>');
+        
+        loadTagFolders(tagData, tag);
+        
+        openTagFolder(tag);
+        
+        
+        
+        }
+        
+        }
+        
+        function loadTagFolders(tagData, tag) {
+        
+        var $tagsDialogs = $('<div></div>')
+          .addClass("tagsFolderContent " + tag + "")
+          .dialog({
+              autoOpen: false,
+              title: tag,
+              resizable: false,
+          });
+        
+        $.each(tagData, function (i, pic) {
+        
+        
+        
+        
+        
+        $("<div id="
+        + pic.title +
+        " class=" + 'card-pic' + "><div><img id="
+           + pic.title +
+          "-src src=" + pic.media.m + "></div><span>"
+           + pic.title +
+           "</span></div>").appendTo("." + tag + "");
+        });
+        console.log(tagData);
+        
+        }
+        
+        
+        
+        openPicsFolder = function() {
+        $dialog.dialog('open');
+        }
+        
+        function openTagFolder(tag) {
+        $("#" + tag + "-folder").on( 'click' , function() {
+        $("." + tag + "").dialog('open')
+        });
+        }
+
+
+function loadAlbums(albumTitle, albumID, picID, picSecret, picServer) {
+
+  $('<div id="albumFolderContent-' + albumID + '"></div>')
+  .dialog({
+            autoOpen: false,
+            title: albumTitle,
+            resizable: false,
+        });
+
+  $('#test').append("<div id=" + picID +
+   " class=" + 'card-pic' + "><img src=" + 'https://live.staticflickr.com/'
+  + picServer + '/' + 
+  picID + '_' + picSecret + '.jpg' + "></div>");
+  
+
+openAlbum(albumID)
+}
+
+function openAlbum(albumID) {
+  $("#" + albumID + "-folder").on( 'click' , function() {
+      $("#albumFolderContent-" + albumID + "").dialog('open')
+      });
+  }

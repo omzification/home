@@ -424,3 +424,13 @@ display: grid;
 grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
 overflow: auto;
 }
+
+.ui-dialog .ui-dialog-titlebar-help {
+    position:absolute;
+    right:2em;
+    top:50%;
+    width: 20px;
+    margin:-10px 0 0 0;
+    padding:1px;
+    height:20px
+  }

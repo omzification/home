@@ -1,0 +1,44 @@
+{"slaptop":[
+  {"desktop-icons":[
+    {
+      "name": "CV",
+      "icon": ""
+    },
+    {
+      "name": "files",
+      "icon": ""
+    },
+    {
+      "name": "pics",
+      "icon": ""
+    }
+  ]},
+
+  {"pages":[
+    {
+      "name": "Terms of Service",
+      "src": "slaptop/pages/ToS"
+    },
+    {
+      "name": "Privacy Policy",
+      "src": "slaptop/pages/PP"
+    },
+    {
+      "name": "About",
+      "src": "slaptop/pages/PP"
+    },
+    {
+      "name": "Projects",
+      "src": "slaptop/pages/PP"
+    },
+    {
+      "name": "Contact",
+      "src": "slaptop/pages/PP"
+    },
+    {
+      "name": "CV",
+      "src": "slaptop/pages/PP"
+    }
+  ]}
+
+]}
